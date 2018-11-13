@@ -12,7 +12,7 @@ public class ConnectionFactory {
 
         String url = "jdbc:postgresql://localhost:5432/Exemplo1PW1";
         String usuario = "postgres";
-        String senha = "28041998";
+        String senha = "senha do seu banco";
 
         return DriverManager.getConnection(url, usuario, senha);
     }
