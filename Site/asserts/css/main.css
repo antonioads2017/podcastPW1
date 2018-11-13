@@ -1,0 +1,12 @@
+#bttnMenu{
+    margin: auto;
+    width: 10%;
+    padding: 20px;
+    display: block;
+}
+form{
+    margin: auto;
+    width: 20%;
+    display: block;
+    padding: 10px;
+}
