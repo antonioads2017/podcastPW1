@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Podcast:Web exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded</output-path>
+    <output-path>$PROJECT_DIR$/web</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Podcast/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -9,6 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.2" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
         </element>
       </element>
     </root>

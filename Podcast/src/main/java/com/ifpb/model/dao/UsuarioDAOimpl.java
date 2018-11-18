@@ -28,8 +28,10 @@ public class UsuarioDAOimpl implements UsuarioDAO{
 
             return statement.executeUpdate()>0;
 
-        } catch (SQLException | ConnectionException e) {
+        } catch (SQLException e) {
             throw new DataAccessException("Fala ao executar a inserção no banco!");
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao se conectar com o banco!");
         }
     }
 
@@ -41,8 +43,10 @@ public class UsuarioDAOimpl implements UsuarioDAO{
             statement.setString(1,email);
 
             return statement.executeUpdate()>0;
-        } catch (SQLException | ConnectionException e) {
+        } catch (SQLException e) {
             throw new DataAccessException("Falha ao executar a remoção no banco!");
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao se conectar com o banco!");
         }
     }
 
@@ -60,8 +64,10 @@ public class UsuarioDAOimpl implements UsuarioDAO{
 
             return statement.executeUpdate()>0;
 
-        } catch (SQLException | ConnectionException e) {
+        } catch (SQLException e) {
             throw new DataAccessException("Falha ao executar a atualização no banco!");
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao se conectar com o banco!");
         }
     }
 
@@ -84,8 +90,10 @@ public class UsuarioDAOimpl implements UsuarioDAO{
                 );
             }
             return usuarios;
-        } catch (SQLException | ConnectionException e) {
+        } catch (SQLException e) {
             throw new DataAccessException("Falha ao executar a listagem de usuario no banco!");
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao se conectar com o banco!");
         }
     }
 
