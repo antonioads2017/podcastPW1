@@ -20,11 +20,11 @@ public class UsuarioDAOimpl implements UsuarioDAO{
     public boolean add(Usuario user) throws DataAccessException {
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement
-                    ("INSERT INTO Usuario VALUES(?,?,?,?)");
-            statement.setString(1,user.getLogin());
+                    ("INSERT INTO Usuario VALUES(?,?,?)");
+            statement.setString(1,user.getEmail());
             statement.setString(2,user.getNome());
             statement.setString(3,user.getSenha());
-            statement.setInt(4,user.getIdade());
+            //statement.setString(4,user.getNascimento());
 
             return statement.executeUpdate()>0;
 
@@ -56,10 +56,10 @@ public class UsuarioDAOimpl implements UsuarioDAO{
             PreparedStatement statement = connection.prepareStatement
                     ("UPDATE Usuario SET login=?,nome=?,senha=?,idade=? WHERE login=?");
 
-            statement.setString(1,user.getLogin());
+            statement.setString(1,user.getEmail());
             statement.setString(2,user.getNome());
             statement.setString(3,user.getSenha());
-            statement.setInt(4,user.getIdade());
+            statement.setString(4,user.getNascimento());
             statement.setString(5,email);
 
             return statement.executeUpdate()>0;
@@ -83,10 +83,10 @@ public class UsuarioDAOimpl implements UsuarioDAO{
             while(resultSet.next()){
                 usuarios.add(
                         new Usuario(
-                                resultSet.getString("login"),
+                                resultSet.getString("email"),
                                 resultSet.getString("nome"),
                                 resultSet.getString("senha"),
-                                resultSet.getInt("idade"))
+                                resultSet.getString("nascimento"))
                 );
             }
             return usuarios;

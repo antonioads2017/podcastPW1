@@ -13,7 +13,7 @@ import java.io.IOException;
 public class FrontController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String commandName = request.getParameter("command");
+        String commandName = (String) request.getAttribute("command");
         try {
             Command command = (Command) Class.forName(this.getClass().getPackage().getName() + "."+commandName).newInstance();
             command.execute(request, response);
@@ -22,5 +22,10 @@ public class FrontController extends HttpServlet {
         } catch (CommandException e) {
             response.sendError(e.getStatuscode(), e.getMessage());
         }
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setAttribute("command","CadastrarUsuario");
+        doGet(request,response);
     }
 }

@@ -1,29 +1,32 @@
 package com.ifpb.model.domain;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class Usuario {
 
     private String nome;
-    private String login;
+    private String email;
     private String senha;
-    private int idade;
+    private String nascimento;
 
-    public Usuario(String nome, String login, String senha, int idade) {
+    public Usuario(String nome, String Email, String senha, String nascimento) {
         this.nome = nome;
-        this.login = login;
+        this.email = Email;
         this.senha = senha;
-        this.idade = idade;
+        this.nascimento = nascimento;
     }
 
     public Usuario() {
 
     }
 
-    public int getIdade() {
-        return idade;
+    public String getNascimento() {
+        return nascimento;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
     }
 
     public String getNome() {
@@ -34,12 +37,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -54,8 +57,14 @@ public class Usuario {
     public String toString() {
         return "Usuario{" +
                 "nome='" + nome + '\'' +
-                ", login='" + login + '\'' +
-                ", idade='" + idade + '\'' +
+                ", Email='" + email + '\'' +
+                ", nascimento='" + nascimento + '\'' +
                 '}';
+    }
+
+    public boolean autentication(String email, String senha){
+
+        return Objects.equals(email,this.email) && Objects.equals(senha,this.senha);
+
     }
 }
