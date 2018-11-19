@@ -25,7 +25,7 @@ public class ListarUsuarioCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         try {
             request.setAttribute("usuarios", usuarioDAO.list());
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("usuarios.jsp").forward(request, response);
         } catch (ServletException | IOException | DataAccessException e) {
             throw new CommandException(500, e.getMessage());
         }

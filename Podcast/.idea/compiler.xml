@@ -9,5 +9,8 @@
         <module name="Podcast" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Podcast" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
