@@ -4,6 +4,6 @@ import com.ifpb.model.dao.UsuarioDAO;
 
 public interface DAOAbstractFactory {
 
-    public UsuarioDAO criaUsuarioDAO();
+    UsuarioDAO criaUsuarioDAO();
 
 }
