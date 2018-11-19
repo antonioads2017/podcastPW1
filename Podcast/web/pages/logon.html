@@ -15,19 +15,19 @@
 
 <div id="box">
     <form action="../../inicio" method="post">
-        <p>Nome:<input type="text" name="nome"></p>
-        <p>E-mail:<input type="text" name="email"></p>
-        <p>Senha:<input type="password" name="senha"></p>
-        <p>Confirmar senha:<input type="password" name="confirma-senha"></p>
-        <p>Data de nascimento:<input type="text" name="nasicmento"></p>
-        <p>Sexo:</p><input type="radio" value="F" checked>Feminino<input type="radio" value="M">Masculino<br>
-        <p>Função:</p><input type="radio" value="Aluno">Aluno<br>
-        <input type="radio" value="Professor">Professor<br>
-        <button type="submit" class="btn navitembg" data-toggle="modal" data-target="#exampleModal" value="Cadastrar">
-        </button>
+        <p>Nome:<br><input type="text" name="nome" size="40"></p>
+        <p>E-mail:<br><input type="text" name="email" size="40"></p>
+        <p>Senha:<br><input type="password" name="senha" size="40"></p>
+        <p>Confirmar senha:<br><input type="password" name="confirma-senha" size="40"></p>
+        <p>Data de nascimento:<br><input type="text" name="nascimento" size="40"></p>
+        <p>Sexo:</p><input type="radio" value="F" checked name = "sexo">Feminino<br>
+        <input type="radio" value="M" name = "sexo">Masculino<br>
+        <br><p>Função:</p><input type="radio" value="Aluno" name = "funcao">Aluno<br>
+        <input type="radio" value="Professor" name = "funcao">Professor<br><br>
+        <button type="submit" class="btn btn-secondary" value = "cadastrar">Cadastrar</button>
     </form>
 </div>
-<button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-secondary">
     <a href="../index.html">Voltar</a>
 </button>
 </body>
