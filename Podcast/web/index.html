@@ -2,22 +2,25 @@
 <head>
     <meta charset="UTF-8">
     <title>IFCast</title>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="asserts/css/style.css">
+    <script src="asserts/js/main.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div id="header">
+    <img src="asserts/img/logo.png" id="logo">
     <ul id="nav">
         <button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal">
             <a href="index.html">Início</a>
         </button>
         <button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal">
             <a href="pages/login.html">Login</a>
+
         </button>
 
         <button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal">
@@ -31,7 +34,7 @@
 <span class="imagemain">
    
     <h2>Conecte-se ao IFCast</h2>
-    <p>Descubra, faça e compartilhe podcasts.</p>
+    <p id="type">Descubra, faça e compartilhe podcasts.</p>
     <button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal" id="laranja">
         <a href="pages/logon.html">Cadastre-se gratuitamente</a>
     </button></span>
@@ -50,7 +53,13 @@
 
 </div>
 <div id="footer">
-Teste
+
+    <div class="container-audio">
+        <audio controls  loop autoplay>
+            <source src="" type="audio/ogg">
+        </audio>
+
+    </div>
 </div>
 </body>
 </html>
