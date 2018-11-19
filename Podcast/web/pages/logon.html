@@ -14,7 +14,8 @@
 <body>
 
 <div id="box">
-    <form action="../../inicio" method="post">
+
+    <form action="../../inicio" method="post" id="formulario">
         <p>Nome:<br><input type="text" name="nome" size="40"></p>
         <p>E-mail:<br><input type="text" name="email" size="40"></p>
         <p>Senha:<br><input type="password" name="senha" size="40"></p>
@@ -25,10 +26,11 @@
         <br><p>Função:</p><input type="radio" value="Aluno" name = "funcao">Aluno<br>
         <input type="radio" value="Professor" name = "funcao">Professor<br><br>
         <button type="submit" class="btn btn-secondary" value = "cadastrar">Cadastrar</button>
+        <button type="button" class="btn btn-secondary" id="laranja">
+            <a href="../index.html">Voltar</a>
+        </button>
     </form>
 </div>
-<button type="button" class="btn btn-secondary">
-    <a href="../index.html">Voltar</a>
-</button>
+
 </body>
 </html>
