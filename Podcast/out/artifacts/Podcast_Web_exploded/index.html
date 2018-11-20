@@ -1,0 +1,199 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IFCast</title>
+
+
+    <link rel="stylesheet" type="text/css" href="asserts/css/style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script src="asserts/js/main.js"></script>
+    <script src="asserts/js/jquery-3.3.1.min.js"></script>
+    <script src="asserts/js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var password = document.getElementById("senha")
+            var confirm_password = document.getElementById("confirmarsenha");
+
+            function validatePassword(){
+                if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Senhas diferentes!");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        })
+    </script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-inverse bg-dark" id="header">
+
+    <img src="asserts/img/logo.png" id="logo">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <button type="button" class="btn navitembg" data-toggle="modal" class="btn">
+                    Home
+                </button>
+            </li>
+            <li class="nav-item">
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal2">
+                    Cadastre-se
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel2">Cadastre-se</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Nome:</label>
+                                        <input type="text" class="form-control" id="name" aria-describedby="name"  placeholder="Nome">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>E-mail:</label>
+                                        <input type="email" class="form-control" placeholder="E-mail">
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Senha:</label>
+                                        <input type="password" class="form-control" placeholder="Senha" id = "senha">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirmar Senha:</label>
+                                        <input type="password" class="form-control" placeholder="Senha" id = "confirmarsenha">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Data de nascimento:</label>
+                                        <input type="date" class="form-control" id="nascimento" placeholder="Data">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Função</label><br>
+                                        <input type="radio" value="Aluno" name = "funcao">Aluno<br>
+                                        <input type="radio" value="Professor" name = "funcao">Professor<br><br>
+                                    </div>
+
+                                    <button class="btn btn-primary float-right login-btn" id = "buttoncadastrar">Cadastrar</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal">
+                    Log In
+                </button>
+
+                <!-- Modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"  placeholder="Enter email">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Senha</label>
+                                        <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+
+                                    <button class="btn btn-primary float-right login-btn">Entrar</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mais
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Quem somos</a>
+                    <a class="dropdown-item" href="#">Perguntas frequentes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Contato</a>
+                </div>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Procurar por usuário, podcast..." aria-label="Buscar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar </button>
+        </form>
+    </div>
+</nav>
+
+
+<div id="main">
+<span class="imagemain">
+   
+    <h2>Conecte-se ao IFCast</h2>
+    <p id="type">Descubra, faça e compartilhe podcasts.</p>
+    <button type="button" class="btn navitembg" data-toggle="modal" data-target="#exampleModal2" id="laranja">
+        Cadastre-se gratuitamente
+    </button></span>
+
+
+
+    </span>
+
+    <form class="content">
+
+
+    </form>
+
+</div>
+<div id="footer">
+
+    <div class="container-audio">
+        <audio controls  loop autoplay>
+            <source src="" type="audio/ogg">
+        </audio>
+
+    </div>
+</div>
+</body>
+</html>
