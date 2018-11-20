@@ -15,6 +15,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+    <script src="asserts/js/main.js"></script>
+    <script src="asserts/js/jquery-3.3.1.min.js"></script>
+    <script src="asserts/js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var password = document.getElementById("senha")
+            var confirm_password = document.getElementById("confirmarsenha");
+
+            function validatePassword(){
+                if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Senhas diferentes!");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        })
+    </script>
+
 
 </head>
 <body>
@@ -53,7 +74,7 @@
                                 <form>
                                     <div class="form-group">
                                         <label>Nome:</label>
-                                        <input type="text" class="form-control" id="inputEmail2" aria-describedby="emailHelp"  placeholder="Nome">
+                                        <input type="text" class="form-control" id="name" aria-describedby="name"  placeholder="Nome">
 
                                     </div>
                                     <div class="form-group">
@@ -62,15 +83,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label >Senha:</label>
-                                        <input type="password" class="form-control" placeholder="Senha">
+                                        <input type="password" class="form-control" placeholder="Senha" id = "senha">
                                     </div>
                                     <div class="form-group">
                                         <label>Confirmar Senha:</label>
-                                        <input type="password" class="form-control" placeholder="Senha">
+                                        <input type="password" class="form-control" placeholder="Senha" id = "confirmarsenha">
                                     </div>
                                     <div class="form-group">
                                         <label>Data de nascimento:</label>
-                                        <input type="date" class="form-control" placeholder="Data">
+                                        <input type="date" class="form-control" id="nascimento" placeholder="Data">
                                     </div>
                                     <div class="form-group">
                                         <label>Função</label><br>
@@ -78,7 +99,7 @@
                                         <input type="radio" value="Professor" name = "funcao">Professor<br><br>
                                     </div>
 
-                                    <button class="btn btn-primary float-right login-btn">Cadastrar</button>
+                                    <button class="btn btn-primary float-right login-btn" id = "buttoncadastrar">Cadastrar</button>
 
                                 </form>
                             </div>

@@ -1,3 +1,5 @@
+
+
 var status = 0;
 function Play(music,id) {
     var audio = $("#"+id);
