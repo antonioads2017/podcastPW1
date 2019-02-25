@@ -2,6 +2,7 @@ package com.ifpb.model.domain;
 
 
 import java.io.File;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
  *
  */
 
-public abstract class Usuario {
+public class Usuario {
 
     private String nome;
     private String email;
