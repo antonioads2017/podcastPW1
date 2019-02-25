@@ -1,6 +1,8 @@
 package com.ifpb.model.domain;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -16,16 +18,19 @@ public class Podcast {
     private String categoria;
     private File audio;
     private Usuario dono;
+    private List<Comentario> comentarios;
 
     public Podcast() {
+        comentarios = new ArrayList<>();
     }
 
-    public Podcast(String titulo, String descricao, String categoria, File audio, Usuario dono) {
+    public Podcast(String titulo, String descricao, String categoria, File audio, Usuario dono, List<Comentario> comentarios) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.categoria = categoria;
         this.audio = audio;
         this.dono = dono;
+        this.comentarios = comentarios;
     }
 
     public String getTitulo() {
@@ -68,6 +73,14 @@ public class Podcast {
         this.dono = dono;
     }
 
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,12 +90,13 @@ public class Podcast {
                 Objects.equals(descricao, podcast.descricao) &&
                 Objects.equals(categoria, podcast.categoria) &&
                 Objects.equals(audio, podcast.audio) &&
-                Objects.equals(dono, podcast.dono);
+                Objects.equals(dono, podcast.dono) &&
+                Objects.equals(comentarios, podcast.comentarios);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo, descricao, categoria, audio, dono);
+        return Objects.hash(titulo, descricao, categoria, audio, dono, comentarios);
     }
 
     @Override
@@ -93,6 +107,7 @@ public class Podcast {
                 ", categoria='" + categoria + '\'' +
                 ", audio=" + audio +
                 ", dono=" + dono +
+                ", comentarios=" + comentarios +
                 '}';
     }
 }

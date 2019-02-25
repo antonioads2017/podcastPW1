@@ -7,69 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3adb920d-07f0-4145-9d84-cfc1a0a68d99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Podcast_Web_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Podcast_Web_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/control/CadastrarUsuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/control/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/control/CommandException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/control/FrontController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/control/ListarUsuarioCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOAbstractFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactory$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactory$FactoryType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactoryJDBC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/Factory/DataAccessException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/UsuarioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/UsuarioDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/dao/UsuarioDAOimpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/domain/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/jdbc/ConnectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/com/ifpb/model/jdbc/ConnectionFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/classes/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/control/commands/CadastrarUsuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/control/commands/ListarUsuarioCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/model/jdbc/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ifpb/model/jdbc/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/control/CadastrarUsuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/control/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/control/CommandException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/control/FrontController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/control/ListarUsuarioCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/Factory/DAOAbstractFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/Factory/DAOFactory$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/Factory/DAOFactory$FactoryType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/Factory/DAOFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/Factory/DAOFactoryJDBC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/Factory/DataAccessException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/UsuarioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/UsuarioDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/dao/UsuarioDAOimpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ifpb/model/domain/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ifpb/model/jdbc/ConnectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ifpb/model/jdbc/ConnectionFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Scripts.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/control/CadastrarUsuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/control/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/control/CommandException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/control/FrontController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/control/ListarUsuarioCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOAbstractFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactory$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactory$FactoryType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/Factory/DAOFactoryJDBC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/Factory/DataAccessException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/UsuarioDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/dao/UsuarioDAOimpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/domain/Usuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/jdbc/ConnectionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/ifpb/model/jdbc/ConnectionFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/javax.servlet-api-3.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/postgresql-42.2.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/DataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/Exceptions/DataAccessException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -119,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Usuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="345">
               <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -128,11 +69,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/TurmaVirtual.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state relative-caret-position="90">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,11 +90,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Tipo.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Comentario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+            <state relative-caret-position="264">
+              <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+              <folding>
+                <element signature="e#316#317#0" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+                <element signature="e#393#394#0" expanded="true" />
+                <element signature="e#431#432#0" expanded="true" />
+                <element signature="e#463#464#0" expanded="true" />
+                <element signature="e#491#492#0" expanded="true" />
+                <element signature="e#533#534#0" expanded="true" />
+                <element signature="e#567#568#0" expanded="true" />
+                <element signature="e#948#949#0" expanded="true" />
+                <element signature="e#999#1000#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/TurmaVirtualDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -155,8 +126,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -190,11 +162,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Aluno.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Professor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/TurmaVirtual.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/control/commands/CadastrarUsuario.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/jdbc/ConnectionFactory.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/DaoIF.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/AlunoDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/ProfessorDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/PodcastDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/TurmaVirtualDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Comentario.java" />
       </list>
     </option>
   </component>
@@ -326,6 +305,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ifpb" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Podcast" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Podcast" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ifpb" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -354,7 +344,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551099121768" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551101287631" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -542,7 +532,7 @@
       <workItem from="1542716874459" duration="610000" />
       <workItem from="1551051092897" duration="1790000" />
       <workItem from="1551095677179" duration="1513000" />
-      <workItem from="1551097263004" duration="2119000" />
+      <workItem from="1551097263004" duration="3355000" />
     </task>
     <servers />
   </component>
@@ -555,10 +545,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28617000" />
+    <option name="totallyTimeSpent" value="29853000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1440" height="860" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2661406" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -656,29 +647,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/DataAccessException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/control/commands/ListarUsuarioCommand.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/control/commands/CadastrarUsuario.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/jdbc/ConnectionFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-225">
           <caret column="28" selection-start-column="28" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -709,16 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -760,12 +724,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/TurmaVirtual.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/DaoIF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="135">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/TurmaVirtual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-330">
+          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/Exceptions/DataAccessException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/AlunoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/ProfessorDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/PodcastDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/TurmaVirtualDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Comentario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding>
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
           </folding>
         </state>
       </provider>

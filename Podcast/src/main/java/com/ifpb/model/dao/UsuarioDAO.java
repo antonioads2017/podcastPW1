@@ -1,7 +1,7 @@
 package com.ifpb.model.dao;
 
+import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.domain.Usuario;
-import com.ifpb.model.jdbc.ConnectionException;
 
 import java.util.List;
 
