@@ -1,4 +1,4 @@
-package com.ifpb.control;
+package com.ifpb.control.commands;
 
 public class CommandException extends Exception {
 

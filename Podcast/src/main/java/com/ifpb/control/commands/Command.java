@@ -1,4 +1,4 @@
-package com.ifpb.control;
+package com.ifpb.control.commands;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

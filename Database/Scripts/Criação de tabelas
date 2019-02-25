@@ -1,3 +1,8 @@
+
+
+-- CRIADO POR MAILSON DENNIS 
+
+
 CREATE TABLE usuario(
 	email TEXT PRIMARY KEY,
 	senha TEXT,

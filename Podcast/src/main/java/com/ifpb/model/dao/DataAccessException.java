@@ -1,4 +1,4 @@
-package com.ifpb.model.dao.Factory;
+package com.ifpb.model.dao;
 
 public class DataAccessException extends Exception {
 

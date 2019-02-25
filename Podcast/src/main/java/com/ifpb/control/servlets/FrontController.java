@@ -1,6 +1,8 @@
-package com.ifpb.control;
+package com.ifpb.control.servlets;
 
-import com.ifpb.model.jdbc.ConnectionException;
+
+import com.ifpb.control.commands.Command;
+import com.ifpb.control.commands.CommandException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

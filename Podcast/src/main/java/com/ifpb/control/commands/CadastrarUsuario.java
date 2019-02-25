@@ -1,8 +1,8 @@
-package com.ifpb.control;
+package com.ifpb.control.commands;
 
 import com.ifpb.model.dao.Factory.DAOAbstractFactory;
 import com.ifpb.model.dao.Factory.DAOFactory;
-import com.ifpb.model.dao.Factory.DataAccessException;
+import com.ifpb.model.dao.DataAccessException;
 import com.ifpb.model.dao.UsuarioDAO;
 import com.ifpb.model.domain.Usuario;
 
