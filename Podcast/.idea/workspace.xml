@@ -7,8 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3adb920d-07f0-4145-9d84-cfc1a0a68d99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/UsuarioDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/UsuarioDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/UsuarioDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java" afterDir="false" />
     </list>
@@ -39,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Usuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="-439">
               <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,11 +48,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/UsuarioDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+            <state relative-caret-position="326">
+              <caret line="71" column="85" lean-forward="true" selection-start-line="71" selection-start-column="85" selection-end-line="71" selection-end-column="85" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/AlunoDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+            <state relative-caret-position="270">
+              <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -161,8 +171,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Comentario.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Podcast.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Usuario.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/UsuarioDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/UsuarioDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/AlunoDaoImpl.java" />
       </list>
     </option>
   </component>
@@ -344,7 +355,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551103398335" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551104569922" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -532,7 +543,7 @@
       <workItem from="1542716874459" duration="610000" />
       <workItem from="1551051092897" duration="1790000" />
       <workItem from="1551095677179" duration="1513000" />
-      <workItem from="1551097263004" duration="5500000" />
+      <workItem from="1551097263004" duration="6671000" />
     </task>
     <servers />
   </component>
@@ -545,7 +556,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31998000" />
+    <option name="totallyTimeSpent" value="33169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1440" height="860" extended-state="6" />
@@ -868,18 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1129#1130#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/DaoIF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -890,20 +889,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/UsuarioDaoImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+        <state relative-caret-position="270">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/interfaces/UsuarioDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/domain/Usuario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        <state relative-caret-position="-439">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1096#1097#0" expanded="true" />
+            <element signature="e#1129#1130#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/AlunoDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ifpb/model/dao/impl/UsuarioDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="71" column="85" lean-forward="true" selection-start-line="71" selection-start-column="85" selection-end-line="71" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

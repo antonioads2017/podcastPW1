@@ -32,7 +32,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             }
             return statement.execute();
         } catch (SQLException e) {
-            throw new DataAccessException("Falaha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao acessar os dados no banco");
         }
     }
 
@@ -44,14 +44,14 @@ public class UsuarioDaoImpl implements UsuarioDao {
             statement.setString(1,reference);
             return statement.execute();
         } catch (SQLException e) {
-            throw new DataAccessException("Falaha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao acessar os dados no banco");
         }
     }
 
     @Override
-    public List<Usuario> listar(Connection connection) throws DataAccessException {
+    public List<Usuario> listar() throws DataAccessException {
         String query = "SELECT * FROM usuario";
-        try{
+        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             List<Usuario> usuarios = new ArrayList<>();
@@ -59,15 +59,17 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 usuarios.add(construirUsuario(resultSet));
             }
             return usuarios;
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
-            throw new DataAccessException("Falaha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao acessar os dados no banco");
         }
     }
 
     @Override
-    public Usuario buscar(String reference,Connection connection) throws DataAccessException {
+    public Usuario buscar(String reference) throws DataAccessException {
         String query = "SELECT * FROM usuario WHERE email = ?";
-        try{
+        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             ResultSet resultSet = statement.executeQuery();
@@ -75,8 +77,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 return construirUsuario(resultSet);
             }
             return null;
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
-            throw new DataAccessException("Falaha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao acessar os dados no banco");
         }
     }
 

@@ -15,7 +15,7 @@ public interface UsuarioDao {
 
     boolean salvar(Usuario usuario, Connection connection) throws DataAccessException;
     boolean remover(String reference, Connection connection) throws DataAccessException;
-    List<Usuario> listar(Connection connection) throws DataAccessException;
-    Usuario buscar(String reference,Connection connection) throws DataAccessException;
+    List<Usuario> listar() throws DataAccessException;
+    Usuario buscar(String reference) throws DataAccessException;
 
 }
