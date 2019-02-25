@@ -1,7 +1,5 @@
 package com.ifpb.model.jdbc;
 
-import sun.rmi.runtime.Log;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
