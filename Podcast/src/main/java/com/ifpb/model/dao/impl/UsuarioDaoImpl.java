@@ -16,46 +16,42 @@ import java.util.List;
 public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
-    public boolean salvar(Usuario object) throws DataAccessException {
+    public boolean salvar(Usuario usuario,Connection connection) throws DataAccessException {
         String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin) VALUES (?,?,?,?,?,?)";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,object.getEmail());
-            statement.setString(2,object.getSenha());
-            statement.setString(3,object.getNome());
-            statement.setString(4,object.getFoto().getPath());
-            statement.setObject(5,object.getNascimento());
-            if(object.getTipo().equals(Tipo.admin)){
+            statement.setString(1,usuario.getEmail());
+            statement.setString(2,usuario.getSenha());
+            statement.setString(3,usuario.getNome());
+            statement.setString(4,usuario.getFoto().getPath());
+            statement.setObject(5,usuario.getNascimento());
+            if(usuario.getTipo().equals(Tipo.admin)){
                 statement.setBoolean(6,true);
             }else{
                 statement.setBoolean(6,false);
             }
             return statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falaha ao acessar os dados no banco");
         }
     }
 
     @Override
-    public boolean remover(String reference) throws DataAccessException {
+    public boolean remover(String reference,Connection connection) throws DataAccessException {
         String query = "DELETE FROM usuario WHERE email = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             return statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falaha ao acessar os dados no banco");
         }
     }
 
     @Override
-    public List<Usuario> listar() throws DataAccessException {
+    public List<Usuario> listar(Connection connection) throws DataAccessException {
         String query = "SELECT * FROM usuario";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             List<Usuario> usuarios = new ArrayList<>();
@@ -63,17 +59,15 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 usuarios.add(construirUsuario(resultSet));
             }
             return usuarios;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falaha ao acessar os dados no banco");
         }
     }
 
     @Override
-    public Usuario buscar(String reference) throws DataAccessException {
+    public Usuario buscar(String reference,Connection connection) throws DataAccessException {
         String query = "SELECT * FROM usuario WHERE email = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             ResultSet resultSet = statement.executeQuery();
@@ -81,8 +75,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 return construirUsuario(resultSet);
             }
             return null;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falaha ao acessar os dados no banco");
         }
