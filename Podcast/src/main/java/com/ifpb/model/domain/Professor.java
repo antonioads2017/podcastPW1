@@ -1,5 +1,7 @@
 package com.ifpb.model.domain;
 
+import com.ifpb.model.domain.Enum.Tipo;
+
 import java.io.File;
 import java.time.LocalDate;
 

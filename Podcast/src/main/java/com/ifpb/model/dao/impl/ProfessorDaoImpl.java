@@ -1,12 +1,13 @@
 package com.ifpb.model.dao.impl;
 
+import com.ifpb.model.dao.Exceptions.ConnectionFactory;
 import com.ifpb.model.dao.Exceptions.DataAccessException;
-import com.ifpb.model.dao.interfaces.AlunoDao;
+import com.ifpb.model.dao.interfaces.ProfessorDao;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
 import com.ifpb.model.domain.Aluno;
 import com.ifpb.model.domain.Enum.Tipo;
+import com.ifpb.model.domain.Professor;
 import com.ifpb.model.jdbc.ConnectionException;
-import com.ifpb.model.dao.Exceptions.ConnectionFactory;
 
 import java.io.File;
 import java.sql.Connection;
@@ -23,11 +24,12 @@ import java.util.List;
  * @author Mailson Dennis
  *
  */
-public class AlunoDaoImpl implements AlunoDao {
+public class ProfessorDaoImpl implements ProfessorDao {
+
 
     @Override
-    public boolean salvar(Aluno object) throws DataAccessException {
-        String query = "INSERT INTO aluno (email) VALUES (?)";
+    public boolean salvar(Professor object) throws DataAccessException {
+        String query = "INSERT INTO professor (matricula) VALUES (?)";
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             if(usuarioDao.salvar(object,connection)){
@@ -45,7 +47,7 @@ public class AlunoDaoImpl implements AlunoDao {
 
     @Override
     public boolean remover(String reference) throws DataAccessException {
-        String query = "DELETE FROM aluno WHERE matricula = ?";
+        String query = "DELETE FROM professor WHERE matricula = ?";
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
@@ -62,32 +64,32 @@ public class AlunoDaoImpl implements AlunoDao {
     }
 
     @Override
-    public List<Aluno> listar() throws DataAccessException {
-        String query = "SELECT * FROM aluno NATURAL JOIN usuario";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
-            PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery();
-            List<Aluno> alunos = new ArrayList<>();
-            while (resultSet.next()){
-                alunos.add(construirAluno(resultSet));
-            }
-            return alunos;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
-            throw new DataAccessException("Falha ao acessar os dados no banco");
-        }
+    public List<Professor> listar() throws DataAccessException {
+       String query = "SELECT * FROM professor NATURAL JOIN usuario";
+       try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+           PreparedStatement statement = connection.prepareStatement(query);
+           ResultSet resultSet = statement.executeQuery();
+           List<Professor> professores = new ArrayList<>();
+           while (resultSet.next()){
+               professores.add(construirProfessor(resultSet));
+           }
+           return professores;
+       } catch (ConnectionException e) {
+           throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
+       } catch (SQLException e) {
+           throw new DataAccessException("Falha ao acessar os dados no banco");
+       }
     }
 
     @Override
-    public Aluno buscar(String reference) throws DataAccessException {
-        String query = "SELECT * FROM aluno NATURAL JOIN usuario WHERE matricula = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()) {
+    public Professor buscar(String reference) throws DataAccessException {
+        String query = "SELECT * FROM professor NATURAL JOIN usuario";
+        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                return construirAluno(resultSet);
+                return construirProfessor(resultSet);
             }
             return null;
         } catch (ConnectionException e) {
@@ -97,18 +99,18 @@ public class AlunoDaoImpl implements AlunoDao {
         }
     }
 
-    protected Aluno construirAluno(ResultSet resultSet) throws SQLException {
-        Aluno aluno = new Aluno();
-        aluno.setEmail(resultSet.getString("email"));
-        aluno.setNome(resultSet.getString("nome"));
-        aluno.setSenha(resultSet.getString("senha"));
-        aluno.setFoto(new File(resultSet.getString("foto")));
-        aluno.setNascimento(resultSet.getObject("nascimento", LocalDate.class));
+    private Professor construirProfessor(ResultSet resultSet) throws SQLException {
+        Professor professor = new Professor();
+        professor.setEmail(resultSet.getString("email"));
+        professor.setNome(resultSet.getString("nome"));
+        professor.setSenha(resultSet.getString("senha"));
+        professor.setFoto(new File(resultSet.getString("foto")));
+        professor.setNascimento(resultSet.getObject("nascimento", LocalDate.class));
         if(resultSet.getBoolean("admin")){
-            aluno.setTipo(Tipo.admin);
+            professor.setTipo(Tipo.admin);
         }else{
-            aluno.setTipo(Tipo.user);
+            professor.setTipo(Tipo.user);
         }
-        return aluno;
+        return professor;
     }
 }

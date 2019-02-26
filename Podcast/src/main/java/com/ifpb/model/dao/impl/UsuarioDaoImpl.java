@@ -2,10 +2,10 @@ package com.ifpb.model.dao.impl;
 
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
-import com.ifpb.model.domain.Tipo;
+import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.Usuario;
 import com.ifpb.model.jdbc.ConnectionException;
-import com.ifpb.model.jdbc.ConnectionFactory;
+import com.ifpb.model.dao.Exceptions.ConnectionFactory;
 
 import java.io.File;
 import java.sql.*;
