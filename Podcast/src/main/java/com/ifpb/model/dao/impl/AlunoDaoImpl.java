@@ -94,7 +94,28 @@ public class AlunoDaoImpl implements AlunoDao  {
         }
     }
 
-    protected Aluno construirAluno(ResultSet resultSet) throws SQLException {
+    @Override
+    public List<Aluno> buscarPorTurma(String nometurma) throws DataAccessException {
+        String query =  "SELECT * " +
+                        "FROM (aluno NATURAL JOIN usuario) a, participa_turma pt " +
+                        "WHERE pt.aluno = a.matricula AND pt.turma = ?";
+        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,nometurma);
+            ResultSet resultSet = statement.executeQuery();
+            List<Aluno> alunos = new ArrayList<>();
+            while(resultSet.next()){
+                alunos.add(construirAluno(resultSet));
+            }
+            return alunos;
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar buscar todos os alunos de uma turma");
+        }
+    }
+
+    private Aluno construirAluno(ResultSet resultSet) throws SQLException {
         Aluno aluno = new Aluno();
         aluno.setEmail(resultSet.getString("email"));
         aluno.setNome(resultSet.getString("nome"));
@@ -108,4 +129,6 @@ public class AlunoDaoImpl implements AlunoDao  {
         }
         return aluno;
     }
+
+
 }

@@ -131,6 +131,20 @@ public class PodcastDaoImpl implements PodcastDao {
         }
     }
 
+    @Override
+    public void deletarPodcastsPorTurma(String nomeTurma) throws DataAccessException {
+        String query = "DELETE FROM podcast WHERE nome_turma = ?";
+        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,nomeTurma);
+            statement.execute();
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar apagar todos os podcasts de uma turma");
+        }
+    }
+
 
     private Podcast construirPodcast(ResultSet resultSet) throws SQLException, DataAccessException {
         Podcast podcast = new Podcast();
