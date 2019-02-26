@@ -2,6 +2,7 @@ package com.ifpb.model.dao.impl;
 
 import com.ifpb.model.dao.Exceptions.ConnectionFactory;
 import com.ifpb.model.dao.Exceptions.DataAccessException;
+import com.ifpb.model.dao.interfaces.ComentarioDao;
 import com.ifpb.model.dao.interfaces.PodcastDao;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
 import com.ifpb.model.domain.Podcast;
@@ -23,6 +24,12 @@ import java.util.List;
  *
  */
 public class PodcastDaoImpl implements PodcastDao {
+
+    private ComentarioDao comentarioDao;
+
+    public PodcastDaoImpl(){
+        comentarioDao = new ComentarioDaoImpl();
+    }
 
 
     @Override
@@ -154,6 +161,7 @@ public class PodcastDaoImpl implements PodcastDao {
         podcast.setDescricao(resultSet.getString("descricao"));
         podcast.setAudio(new File(resultSet.getString("audio")));
         podcast.setDono(usuarioDao.buscar(resultSet.getString("criador")));
+        podcast.setComentarios(comentarioDao.buscarPorPodcast(resultSet.getString("audio")));
         return podcast;
     }
 
