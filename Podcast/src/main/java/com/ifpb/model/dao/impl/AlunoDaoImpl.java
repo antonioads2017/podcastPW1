@@ -23,19 +23,17 @@ import java.util.List;
  * @author Mailson Dennis
  *
  */
-public class AlunoDaoImpl implements AlunoDao {
+public class AlunoDaoImpl implements AlunoDao  {
 
     @Override
-    public boolean salvar(Aluno object) throws DataAccessException {
+    public void salvar(Aluno object) throws DataAccessException {
         String query = "INSERT INTO aluno (email) VALUES (?)";
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
-            if(usuarioDao.salvar(object,connection)){
-                PreparedStatement statement = connection.prepareStatement(query);
-                statement.setString(1,object.getEmail());
-                return statement.execute();
-            }
-            return false;
+            usuarioDao.salvar(object);
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,object.getEmail());
+            statement.execute();
         } catch (ConnectionException e) {
             throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
@@ -44,16 +42,15 @@ public class AlunoDaoImpl implements AlunoDao {
     }
 
     @Override
-    public boolean remover(String reference) throws DataAccessException {
+    public void remover(String reference) throws DataAccessException {
         String query = "DELETE FROM aluno WHERE matricula = ?";
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             if(statement.execute()){
-                return usuarioDao.remover(reference,connection);
+                usuarioDao.remover(reference);
             }
-            return false;
         } catch (ConnectionException e) {
             throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {

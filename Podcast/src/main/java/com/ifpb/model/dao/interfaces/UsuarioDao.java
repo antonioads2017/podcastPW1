@@ -11,11 +11,7 @@ import java.util.List;
  * @author Mailson Dennis
  *
  */
-public interface UsuarioDao {
+public interface UsuarioDao extends DaoIF<Usuario> {
 
-    boolean salvar(Usuario usuario, Connection connection) throws DataAccessException;
-    boolean remover(String reference, Connection connection) throws DataAccessException;
-    List<Usuario> listar() throws DataAccessException;
-    Usuario buscar(String reference) throws DataAccessException;
 
 }

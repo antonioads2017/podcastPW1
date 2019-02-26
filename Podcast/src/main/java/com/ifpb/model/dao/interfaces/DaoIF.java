@@ -12,8 +12,8 @@ import java.util.List;
  */
 public interface DaoIF<T>{
 
-    boolean salvar(T object) throws DataAccessException;
-    boolean remover(String reference) throws DataAccessException;
+    void salvar(T object) throws DataAccessException;
+    void remover(String reference) throws DataAccessException;
     List<T> listar() throws DataAccessException;
     T buscar(String reference) throws DataAccessException;
 }

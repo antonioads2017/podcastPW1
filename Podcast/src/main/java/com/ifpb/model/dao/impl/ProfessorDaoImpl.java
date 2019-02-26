@@ -28,38 +28,35 @@ public class ProfessorDaoImpl implements ProfessorDao {
 
 
     @Override
-    public boolean salvar(Professor object) throws DataAccessException {
+    public void salvar(Professor object) throws DataAccessException {
         String query = "INSERT INTO professor (matricula) VALUES (?)";
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
-            if(usuarioDao.salvar(object,connection)){
-                PreparedStatement statement = connection.prepareStatement(query);
-                statement.setString(1,object.getEmail());
-                return statement.execute();
-            }
-            return false;
+            usuarioDao.salvar(object);
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,object.getEmail());
+            statement.execute();
         } catch (ConnectionException e) {
             throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
-            throw new DataAccessException("Falha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao Tentar salvar um professor");
         }
     }
 
     @Override
-    public boolean remover(String reference) throws DataAccessException {
+    public void remover(String reference) throws DataAccessException {
         String query = "DELETE FROM professor WHERE matricula = ?";
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             if(statement.execute()){
-                return usuarioDao.remover(reference,connection);
+                usuarioDao.remover(reference);
             }
-            return false;
         } catch (ConnectionException e) {
             throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
-            throw new DataAccessException("Falha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao tentar deletar um professor");
         }
     }
 
@@ -83,7 +80,7 @@ public class ProfessorDaoImpl implements ProfessorDao {
 
     @Override
     public Professor buscar(String reference) throws DataAccessException {
-        String query = "SELECT * FROM professor NATURAL JOIN usuario";
+        String query = "SELECT * FROM professor NATURAL JOIN usuario WHERE matricula = ?";
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);

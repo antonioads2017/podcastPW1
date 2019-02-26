@@ -16,9 +16,9 @@ import java.util.List;
 public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
-    public boolean salvar(Usuario usuario,Connection connection) throws DataAccessException {
+    public void salvar(Usuario usuario) throws DataAccessException {
         String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin) VALUES (?,?,?,?,?,?)";
-        try{
+        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,usuario.getEmail());
             statement.setString(2,usuario.getSenha());
@@ -30,21 +30,25 @@ public class UsuarioDaoImpl implements UsuarioDao {
             }else{
                 statement.setBoolean(6,false);
             }
-            return statement.execute();
+            statement.execute();
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
-            throw new DataAccessException("Falha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao tentar salver um usuário");
         }
     }
 
     @Override
-    public boolean remover(String reference,Connection connection) throws DataAccessException {
+    public void remover(String reference) throws DataAccessException {
         String query = "DELETE FROM usuario WHERE email = ?";
-        try{
+        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
-            return statement.execute();
+            statement.execute();
+        } catch (ConnectionException e) {
+            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
-            throw new DataAccessException("Falha ao acessar os dados no banco");
+            throw new DataAccessException("Falha tentar deletar um usuário");
         }
     }
 
