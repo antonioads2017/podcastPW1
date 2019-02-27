@@ -2,10 +2,7 @@ package com.ifpb.model.dao.impl;
 
 import com.ifpb.model.dao.Exceptions.ConnectionFactory;
 import com.ifpb.model.dao.Exceptions.DataAccessException;
-import com.ifpb.model.dao.interfaces.AlunoDao;
-import com.ifpb.model.dao.interfaces.PodcastDao;
-import com.ifpb.model.dao.interfaces.ProfessorDao;
-import com.ifpb.model.dao.interfaces.TurmaVirtualDao;
+import com.ifpb.model.dao.interfaces.*;
 import com.ifpb.model.domain.TurmaVirtual;
 import com.ifpb.model.jdbc.ConnectionException;
 
@@ -24,14 +21,14 @@ import java.util.List;
  */
 public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
 
-    private ProfessorDao professorDao;
+    private UsuarioDao usuarioDao;
     private PodcastDao podcastDao;
-    private AlunoDao alunoDao;
+
 
     public TurmaVirtualDaoImpl(){
-        professorDao = new ProfessorDaoImpl();
+        usuarioDao = new UsuarioDaoImpl();
         podcastDao = new PodcastDaoImpl();
-        alunoDao = new AlunoDaoImpl();
+
     }
 
     @Override
@@ -107,9 +104,9 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
         TurmaVirtual turma = new TurmaVirtual();
         turma.setNome(resultSet.getString("nome"));
         turma.setDescricao(resultSet.getString("descricao"));
-        turma.setCriador(professorDao.buscar(resultSet.getString("criador")));
+        turma.setCriador(usuarioDao.buscar(resultSet.getString("criador")));
         turma.setPodcasts(podcastDao.buscarPorTurma(turma.getNome()));
-        turma.setParticipantes(alunoDao.buscarPorTurma(turma.getNome()));
+        turma.setParticipantes(usuarioDao.buscarAlunosPorTurma(turma.getNome()));
         return turma;
     }
 }

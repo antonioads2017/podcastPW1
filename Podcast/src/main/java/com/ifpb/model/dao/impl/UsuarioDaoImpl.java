@@ -2,37 +2,53 @@ package com.ifpb.model.dao.impl;
 
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
+import com.ifpb.model.domain.Endereco;
+import com.ifpb.model.domain.Enum.NivelAcesso;
+import com.ifpb.model.domain.Enum.Sexo;
 import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.Usuario;
-import com.ifpb.model.jdbc.ConnectionException;
 import com.ifpb.model.dao.Exceptions.ConnectionFactory;
 
 import java.io.File;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *
+ * @author Mailson Dennis
+ *
+ */
 public class UsuarioDaoImpl implements UsuarioDao {
+
+    private Connection connection;
+
+    public UsuarioDaoImpl() {
+        connection = ConnectionFactory.getInstance().getConnection();
+    }
 
     @Override
     public void salvar(Usuario usuario) throws DataAccessException {
-        String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin) VALUES (?,?,?,?,?,?)";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin,tipo,sexo,telefone,cep,estado,cidade,rua,numero) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,usuario.getEmail());
             statement.setString(2,usuario.getSenha());
             statement.setString(3,usuario.getNome());
             statement.setString(4,usuario.getFoto().getPath());
-            statement.setObject(5,usuario.getNascimento());
-            if(usuario.getTipo().equals(Tipo.admin)){
-                statement.setBoolean(6,true);
-            }else{
-                statement.setBoolean(6,false);
-            }
+            statement.setDate(5,Date.valueOf(usuario.getNascimento()));
+            statement.setBoolean(6,usuario.getNivelAcesso().equals(NivelAcesso.ADMIN));
+            statement.setString(7,usuario.getTipo().equals(Tipo.ALUNO) ? "Aluno" : "Professor" );
+            statement.setString(8,usuario.getSexo().equals(Sexo.MASCULINO) ? "Masculino" : "Feminino");
+            statement.setString(9,usuario.getTelefone());
+            Endereco endereco = usuario.getEndereco();
+            statement.setString(10,endereco.getCEP());
+            statement.setString(11,endereco.getEstado());
+            statement.setString(12,endereco.getCidade());
+            statement.setString(13,endereco.getRua());
+            statement.setString(14,endereco.getNumero());
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar salver um usuário");
         }
@@ -41,12 +57,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public void remover(String reference) throws DataAccessException {
         String query = "DELETE FROM usuario WHERE email = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falha tentar deletar um usuário");
         }
@@ -55,25 +69,19 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public List<Usuario> listar() throws DataAccessException {
         String query = "SELECT * FROM usuario";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-            List<Usuario> usuarios = new ArrayList<>();
-            while (resultSet.next()){
-                usuarios.add(construirUsuario(resultSet));
-            }
-            return usuarios;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
+            return percorrerResultado(resultSet);
         } catch (SQLException e) {
-            throw new DataAccessException("Falha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao tentar listar os usuários");
         }
     }
 
     @Override
     public Usuario buscar(String reference) throws DataAccessException {
         String query = "SELECT * FROM usuario WHERE email = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             ResultSet resultSet = statement.executeQuery();
@@ -81,11 +89,72 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 return construirUsuario(resultSet);
             }
             return null;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
-            throw new DataAccessException("Falha ao acessar os dados no banco");
+            throw new DataAccessException("Falha ao tentar buscar um usuário específico");
         }
+    }
+
+    @Override
+    public List<Usuario> listarAlunos() throws DataAccessException {
+        return buscarPorTipo(Tipo.ALUNO);
+    }
+
+    @Override
+    public List<Usuario> listarProfessores() throws DataAccessException {
+        return buscarPorTipo(Tipo.PROFESSOR);
+    }
+
+    @Override
+    public List<Usuario> buscarAlunosPorTurma(String nomeTurma) throws DataAccessException {
+        String query = "SELECT * FROM usuario u, participa_turma pt WHERE u.email = pt.aluno AND pt.turma = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,nomeTurma);
+            ResultSet resultSet = statement.executeQuery();
+            List<Usuario> alunos = new ArrayList<>();
+            while(resultSet.next()){
+                alunos.add(construirUsuario(resultSet));
+            }
+            return alunos;
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar buscar todos os alunos de uma turma");
+        }
+    }
+
+    @Override
+    public boolean autenticarUsuario(String email, String senha) throws DataAccessException{
+        String query = "SELECT senha FROM usuario WHERE email = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,email);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getString("senha").equals(senha);
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar autenticar um usuário");
+        }
+
+    }
+
+    private List<Usuario> buscarPorTipo(Tipo tipo) throws DataAccessException {
+        String query = "SELECT * FROM usuario WHERE tipo = " + (tipo.equals(Tipo.ALUNO) ? "Aluno" : "Professor");
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            return percorrerResultado(resultSet);
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar buscar todos os" + (tipo.equals(Tipo.ALUNO) ? "Aluno" : "Professor") + "de uma turma");
+        }
+    }
+
+    private List<Usuario> percorrerResultado(ResultSet resultSet) throws SQLException {
+        List<Usuario> usuarios = new ArrayList<>();
+        while(resultSet.next()){
+            usuarios.add(construirUsuario(resultSet));
+        }
+        return usuarios;
     }
 
     private Usuario construirUsuario(ResultSet resultSet) throws SQLException {
@@ -94,12 +163,14 @@ public class UsuarioDaoImpl implements UsuarioDao {
         user.setNome(resultSet.getString("nome"));
         user.setSenha(resultSet.getString("senha"));
         user.setFoto(new File(resultSet.getString("foto")));
-        user.setNascimento(resultSet.getObject("nascimento", LocalDate.class));
-        if(resultSet.getBoolean("admin")){
-            user.setTipo(Tipo.admin);
-        }else{
-            user.setTipo(Tipo.user);
-        }
+        user.setNascimento(resultSet.getDate("nascimento").toLocalDate());
+        user.setNivelAcesso(resultSet.getBoolean("admin")? NivelAcesso.ADMIN : NivelAcesso.USER);
+        user.setSexo(resultSet.getString("sexo").equals("Masculino") ? Sexo.MASCULINO : Sexo.FEMININO);
+        user.setTipo(resultSet.getString("tipo").equals("Professor") ? Tipo.PROFESSOR : Tipo.ALUNO);
+        user.setEndereco(new Endereco(resultSet.getString("cep"),resultSet.getString("estado"),
+                resultSet.getString("cidade"),resultSet.getString("rua"),resultSet.getString("numero")));
         return user;
     }
+
+
 }

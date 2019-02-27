@@ -14,16 +14,16 @@ public class TurmaVirtual {
 
     private String nome;
     private String descricao;
-    private Professor criador;
+    private Usuario criador;
     private List<Podcast> podcasts;
-    private List<Aluno> participantes;
+    private List<Usuario> participantes;
 
     public TurmaVirtual() {
         podcasts = new ArrayList<>();
         participantes = new ArrayList<>();
     }
 
-    public TurmaVirtual(String nome, String descricao, Professor criador, List<Podcast> podcasts, List<Aluno> participantes) {
+    public TurmaVirtual(String nome, String descricao, Usuario criador, List<Podcast> podcasts, List<Usuario> participantes) {
         this.nome = nome;
         this.descricao = descricao;
         this.criador = criador;
@@ -47,11 +47,11 @@ public class TurmaVirtual {
         this.descricao = descricao;
     }
 
-    public Professor getCriador() {
+    public Usuario getCriador() {
         return criador;
     }
 
-    public void setCriador(Professor criador) {
+    public void setCriador(Usuario criador) {
         this.criador = criador;
     }
 
@@ -63,11 +63,11 @@ public class TurmaVirtual {
         this.podcasts = podcasts;
     }
 
-    public List<Aluno> getParticipantes() {
+    public List<Usuario> getParticipantes() {
         return participantes;
     }
 
-    public void setParticipantes(List<Aluno> participantes) {
+    public void setParticipantes(List<Usuario> participantes) {
         this.participantes = participantes;
     }
 
