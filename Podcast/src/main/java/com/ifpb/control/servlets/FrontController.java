@@ -14,8 +14,9 @@ import java.io.IOException;
 @WebServlet("/inicio")
 public class FrontController extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String commandName = (String) request.getAttribute("command");
+
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String commandName = (String) request.getAttribute("acao");
         try {
             Command command = (Command) Class.forName(this.getClass().getPackage().getName() + "."+commandName).newInstance();
             command.execute(request, response);
@@ -26,8 +27,20 @@ public class FrontController extends HttpServlet {
         }
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        request.setAttribute("command","CadastrarUsuario");
-        doGet(request,response);
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        service(request,response);
     }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        service(request,response);
+    }
+    
+    public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        service(request,response);
+    }
+
+    public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        service(request,response);
+    }
+
 }
