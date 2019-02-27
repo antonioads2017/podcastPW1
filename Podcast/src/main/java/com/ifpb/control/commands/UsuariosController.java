@@ -1,11 +1,18 @@
 package com.ifpb.control.commands;
 
+import com.ifpb.control.commands.Exceptions.CommandException;
 import com.ifpb.model.dao.impl.UsuarioDaoImpl;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+/**
+ *
+ * @author Mailson Dennis
+ *
+ */
 public class UsuariosController implements Command {
 
     private UsuarioDao usuarioDao;

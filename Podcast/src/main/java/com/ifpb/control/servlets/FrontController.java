@@ -2,14 +2,19 @@ package com.ifpb.control.servlets;
 
 
 import com.ifpb.control.commands.Command;
-import com.ifpb.control.commands.CommandException;
+import com.ifpb.control.commands.Exceptions.CommandException;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+/**
+ *
+ * @author Mailson Dennis
+ *
+ */
 
 @WebServlet("/inicio")
 public class FrontController extends HttpServlet {
