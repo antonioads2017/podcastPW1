@@ -16,7 +16,7 @@ public class FrontController extends HttpServlet {
 
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String commandName = (String) request.getAttribute("acao");
+        String commandName = request.getParameter("comando");
         try {
             Command command = (Command) Class.forName(this.getClass().getPackage().getName() + "."+commandName).newInstance();
             command.execute(request, response);
@@ -34,7 +34,7 @@ public class FrontController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         service(request,response);
     }
-    
+
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         service(request,response);
     }
