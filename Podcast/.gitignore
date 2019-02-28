@@ -127,9 +127,6 @@ target/
 
 # End of https://www.gitignore.io/api/java,linux,java-web,intellij
 
-#Todos os arquivos de saída do projeto
-Podcast/out/
-
 #Todos os arquivos de classe compilados
 Podcast/target
 
