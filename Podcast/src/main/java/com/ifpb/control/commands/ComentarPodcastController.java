@@ -8,6 +8,11 @@ import com.ifpb.model.dao.interfaces.ComentarioDao;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ *
+ * @author Mailson Dennis
+ *
+ */
 public class ComentarPodcastController implements Command {
 
     private ComentarioDao comentarioDao;
