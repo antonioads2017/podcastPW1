@@ -51,24 +51,31 @@ public class TurmaVirtualController implements Command {
 
 
     private void criarTurmaService(HttpServletRequest request, HttpServletResponse response) {
+        //TODO
     }
 
     private void deletarTurmaService(HttpServletRequest request, HttpServletResponse response) {
+        //TODO
     }
 
     private void listarTurmaService(HttpServletRequest request, HttpServletResponse response) {
+        //TODO
     }
 
     private void buscarTurmaService(HttpServletRequest request, HttpServletResponse response) {
+        //TODO
     }
 
     private void adicionarAlunoService(HttpServletRequest request, HttpServletResponse response) {
+        //TODO
     }
 
     private void adicioanarPodcastService(HttpServletRequest request, HttpServletResponse response) {
+        //TODO
     }
 
     private void atualizarTurmaSerice(HttpServletRequest request, HttpServletResponse response) {
+        //TODO
     }
 
 
