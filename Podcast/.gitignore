@@ -128,7 +128,7 @@ target/
 # End of https://www.gitignore.io/api/java,linux,java-web,intellij
 
 #Todos os arquivos de classe compilados
-Podcast/target
+/target
 
 #Arquivo de propriedades do banco
-Podcast/src/main/resources/config.properties.txt
+/src/main/resources/config.properties
