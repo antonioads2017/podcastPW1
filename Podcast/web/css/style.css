@@ -12,6 +12,10 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
-.modal{
+.profile{
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 50px;
+  border-radius: 50%;
  
 }
