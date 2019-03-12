@@ -24,6 +24,7 @@ public class UsuariosController implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String acao = request.getParameter("acao");
+        System.out.println(acao);
         switch(acao){
             case "autenticar":
                 autenticarService(request,response);
@@ -55,7 +56,7 @@ public class UsuariosController implements Command {
     }
 
     private void autenticarService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+        System.out.println("ahusdhausd");
     }
 
     private void salvarService(HttpServletRequest request, HttpServletResponse response){

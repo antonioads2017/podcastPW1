@@ -22,10 +22,12 @@ public class FrontController extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String commandName = request.getParameter("comando");
+        System.out.println(commandName);
         try {
-            Command command = (Command) Class.forName(this.getClass().getPackage().getName() + "."+commandName).newInstance();
+            Command command = (Command) Class.forName(Command.class.getPackage().getName() + "."+commandName).newInstance();
             command.execute(request, response);
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
             response.sendError(404);
         } catch (CommandException e) {
             response.sendError(e.getStatuscode(), e.getMessage());
