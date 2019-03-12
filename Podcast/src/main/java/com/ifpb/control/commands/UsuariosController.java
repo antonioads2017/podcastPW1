@@ -1,11 +1,15 @@
 package com.ifpb.control.commands;
 
 import com.ifpb.control.commands.Exceptions.CommandException;
+import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.impl.UsuarioDaoImpl;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
+import com.ifpb.model.domain.Usuario;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 /**
@@ -55,8 +59,22 @@ public class UsuariosController implements Command {
         }
     }
 
-    private void autenticarService(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("ahusdhausd");
+    private void autenticarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        try {
+            if(usuarioDao.autenticarUsuario(email,senha)){
+                Usuario user = usuarioDao.buscar(email);
+                request.getSession().setAttribute("usuariLogado",user);
+                request.getRequestDispatcher("/Podcast/pages/timeline.html").forward(request,response);
+            }else{
+                throw new CommandException(402,"Falha de autenticação");
+            }
+        } catch (DataAccessException e) {
+            throw new CommandException(403, "Falha ao acessar a base de dados");
+        } catch (ServletException | IOException e) {
+            throw new CommandException(404,"pagina principal não encontrada");
+        }
     }
 
     private void salvarService(HttpServletRequest request, HttpServletResponse response){

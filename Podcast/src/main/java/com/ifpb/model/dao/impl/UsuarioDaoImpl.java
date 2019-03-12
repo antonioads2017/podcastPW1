@@ -23,6 +23,7 @@ import java.util.List;
 public class UsuarioDaoImpl implements UsuarioDao {
 
     private Connection connection;
+    private final String CaminhoFotos = "/home/loopis/Imagens/";
 
     public UsuarioDaoImpl() {
         connection = ConnectionFactory.getInstance().getConnection();
@@ -36,7 +37,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             statement.setString(1,usuario.getEmail());
             statement.setString(2,usuario.getSenha());
             statement.setString(3,usuario.getNome());
-            statement.setString(4,usuario.getFoto().getPath());
+            statement.setString(4,usuario.getFoto().getName());
             statement.setDate(5,Date.valueOf(usuario.getNascimento()));
             statement.setBoolean(6,usuario.getNivelAcesso().equals(NivelAcesso.ADMIN));
             statement.setString(7,usuario.getTipo().equals(Tipo.ALUNO) ? "Aluno" : "Professor" );
@@ -162,7 +163,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
         user.setEmail(resultSet.getString("email"));
         user.setNome(resultSet.getString("nome"));
         user.setSenha(resultSet.getString("senha"));
-        user.setFoto(new File(resultSet.getString("foto")));
+        user.setFoto(new File(CaminhoFotos+resultSet.getString("foto")));
         user.setNascimento(resultSet.getDate("nascimento").toLocalDate());
         user.setNivelAcesso(resultSet.getBoolean("admin")? NivelAcesso.ADMIN : NivelAcesso.USER);
         user.setSexo(resultSet.getString("sexo").equals("Masculino") ? Sexo.MASCULINO : Sexo.FEMININO);
