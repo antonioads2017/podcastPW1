@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -17,17 +19,19 @@
 
         <ul class="right hide-on-med-and-down">
             <li>
-                <ul id = "dropdown" class = "dropdown-content">
-                    <li><a href = "#">Meus dados</a>
+                <ul id="dropdown" class="dropdown-content">
+                    <li><a href="#">Meus dados</a>
                     </li>
-                    <li><a href = "turmasvirtuais.html">Turmas virtuais</a></li>
-                    <li class = "divider"></li>
-                    <li><a href = "#">Sair</a></li>
+                    <li><a href="turmasvirtuais.jsp">Turmas virtuais</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Sair</a></li>
                 </ul>
 
-                <a class = "dropdown-button" href = "#" data-activates = "dropdown">Usuário
-                    <i class = "mdi-navigation-arrow-drop-down right"></i></a>
-            </li><li><img class="profile" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></li>
+                <a class="dropdown-button" href="#" data-activates="dropdown">Usuário
+                    <i class="mdi-navigation-arrow-drop-down right"></i></a>
+            </li>
+            <li><img class="profile"
+                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></li>
 
         </ul>
 
@@ -77,7 +81,8 @@
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">AMEC Solutions</h5>
-                <p class="grey-text text-lighten-4">Projeto da disciplina de Programação Web 1 do professor Diego - IFPB</p>
+                <p class="grey-text text-lighten-4">Projeto da disciplina de Programação Web 1 do professor Diego -
+                    IFPB</p>
 
 
             </div>
@@ -102,9 +107,9 @@
 
 
 <!--  Scripts-->
-<script type = "text/javascript"
-        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+<script type="text/javascript"
+        src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
 </script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 

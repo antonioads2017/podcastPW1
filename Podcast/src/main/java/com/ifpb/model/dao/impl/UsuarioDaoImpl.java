@@ -31,26 +31,21 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public void salvar(Usuario usuario) throws DataAccessException {
-        String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin,tipo,sexo,telefone,cep,estado,cidade,rua,numero) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin,tipo,sexo,telefone) VALUES (?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,usuario.getEmail());
             statement.setString(2,usuario.getSenha());
             statement.setString(3,usuario.getNome());
-            statement.setString(4,usuario.getFoto().getName());
+            statement.setString(4,"");
             statement.setDate(5,Date.valueOf(usuario.getNascimento()));
             statement.setBoolean(6,usuario.getNivelAcesso().equals(NivelAcesso.ADMIN));
             statement.setString(7,usuario.getTipo().equals(Tipo.ALUNO) ? "Aluno" : "Professor" );
             statement.setString(8,usuario.getSexo().equals(Sexo.MASCULINO) ? "Masculino" : "Feminino");
             statement.setString(9,usuario.getTelefone());
-            Endereco endereco = usuario.getEndereco();
-            statement.setString(10,endereco.getCEP());
-            statement.setString(11,endereco.getEstado());
-            statement.setString(12,endereco.getCidade());
-            statement.setString(13,endereco.getRua());
-            statement.setString(14,endereco.getNumero());
             statement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar salver um usuário");
         }
     }
@@ -91,6 +86,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             }
             return null;
         } catch (SQLException | NullPointerException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar buscar um usuário específico");
         }
     }
@@ -168,8 +164,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
         user.setNivelAcesso(resultSet.getBoolean("admin")? NivelAcesso.ADMIN : NivelAcesso.USER);
         user.setSexo(resultSet.getString("sexo").equals("Masculino") ? Sexo.MASCULINO : Sexo.FEMININO);
         user.setTipo(resultSet.getString("tipo").equals("Professor") ? Tipo.PROFESSOR : Tipo.ALUNO);
-        user.setEndereco(new Endereco(resultSet.getString("cep"),resultSet.getString("estado"),
-                resultSet.getString("cidade"),resultSet.getString("rua"),resultSet.getString("numero")));
         return user;
     }
 

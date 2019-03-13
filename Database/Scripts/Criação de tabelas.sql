@@ -5,11 +5,14 @@
 
 CREATE TABLE usuario(
 	email TEXT PRIMARY KEY,
-	senha TEXT,
+	senha TEXT NOT NULL,
 	admin BOOLEAN,
 	nome TEXT,
 	foto VARCHAR(50),
-	nascimento DATE
+	nascimento DATE,
+    tipo VARCHAR(15),
+    sexo VARCHAR(10),
+    telefone VARCHAR(15)
 );
 
 CREATE TABLE aluno(
@@ -31,7 +34,7 @@ CREATE TABLE turma_virtual(
 
 CREATE TABLE podcast(
 	audio VARCHAR(50) PRIMARY KEY,
-	titulo VARChAR(30),
+	titulo VARCHAR(30),
 	categoria TEXT,
 	descricao TEXT,
 	criador TEXT,

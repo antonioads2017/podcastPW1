@@ -27,12 +27,11 @@ public class Usuario {
     private File foto;
     private Sexo sexo;
     private String telefone;
-    private Endereco endereco;
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha, LocalDate nascimento, Tipo tipo, NivelAcesso nivelAcesso, File foto, Sexo sexo, String telefone, Endereco endereco) {
+    public Usuario(String nome, String email, String senha, LocalDate nascimento, Tipo tipo, NivelAcesso nivelAcesso, File foto, Sexo sexo, String telefone) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -42,7 +41,6 @@ public class Usuario {
         this.foto = foto;
         this.sexo = sexo;
         this.telefone = telefone;
-        this.endereco = endereco;
     }
 
 
@@ -110,14 +108,6 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
     public NivelAcesso getNivelAcesso() {
         return nivelAcesso;
     }
@@ -139,13 +129,12 @@ public class Usuario {
                 nivelAcesso == usuario.nivelAcesso &&
                 Objects.equals(foto, usuario.foto) &&
                 sexo == usuario.sexo &&
-                Objects.equals(telefone, usuario.telefone) &&
-                Objects.equals(endereco, usuario.endereco);
+                Objects.equals(telefone, usuario.telefone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, email, senha, nascimento, tipo, nivelAcesso, foto, sexo, telefone, endereco);
+        return Objects.hash(nome, email, senha, nascimento, tipo, nivelAcesso, foto, sexo, telefone);
     }
 
     @Override
@@ -160,7 +149,6 @@ public class Usuario {
                 ", foto=" + foto +
                 ", sexo=" + sexo +
                 ", telefone='" + telefone + '\'' +
-                ", endereco=" + endereco +
                 '}';
     }
 }
