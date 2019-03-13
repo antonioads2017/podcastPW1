@@ -4,6 +4,7 @@ package com.ifpb.control.servlets;
 import com.ifpb.control.commands.Command;
 import com.ifpb.control.commands.Exceptions.CommandException;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +16,16 @@ import java.io.IOException;
  * @author Mailson Dennis
  *
  */
+@MultipartConfig(
+        location = "/home/loopis/Uploads"
 
+)
 @WebServlet("/inicio")
 public class FrontController extends HttpServlet {
 
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String commandName = request.getParameter("comando");
-        System.out.println(commandName);
         try {
             Command command = (Command) Class.forName(Command.class.getPackage().getName() + "."+commandName).newInstance();
             command.execute(request, response);

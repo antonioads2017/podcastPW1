@@ -74,7 +74,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             return percorrerResultado(resultSet);
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             throw new DataAccessException("Falha ao tentar listar os usuários");
         }
     }
@@ -90,7 +90,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 return construirUsuario(resultSet);
             }
             return null;
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             throw new DataAccessException("Falha ao tentar buscar um usuário específico");
         }
     }
@@ -117,7 +117,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 alunos.add(construirUsuario(resultSet));
             }
             return alunos;
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             throw new DataAccessException("Falha ao tentar buscar todos os alunos de uma turma");
         }
     }
@@ -145,7 +145,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             return percorrerResultado(resultSet);
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             throw new DataAccessException("Falha ao tentar buscar todos os" + (tipo.equals(Tipo.ALUNO) ? "Aluno" : "Professor") + "de uma turma");
         }
     }
