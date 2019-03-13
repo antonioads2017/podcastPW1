@@ -10,7 +10,6 @@ CREATE TABLE usuario(
 	nome TEXT,
 	foto VARCHAR(50),
 	nascimento DATE,
-    tipo VARCHAR(15),
     sexo VARCHAR(10),
     telefone VARCHAR(15)
 );
@@ -28,7 +27,7 @@ CREATE TABLE professor(
 CREATE TABLE turma_virtual(
 	nome VARCHAR(30) PRIMARY KEY,
 	descricao TEXT,
-	professor TEXT,
+	professor_email TEXT,
 	FOREIGN KEY (professor) REFERENCES professor(email)
 );
 
@@ -53,7 +52,7 @@ CREATE TABLE avalia_podcast(
 );
 
 CREATE TABLE participa_turma(
-	aluno TEXT,
+	aluno_email TEXT,
 	turma VARCHAR(30),
 	PRIMARY KEY (aluno,turma),
 	FOREIGN KEY (aluno) REFERENCES aluno(email),
