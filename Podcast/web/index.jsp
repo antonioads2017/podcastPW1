@@ -13,50 +13,7 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-<nav class="light-blue" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">IFCast</a>
-        <ul class="right hide-on-med-and-down">
-            <li><!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Entrar</a>
-
-                <!-- Modal Structure -->
-                <div id="modal1" class="modal">
-                    <div class="modal-content">
-                        <center>
-                            <div class="row">
-                                <form class="col10 s10"
-                                      action="/Podcast/inicio?comando=UsuariosController&acao=autenticar" method="POST">
-                                    <div class="row">
-                                        <div class="input-field col10 s10">
-                                            <input id="email" type="email" name="email" class="validate">
-                                            <label for="email">E-mail</label>
-                                        </div>
-                                        <div class="input-field col10 s10">
-                                            <input id="password" type="password" name="senha" class="validate">
-                                            <label for="password">Senha</label>
-                                        </div>
-                                        <button class="btn waves-effect waves-light" type="submit" name="action">Log-In
-                                            <i class="material-icons right">cloud</i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </center>
-                    </div>
-
-                </div>
-            </li>
-            <li>
-                <a href="#">+</a>
-            </li>
-        </ul>
-
-        <ul id="nav-mobile" class="sidenav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-</nav>
+<%@ include file = "/pages/header.jsp" %>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <br><br>
@@ -185,35 +142,7 @@
     </div>
     <br><br>
 </div>
-
-<footer class="page-footer orange">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">AMEC Solutions</h5>
-                <p class="grey-text text-lighten-4">Projeto da disciplina de Programação Web 1 do professor Diego -
-                    IFPB</p>
-
-
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Equipe</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Camila Carvalho</a></li>
-                    <li><a class="white-text" href="#!">Mailson Dennis</a></li>
-                    <li><a class="white-text" href="#!">Antonio Filho</a></li>
-                    <li><a class="white-text" href="#!">Eduardo Lucas</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            Designed by AMEC Solutions using <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-        </div>
-    </div>
-</footer>
+<%@ include file = "pages/footer.jsp" %>
 
 
 <!--  Scripts-->
