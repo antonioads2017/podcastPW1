@@ -5,8 +5,6 @@
   Time: 00:05
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <nav class="light-blue" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">IFCast</a>
         <ul class="right hide-on-med-and-down">
@@ -19,7 +17,7 @@
                         <center>
                             <div class="row">
                                 <form class="col10 s10"
-                                      action="/Podcast/inicio?comando=UsuariosController&acao=autenticar" method="POST">
+                                      action="/inicio?comando=UsuariosController&acao=autenticar" method="POST">
                                     <div class="row">
                                         <div class="input-field col10 s10">
                                             <input id="email" type="email" name="email" class="validate">

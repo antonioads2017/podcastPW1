@@ -13,6 +13,7 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+<%--<jsp: include page=“/pages/header.jsp”/>--%>
 <%@ include file = "/pages/header.jsp" %>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
@@ -32,24 +33,24 @@
                 <div class="modal-content">
                     <center>
                         <div class="row">
-                            <form class="col10 s10" action="/Podcast/inicio?comando=UsuariosController&acao=salvar"
+                            <form class="col10 s10" action="/inicio?comando=UsuariosController&acao=salvar"
                                   method="POST">
                                 <div class="row">
                                    <div class="input-field col10 s10">
-                                        <input id="name" type="text" class="validate" name="nome">
+                                        <input id="name" type="text" class="validate" name="nome" required>
                                         <label for="name">Nome</label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="email" type="email" class="validate" name="email">
+                                        <input id="email" type="email" class="validate" name="email" required>
                                         <label for="email">E-mail</label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="password" type="password" class="validate" name="senha">
+                                        <input id="password" type="password" class="validate" name="senha" required>
                                         <label for="password">Senha</label></div>
                                     <div class="input-field col10 s10">
                                         <input id="cellphone" type="text" class="validate" name="telefone">
                                         <label for="cellphone">Telefone</label>
                                     </div>
                                     <div class="input-field col10 s10">
-                                        <input id="date" type="date" class="validate" name="nascimento">
+                                        <input id="date" type="date" class="validate" name="nascimento" required>
                                         <label for="date">Data de Nascimento</label>
                                     </div>
 
@@ -142,6 +143,7 @@
     </div>
     <br><br>
 </div>
+    <%--<jsp: include page=“/pages/footer.jsp”/>--%>
 <%@ include file = "pages/footer.jsp" %>
 
 

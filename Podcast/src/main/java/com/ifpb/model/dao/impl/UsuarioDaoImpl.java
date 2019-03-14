@@ -31,7 +31,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public void salvar(Usuario usuario) throws DataAccessException {
-        String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin,tipo,sexo,telefone) VALUES (?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin,sexo,telefone) VALUES (?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,usuario.getEmail());
@@ -40,10 +40,20 @@ public class UsuarioDaoImpl implements UsuarioDao {
             statement.setString(4,"");
             statement.setDate(5,Date.valueOf(usuario.getNascimento()));
             statement.setBoolean(6,usuario.getNivelAcesso().equals(NivelAcesso.ADMIN));
-            statement.setString(7,usuario.getTipo().equals(Tipo.ALUNO) ? "Aluno" : "Professor" );
-            statement.setString(8,usuario.getSexo().equals(Sexo.MASCULINO) ? "Masculino" : "Feminino");
-            statement.setString(9,usuario.getTelefone());
-            statement.execute();
+            statement.setString(7,usuario.getSexo().equals(Sexo.MASCULINO) ? "Masculino" : "Feminino");
+            statement.setString(8,usuario.getTelefone());
+            if(statement.executeUpdate() > 0){
+                System.out.println(usuario.getTipo());
+                String query2;
+                if(usuario.getTipo().equals(Tipo.ALUNO)){
+                    query2 = "INSERT INTO aluno (email) VALUES (?)";
+                }else{
+                    query2 = "INSERT INTO professor (email) VALUES (?)";
+                }
+                PreparedStatement statement2 = connection.prepareStatement(query2);
+                statement2.setString(1,usuario.getEmail());
+                statement2.execute();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DataAccessException("Falha ao tentar salver um usuário");
