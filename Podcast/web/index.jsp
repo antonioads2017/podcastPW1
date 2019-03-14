@@ -42,20 +42,20 @@
                                     </c:if>
                                    <div class="input-field col10 s10">
                                         <input id="name" type="text" class="validate" name="nome" value="${usuario!=null ? usuario.nome : ""}" maxlength="40" required>
-                                        <label for="name">Nome</label></div>
+                                       <label for="name">Nome<font color="red"> * </font></label></div>
                                     <div class="input-field col10 s10">
                                         <input id="email" type="email" class="validate" name="email" value="${usuario!=null ? usuario.email : ""}" required>
-                                        <label for="email">E-mail</label></div>
+                                        <label for="email">E-mail<font color="red"> * </font></label></div>
                                     <div class="input-field col10 s10">
                                         <input id="password" type="password" class="validate" name="senha" value="${usuario!=null ? usuario.senha: ""}" minlength="6" required>
-                                        <label for="password">Senha</label></div>
+                                        <label for="password">Senha<font color="red"> * </font></label></div>
                                     <div class="input-field col10 s10">
                                         <input id="cellphone" type="text" class="validate" name="telefone" value="${usuario!=null && usuario.telefone != null ? usuario.telefone : ""}">
                                         <label for="cellphone">Telefone</label>
                                     </div>
                                     <div class="input-field col10 s10">
                                         <input id="date" type="date" class="validate" name="nascimento" value="${usuario!=null ? usuario.nascimento : ""}" required>
-                                        <label for="date">Data de Nascimento</label>
+                                        <label for="date">Data de Nascimento<font color="red"> * </font></label>
                                     </div>
 
                                     <div class="input-field col10 s10">Função
