@@ -113,7 +113,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public List<Usuario> buscarAlunosPorTurma(String nomeTurma) throws DataAccessException {
-        String query = "SELECT * FROM usuario u, participa_turma pt WHERE u.email = pt.aluno AND pt.turma = ?";
+        String query = "SELECT * FROM usuario u, participa_turma pt WHERE u.email = pt.aluno_email AND pt.turma = ?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,nomeTurma);
