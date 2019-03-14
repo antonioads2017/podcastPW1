@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,14 +37,17 @@
                             <form class="col10 s10" action="/inicio?comando=UsuariosController&acao=salvar"
                                   method="POST">
                                 <div class="row">
+                                    <c:if test="${msgErro!=null}">
+                                        <span id="Erro">${msgErro}</span>
+                                    </c:if>
                                    <div class="input-field col10 s10">
-                                        <input id="name" type="text" class="validate" name="nome" value="${usuario!=null ? usuario.nome : ""}" required>
+                                        <input id="name" type="text" class="validate" name="nome" value="${usuario!=null ? usuario.nome : ""}" maxlength="40" required>
                                         <label for="name">Nome</label></div>
                                     <div class="input-field col10 s10">
                                         <input id="email" type="email" class="validate" name="email" value="${usuario!=null ? usuario.email : ""}" required>
                                         <label for="email">E-mail</label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="password" type="password" class="validate" name="senha" value="${usuario!=null ? usuario.senha: ""}" required>
+                                        <input id="password" type="password" class="validate" name="senha" value="${usuario!=null ? usuario.senha: ""}" minlength="6" required>
                                         <label for="password">Senha</label></div>
                                     <div class="input-field col10 s10">
                                         <input id="cellphone" type="text" class="validate" name="telefone" value="${usuario!=null && usuario.telefone != null ? usuario.telefone : ""}">
@@ -156,6 +160,5 @@
 </script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
-
 </body>
 </html>
