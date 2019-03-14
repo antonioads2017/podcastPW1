@@ -74,7 +74,7 @@ public class UsuariosController implements Command {
             if(usuarioDao.autenticarUsuario(email,senha)){
                 Usuario user = usuarioDao.buscar(email);
                 request.getSession().setAttribute("usuariLogado",user);
-                request.getRequestDispatcher("/Podcast/pages/timeline.jsp").forward(request,response);
+                request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
             }else{
                 throw new CommandException(402,"Falha de autenticação");
             }

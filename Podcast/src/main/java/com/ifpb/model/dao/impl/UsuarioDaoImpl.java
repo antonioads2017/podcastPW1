@@ -173,8 +173,15 @@ public class UsuarioDaoImpl implements UsuarioDao {
         user.setNascimento(resultSet.getDate("nascimento").toLocalDate());
         user.setNivelAcesso(resultSet.getBoolean("admin")? NivelAcesso.ADMIN : NivelAcesso.USER);
         user.setSexo(resultSet.getString("sexo").equals("Masculino") ? Sexo.MASCULINO : Sexo.FEMININO);
-        user.setTipo(resultSet.getString("tipo").equals("Professor") ? Tipo.PROFESSOR : Tipo.ALUNO);
+        user.setTipo(isAluno(user.getEmail()) ? Tipo.ALUNO : Tipo.PROFESSOR);
         return user;
+    }
+    private boolean isAluno(String email) throws SQLException {
+        String query = "SELECT * FROM aluno WHERE email = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1,email);
+        ResultSet result = statement.executeQuery();
+        return result.next();
     }
 
 
