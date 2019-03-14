@@ -78,17 +78,7 @@
                             <form class="col10 s10" action="/Podcast/inicio?comando=UsuariosController&acao=salvar"
                                   method="POST">
                                 <div class="row">
-                                    <div class="file-field input-field">
-                                        <div class="btn">
-                                            <span>Avatar</span>
-                                            <input type="file" multiple name="foto">
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text"
-                                                   placeholder="Escolha sua foto de perfil">
-                                        </div>
-                                    </div>
-                                    <div class="input-field col10 s10">
+                                   <div class="input-field col10 s10">
                                         <input id="name" type="text" class="validate" name="nome">
                                         <label for="name">Nome</label></div>
                                     <div class="input-field col10 s10">
