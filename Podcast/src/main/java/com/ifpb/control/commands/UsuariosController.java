@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -127,32 +129,69 @@ public class UsuariosController implements Command {
         }
     }
 
-    private void deletarService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void deletarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String reference = request.getParameter("emailUsuario");
+        try {
+            usuarioDao.remover(reference);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Não foi possível excluir o usuários");
+        }
     }
 
-    private void listarService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void listarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        List<Usuario> usuarios;
+        try{
+            usuarios= usuarioDao.listar();
+        } catch (DataAccessException e) {
+            throw new CommandException(402,"Não foi possível listar os usuários");
+        }
+        request.setAttribute("usuarios",usuarios);
     }
 
-    private void buscarService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void buscarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String reference = request.getParameter("emailUsuario");
+        Usuario usuario;
+        try{
+            usuario = usuarioDao.buscar(reference);
+        } catch (DataAccessException e) {
+            throw new CommandException(402,"Falha ao buscar o usuário");
+        }
+        request.setAttribute("usuario",usuario);
     }
 
     private void atualizarService(HttpServletRequest request, HttpServletResponse response) {
         //TODO
     }
 
-    private void listarAlunosService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void listarAlunosService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        List<Usuario> alunos;
+        try {
+            alunos = usuarioDao.listarAlunos();
+        } catch (DataAccessException e) {
+            throw new CommandException(402,"Não foi possível listar os alunos");
+        }
+        request.setAttribute("alunos",alunos);
     }
 
-    private void listarProfessoresService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void listarProfessoresService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        List<Usuario> professores;
+        try {
+            professores = usuarioDao.listarAlunos();
+        } catch (DataAccessException e) {
+            throw new CommandException(402,"Não foi possível listar os professores");
+        }
+        request.setAttribute("professores",professores);
     }
 
-    private void buscarAlunosTurma(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void buscarAlunosTurma(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String nomeTurma = request.getParameter("nomeTurma");
+        List<Usuario> alunos;
+        try{
+            alunos = usuarioDao.buscarAlunosPorTurma(nomeTurma);
+        } catch (DataAccessException e) {
+            throw new CommandException(402,"Não foi possível listar os alunos da turma desejada");
+        }
+        request.setAttribute("alunos",alunos);
     }
 
 
