@@ -64,6 +64,10 @@ public class UsuariosController implements Command {
                 break;
             case "buscarAlunosTurma":
                 buscarAlunosTurma(request,response);
+                break;
+            case "sair":
+                logoutService(request,response);
+                break;
         }
     }
 
@@ -83,6 +87,9 @@ public class UsuariosController implements Command {
         } catch (ServletException | IOException e) {
             throw new CommandException(404,"pagina principal não encontrada");
         }
+    }
+
+    private void logoutService(HttpServletRequest request, HttpServletResponse response) {
     }
 
     private void salvarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {

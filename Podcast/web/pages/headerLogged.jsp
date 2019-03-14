@@ -26,9 +26,9 @@
                 <ul id="dropdown" class="dropdown-content">
                     <li><a href="#">Meus dados</a>
                     </li>
-                    <li><a href="turmasvirtuais.jsp">Turmas virtuais</a></li>
+                    <li><a href="/pages/turmasvirtuais.jsp">Turmas virtuais</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Sair</a></li>
+                    <li><a href="/inicio?comando=UsuariosController&acao=sair">Sair</a></li>
                 </ul>
 
                 <a class="dropdown-button" href="#" data-activates="dropdown">Usuário
