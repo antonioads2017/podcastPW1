@@ -37,20 +37,20 @@
                                   method="POST">
                                 <div class="row">
                                    <div class="input-field col10 s10">
-                                        <input id="name" type="text" class="validate" name="nome" required>
+                                        <input id="name" type="text" class="validate" name="nome" value="${usuario!=null ? usuario.nome : ""}" required>
                                         <label for="name">Nome</label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="email" type="email" class="validate" name="email" required>
+                                        <input id="email" type="email" class="validate" name="email" value="${usuario!=null ? usuario.email : ""}" required>
                                         <label for="email">E-mail</label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="password" type="password" class="validate" name="senha" required>
+                                        <input id="password" type="password" class="validate" name="senha" value="${usuario!=null ? usuario.senha: ""}" required>
                                         <label for="password">Senha</label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="cellphone" type="text" class="validate" name="telefone">
+                                        <input id="cellphone" type="text" class="validate" name="telefone" value="${usuario!=null && usuario.telefone != null ? usuario.telefone : ""}">
                                         <label for="cellphone">Telefone</label>
                                     </div>
                                     <div class="input-field col10 s10">
-                                        <input id="date" type="date" class="validate" name="nascimento" required>
+                                        <input id="date" type="date" class="validate" name="nascimento" value="${usuario!=null ? usuario.nascimento : ""}" required>
                                         <label for="date">Data de Nascimento</label>
                                     </div>
 
@@ -58,12 +58,12 @@
 
                                         <p>
                                             <label>
-                                                <input name="FUNCTION" type="radio" value="professor"/>
+                                                <input name="FUNCTION" type="radio" value="professor" />
                                                 <span>Professor</span>
                                             </label>
 
                                             <label>
-                                                <input name="FUNCTION" type="radio" value="aluno"/>
+                                                <input name="FUNCTION" type="radio" value="aluno" checked/>
                                                 <span>Aluno</span>
                                             </label>
                                         </p>
@@ -80,7 +80,7 @@
                                             </label>
 
                                             <label>
-                                                <input name="GENDER" type="radio" value="male"/>
+                                                <input name="GENDER" type="radio" value="male" checked/>
                                                 <span>M</span>
                                             </label>
                                         </p>
