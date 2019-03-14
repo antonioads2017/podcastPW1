@@ -28,7 +28,7 @@ CREATE TABLE turma_virtual(
 	nome VARCHAR(30) PRIMARY KEY,
 	descricao TEXT,
 	professor_email TEXT NOT NULL,
-	FOREIGN KEY (professor) REFERENCES professor(email)
+	FOREIGN KEY (professor) REFERENCES professor_email(email)
 );
 
 CREATE TABLE podcast(
@@ -55,6 +55,6 @@ CREATE TABLE participa_turma(
 	aluno_email TEXT,
 	turma VARCHAR(30),
 	PRIMARY KEY (aluno,turma),
-	FOREIGN KEY (aluno) REFERENCES aluno(email),
+	FOREIGN KEY (aluno) REFERENCES aluno_email(email),
 	FOREIGN KEY (turma) REFERENCES turma_virtual(nome)
 )
