@@ -87,7 +87,14 @@ public class UsuariosController implements Command {
         }
     }
 
-    private void logoutService(HttpServletRequest request, HttpServletResponse response) {
+    private void logoutService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        request.getSession().invalidate();
+        try {
+            response.sendRedirect("index.jsp");
+        } catch (IOException e) {
+            throw new CommandException(400,"Não foi possivel realizar logout");
+        }
+
     }
 
     private void salvarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
