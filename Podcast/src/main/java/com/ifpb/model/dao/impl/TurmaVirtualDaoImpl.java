@@ -33,7 +33,7 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
 
     @Override
     public void salvar(TurmaVirtual object) throws DataAccessException {
-        String query = "INSERT INTO turma_virtual (nome,descricao,professor) VALUES (?,?,?)";
+        String query = "INSERT INTO turma_virtual (nome,descricao,professor_email) VALUES (?,?,?)";
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,object.getNome());
@@ -104,7 +104,7 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
         TurmaVirtual turma = new TurmaVirtual();
         turma.setNome(resultSet.getString("nome"));
         turma.setDescricao(resultSet.getString("descricao"));
-        turma.setCriador(usuarioDao.buscar(resultSet.getString("criador")));
+        turma.setCriador(usuarioDao.buscar(resultSet.getString("professor_email")));
         turma.setPodcasts(podcastDao.buscarPorTurma(turma.getNome()));
         turma.setParticipantes(usuarioDao.buscarAlunosPorTurma(turma.getNome()));
         return turma;

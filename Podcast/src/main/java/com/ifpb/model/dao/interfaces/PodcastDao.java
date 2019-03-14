@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface PodcastDao extends DaoIF<Podcast> {
 
+    void salvarEmTurma(Podcast podcast,String nomeTurma) throws DataAccessException;
     List<Podcast> buscarPorTurma(String nomeTurma) throws DataAccessException;
     List<Podcast> buscarPorCriador(String criador) throws DataAccessException;
     void deletarPodcastsPorTurma(String nomeTurma) throws DataAccessException;

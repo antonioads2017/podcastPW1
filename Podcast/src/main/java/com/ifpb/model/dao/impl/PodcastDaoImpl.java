@@ -31,17 +31,26 @@ public class PodcastDaoImpl implements PodcastDao {
         comentarioDao = new ComentarioDaoImpl();
     }
 
+    @Override
+    public void salvarEmTurma(Podcast object,String nometurma) throws DataAccessException {
+        adicionaPodcast(object,nometurma);
+    }
 
     @Override
     public void salvar(Podcast object) throws DataAccessException {
-        String query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador) VALUES (?,?,?,?,?,)";
+        adicionaPodcast(object,null);
+    }
+
+    private void adicionaPodcast(Podcast podcast, String nomeTurma) throws DataAccessException {
+        String query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador,nome_turma) VALUES (?,?,?,?,?,?)";
         try(Connection connection = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,object.getTitulo());
-            statement.setString(2,object.getCategoria());
-            statement.setString(3,object.getDescricao());
-            statement.setString(4,object.getAudio().getPath());
-            statement.setString(5,object.getDono().getEmail());
+            statement.setString(1,podcast.getTitulo());
+            statement.setString(2,podcast.getCategoria());
+            statement.setString(3,podcast.getDescricao());
+            statement.setString(4,podcast.getAudio().getPath());
+            statement.setString(5,podcast.getDono().getEmail());
+            statement.setString(6,nomeTurma);
             statement.execute();
         } catch (ConnectionException e) {
             throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
