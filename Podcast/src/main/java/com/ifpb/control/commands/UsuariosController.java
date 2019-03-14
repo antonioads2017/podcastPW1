@@ -1,8 +1,6 @@
 package com.ifpb.control.commands;
 
 import com.ifpb.control.commands.Exceptions.CommandException;
-import com.ifpb.control.services.Encode;
-import com.ifpb.control.services.exceptions.EncodeExcpetion;
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.impl.UsuarioDaoImpl;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
@@ -77,7 +75,7 @@ public class UsuariosController implements Command {
         try {
             if(usuarioDao.autenticarUsuario(email,senha)){
                 Usuario user = usuarioDao.buscar(email);
-                request.getSession().setAttribute("usuariLogado",user);
+                request.getSession().setAttribute("usuarioLogado",user);
                 request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
             }else{
                 throw new CommandException(402,"Falha de autenticação");
