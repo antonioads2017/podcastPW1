@@ -13,44 +13,7 @@
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-<nav class="light-blue" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">IFCast</a>
-
-
-        <ul class="right hide-on-med-and-down">
-            <li>
-                <form>
-                    <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                </form>
-            </li>
-
-            <li><a href="upload.jsp">Upload</a></li>
-            <li>
-                <ul id="dropdown" class="dropdown-content">
-                    <li><a href="#">Meus dados</a></li>
-                    <li><a href="turmasvirtuais.jsp">Turmas virtuais</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Sair</a></li>
-                </ul>
-
-                <a class="dropdown-button" href="#" data-activates="dropdown">Usuário
-                    <i class="mdi-navigation-arrow-drop-down right"></i></a>
-            </li>
-            <li><img class="profile"
-                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></li>
-
-        </ul>
-
-        <ul id="nav-mobile" class="sidenav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-</nav>
+<%@ include file = "headerLogged.jsp" %>
 <div class="row">
     <div class="col s12"><br>
         <h6>Suas turmas virtuais:</h6>
@@ -91,35 +54,8 @@
 </div>
 
 
-<footer class="page-footer orange">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">AMEC Solutions</h5>
-                <p class="grey-text text-lighten-4">Projeto da disciplina de Programação Web 1 do professor Diego -
-                    IFPB</p>
 
-
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Equipe</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Camila Carvalho</a></li>
-                    <li><a class="white-text" href="#!">Mailson Dennis</a></li>
-                    <li><a class="white-text" href="#!">Antonio Filho</a></li>
-                    <li><a class="white-text" href="#!">Eduardo Lucas</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            Designed by AMEC Solutions using <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-        </div>
-    </div>
-</footer>
-
+<%@ include file = "footer.jsp" %>
 
 <!--  Scripts-->
 <script type="text/javascript"
