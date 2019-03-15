@@ -76,14 +76,13 @@ public class UsuariosController implements Command {
             if(usuarioDao.autenticarUsuario(email,senha)){
                 Usuario user = usuarioDao.buscar(email);
                 request.getSession().setAttribute("usuarioLogado",user);
-                request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
+                //request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
+                response.sendRedirect("/pages/timeline.jsp");
             }else{
                 throw new CommandException(402,"Falha de autenticação");
             }
-        } catch (DataAccessException e) {
+        } catch (DataAccessException| IOException e) {
             throw new CommandException(403, "Falha ao acessar a base de dados");
-        } catch (ServletException | IOException e) {
-            throw new CommandException(404,"pagina principal não encontrada");
         }
     }
 
