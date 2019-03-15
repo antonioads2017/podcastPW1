@@ -23,7 +23,7 @@
             <div class="section">
 
                 <audio id="myAudio" preload="auto">
-                    <source src="music/fun.mp3" type="audio/mpeg">
+                    <source src="../audio/music.mp3" type="audio/mpeg">
                 </audio>
 
                 <div class="row">
@@ -50,15 +50,21 @@
                             </div>
                         </div>
 
-                        <script src="js/music-player.js"></script>
+                        <script src="../js/podcast.js"></script>
 
 
 
-                    </div><div class="col xl4 s10 m15">
+                    </div>
+                    <div class="col xl4 s10 m15">
                     <div class="card-panel">
-                        <span class="text">Descrição:</span>
+                        <span class="text">Composta em 1975 por Freddie Mercury. Foi a primeira música a alcançar a
+                        primeira posição duas vezes com a mesma versão.</span>
                         <p>Postado por : </p>
-                    </div></div>
+                        <div class="card-action">
+                            <a href="#">Comentar</a>
+                        </div>
+                    </div>
+                    </div>
 
 
                 </div>
