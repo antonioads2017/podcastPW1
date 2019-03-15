@@ -74,7 +74,7 @@
                     <i class="mdi-navigation-arrow-drop-down right"></i></a>
             </li>
             <li><img class="profile"
-                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></li>
+                     src="http://www.wfmu.org/images/generic_avatar_300.png"></li>
         </ul>
         <ul id="nav-mobile" class="sidenav">
             <li><a href="#">Navbar Link</a></li>

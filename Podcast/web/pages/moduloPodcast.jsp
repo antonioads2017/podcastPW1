@@ -13,7 +13,7 @@
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-<%@ include file = "/pages/header.jsp" %>
+<%@ include file = "headerLogged.jsp" %>
 
     <div class="row">
 
