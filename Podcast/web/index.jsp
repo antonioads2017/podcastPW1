@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,34 +37,37 @@
                             <form class="col10 s10" action="/inicio?comando=UsuariosController&acao=salvar"
                                   method="POST">
                                 <div class="row">
+                                    <c:if test="${msgErro!=null}">
+                                        <span id="Erro">${msgErro}</span>
+                                    </c:if>
                                    <div class="input-field col10 s10">
-                                        <input id="name" type="text" class="validate" name="nome" required>
-                                        <label for="name">Nome</label></div>
+                                        <input id="name" type="text" class="validate" name="nome" value="${usuario!=null ? usuario.nome : ""}" maxlength="40" required>
+                                       <label for="name">Nome<font color="red"> * </font></label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="email" type="email" class="validate" name="email" required>
-                                        <label for="email">E-mail</label></div>
+                                        <input id="email" type="email" class="validate" name="email" value="${usuario!=null ? usuario.email : ""}" required>
+                                        <label for="email">E-mail<font color="red"> * </font></label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="password" type="password" class="validate" name="senha" required>
-                                        <label for="password">Senha</label></div>
+                                        <input id="password" type="password" class="validate" name="senha" value="${usuario!=null ? usuario.senha: ""}" minlength="6" required>
+                                        <label for="password">Senha<font color="red"> * </font></label></div>
                                     <div class="input-field col10 s10">
-                                        <input id="cellphone" type="text" class="validate" name="telefone">
+                                        <input id="cellphone" type="text" class="validate" name="telefone" value="${usuario!=null && usuario.telefone != null ? usuario.telefone : ""}">
                                         <label for="cellphone">Telefone</label>
                                     </div>
                                     <div class="input-field col10 s10">
-                                        <input id="date" type="date" class="validate" name="nascimento" required>
-                                        <label for="date">Data de Nascimento</label>
+                                        <input id="date" type="date" class="validate" name="nascimento" value="${usuario!=null ? usuario.nascimento : ""}" required>
+                                        <label for="date">Data de Nascimento<font color="red"> * </font></label>
                                     </div>
 
                                     <div class="input-field col10 s10">Função
 
                                         <p>
                                             <label>
-                                                <input name="FUNCTION" type="radio" value="professor"/>
+                                                <input name="FUNCTION" type="radio" value="professor" />
                                                 <span>Professor</span>
                                             </label>
 
                                             <label>
-                                                <input name="FUNCTION" type="radio" value="aluno"/>
+                                                <input name="FUNCTION" type="radio" value="aluno" checked/>
                                                 <span>Aluno</span>
                                             </label>
                                         </p>
@@ -80,7 +84,7 @@
                                             </label>
 
                                             <label>
-                                                <input name="GENDER" type="radio" value="male"/>
+                                                <input name="GENDER" type="radio" value="male" checked/>
                                                 <span>M</span>
                                             </label>
                                         </p>
@@ -156,6 +160,5 @@
 </script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
-
 </body>
 </html>

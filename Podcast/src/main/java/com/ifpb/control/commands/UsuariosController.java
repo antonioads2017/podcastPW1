@@ -128,16 +128,26 @@ public class UsuariosController implements Command {
 
         //==============================================================
 
+        String msgErro= "";
+
         try {
             if(usuarioDao.buscar(user.getEmail()) == null){
                 usuarioDao.salvar(user);
                 System.out.println("cadastrado com sucesso!");
+                request.setAttribute("cadastroSucesso","Usuário cadastrado com sucesso");
+                request.getRequestDispatcher("/index.jsp").forward(request,response);
             }else{
-                throw new CommandException(403,"Já existe um usuário cadastrado com esse email");
+                msgErro = "Já existe um usuário cadastrado com esse email";
+                request.setAttribute("usuario",user);
+                request.setAttribute("Erro",msgErro);
+                request.getRequestDispatcher("index.jsp").forward(request,response);
+                //throw new CommandException(403,"Já existe um usuário cadastrado com esse email");
             }
         } catch (DataAccessException e) {
             e.printStackTrace();
             throw new CommandException(400,"Falha ao salvar um usuário!");
+        } catch (ServletException | IOException e) {
+            throw new CommandException(405,"Erro interno!");
         }
     }
 
