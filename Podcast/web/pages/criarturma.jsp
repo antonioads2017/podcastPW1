@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head><title>IFCast - Criar turma </title>
@@ -34,18 +35,18 @@
             <div class="row">
                 <div class="col s6">
                     <div class="input-field col s8">
-                        <select>
-                            <%--<option value="" disabled selected>Choose your option</option>--%>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                        <select class="icons" id="select">
+                            <option value="" disabled selected>Selecione um aluno</option>
+                            <c:forEach var="aluno" items="${alunos}">
+                                <option value="${aluno.email}" data-icon="#">${aluno.email}</option>
+                            </c:forEach>
                         </select>
                         <label>Materialize Select</label>
                     </div>
                     <div class="input-field col s4">
                         <div id="membros">
                             <a class="btn-floating btn-large waves-effect waves-light red"><i
-                                    class="material-icons">add</i></a> Adicionar membros
+                                    class="material-icons" onclick="adicionaAluno()">add</i></a> Adicionar membros
                         </div>
                     </div>
                 </div>
@@ -55,10 +56,7 @@
                             <div class="card-content white-text">
                                 <span class="card-title">Alunos adicionados</span>
                                 <ul class="collection with-header" id="listaAlunos">
-                                    <li class="collection-item black-text"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-                                    <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-                                    <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-                                    <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                                    <%--<li class="collection-item black-text">Alvin<a class="secondary-content"><i class="material-icons">send</i></a></li>--%>
                                 </ul>
 
                             </div>
@@ -98,5 +96,6 @@
         $('.sidenav').sidenav();
     });
 </script>
+<script src="/js/selecionaAluno.js"></script>
 </body>
 </html>

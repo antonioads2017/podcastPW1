@@ -146,12 +146,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     private List<Usuario> buscarPorTipo(Tipo tipo) throws DataAccessException {
-        String query = "SELECT * FROM usuario WHERE tipo = " + (tipo.equals(Tipo.ALUNO) ? "Aluno" : "Professor");
+        String query = "SELECT * FROM usuario u,"+ (tipo.equals(Tipo.ALUNO) ? "aluno u2" : "professor u2")+"  WHERE u.email = u2.email";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             return percorrerResultado(resultSet);
         } catch (SQLException | NullPointerException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar buscar todos os" + (tipo.equals(Tipo.ALUNO) ? "Aluno" : "Professor") + "de uma turma");
         }
     }
