@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 /**
@@ -27,6 +28,8 @@ public class UsuariosController implements Command {
 
     private UsuarioDao usuarioDao;
 
+    private Logger log=Logger.getLogger("log");
+
     public UsuariosController(){
         usuarioDao = new UsuarioDaoImpl();
     }
@@ -34,7 +37,7 @@ public class UsuariosController implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String acao = request.getParameter("acao");
-        System.out.println(acao);
+        log.info(acao);
         switch(acao){
             case "autenticar":
                 autenticarService(request,response);
@@ -78,10 +81,13 @@ public class UsuariosController implements Command {
                 request.getSession().setAttribute("usuarioLogado",user);
                 //request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
                 response.sendRedirect("/pages/timeline.jsp");
+                log.info("Logado");
             }else{
+                log.severe("Falha na autencação");
                 throw new CommandException(402,"Falha de autenticação");
             }
         } catch (DataAccessException| IOException e) {
+            log.severe("Falha ao acessar a base de dados");
             throw new CommandException(403, "Falha ao acessar a base de dados");
         }
     }
@@ -90,7 +96,9 @@ public class UsuariosController implements Command {
         request.getSession().invalidate();
         try {
             response.sendRedirect("index.jsp");
+            log.info("Logout");
         } catch (IOException e) {
+            log.severe("Não foi possivel realizar logout");
             throw new CommandException(400,"Não foi possivel realizar logout");
         }
 
@@ -132,20 +140,22 @@ public class UsuariosController implements Command {
         try {
             if(usuarioDao.buscar(user.getEmail()) == null){
                 usuarioDao.salvar(user);
-                System.out.println("cadastrado com sucesso!");
                 request.setAttribute("cadastroSucesso","Usuário cadastrado com sucesso");
                 request.getRequestDispatcher("/index.jsp").forward(request,response);
+                log.info("Cadastro com sucesso o usuario "+user.getNome());
             }else{
                 msgErro = "Já existe um usuário cadastrado com esse email";
                 request.setAttribute("usuario",user);
                 request.setAttribute("Erro",msgErro);
                 request.getRequestDispatcher("index.jsp").forward(request,response);
+                log.severe(msgErro);
                 //throw new CommandException(403,"Já existe um usuário cadastrado com esse email");
             }
         } catch (DataAccessException e) {
-            e.printStackTrace();
+            log.severe("Falha ao salvar um usuario");
             throw new CommandException(400,"Falha ao salvar um usuário!");
         } catch (ServletException | IOException e) {
+            log.severe("Erro interno");
             throw new CommandException(405,"Erro interno!");
         }
     }
@@ -154,8 +164,10 @@ public class UsuariosController implements Command {
         String reference = request.getParameter("emailUsuario");
         try {
             usuarioDao.remover(reference);
+            log.info("Usuario removido com sucesso");
         } catch (DataAccessException e) {
-            throw new CommandException(400,"Não foi possível excluir o usuários");
+            log.severe("Não foi possivel excluir o usuário");
+            throw new CommandException(400,"Não foi possível excluir o usuário");
         }
     }
 
@@ -163,7 +175,9 @@ public class UsuariosController implements Command {
         List<Usuario> usuarios;
         try{
             usuarios= usuarioDao.listar();
+            log.info("Usuarios listados");
         } catch (DataAccessException e) {
+            log.severe("Não foi possivel listar os usuários");
             throw new CommandException(402,"Não foi possível listar os usuários");
         }
         request.setAttribute("usuarios",usuarios);
@@ -174,7 +188,9 @@ public class UsuariosController implements Command {
         Usuario usuario;
         try{
             usuario = usuarioDao.buscar(reference);
+            log.info("Usuário buscado");
         } catch (DataAccessException e) {
+            log.severe("Falha na busca do usuário");
             throw new CommandException(402,"Falha ao buscar o usuário");
         }
         request.setAttribute("usuario",usuario);
@@ -188,7 +204,9 @@ public class UsuariosController implements Command {
         List<Usuario> alunos;
         try {
             alunos = usuarioDao.listarAlunos();
+            log.info("Alunos listados");
         } catch (DataAccessException e) {
+            log.severe("Não foi possivel listar os alunos");
             throw new CommandException(402,"Não foi possível listar os alunos");
         }
         request.setAttribute("alunos",alunos);
@@ -198,7 +216,9 @@ public class UsuariosController implements Command {
         List<Usuario> professores;
         try {
             professores = usuarioDao.listarAlunos();
+            log.info("Professores listados");
         } catch (DataAccessException e) {
+            log.severe("Não foi possivel listar os professores");
             throw new CommandException(402,"Não foi possível listar os professores");
         }
         request.setAttribute("professores",professores);
@@ -209,7 +229,9 @@ public class UsuariosController implements Command {
         List<Usuario> alunos;
         try{
             alunos = usuarioDao.buscarAlunosPorTurma(nomeTurma);
+            log.info("Alunos listados na turma");
         } catch (DataAccessException e) {
+            log.severe("Não foi possivel listar os alunos da turma desejada");
             throw new CommandException(402,"Não foi possível listar os alunos da turma desejada");
         }
         request.setAttribute("alunos",alunos);

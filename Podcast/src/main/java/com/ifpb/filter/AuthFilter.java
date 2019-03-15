@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * @author antonio miguel
+ */
 @WebFilter(urlPatterns = {"/pages/*"})
 public class AuthFilter implements Filter {
 

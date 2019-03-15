@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ *
+ * @author antonio miguel
+ *
+ */
 @WebFilter(urlPatterns = {"/pages/admin/*"})
 public class AdminFilter implements Filter {
 

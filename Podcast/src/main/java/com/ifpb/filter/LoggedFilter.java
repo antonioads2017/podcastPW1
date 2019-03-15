@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author antonio miguel
+ */
 @WebFilter(urlPatterns = {"/index.jsp"})
 public class LoggedFilter implements Filter {
     @Override
