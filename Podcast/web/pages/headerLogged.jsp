@@ -65,7 +65,7 @@
             </li>
             <li>
                 <ul id="dropdown" class="dropdown-content">
-                    <li><a href="#">Meus dados</a>
+                    <li><a href="/pages/perfilUsuario.jsp">Meus dados</a>
                     </li>
                     <li><a href="/pages/turmasvirtuais.jsp">Turmas virtuais</a></li>
                     <li><a href="/inicio?comando=UsuariosController&acao=sair">Sair</a></li>
