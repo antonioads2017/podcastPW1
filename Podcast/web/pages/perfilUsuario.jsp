@@ -19,13 +19,11 @@
 
 <%@ include file = "headerLogged.jsp" %>
 <div class="row"><div class="card">
-    <div class="card-header">
+
+    <div class="card-content">
         <img src="http://www.wfmu.org/images/generic_avatar_300.png"/>
         <h4>Usuário </h4>
         <p>Aluno/Professor</p>
-    </div>
-    <div class="card-content">
-
     </div>
     <div class="card-footer">
         <div class="card-tabs">
@@ -40,7 +38,7 @@
                 <p>Telefone : </p>
             </div>
             <div id="settings"> <h4>Configurção e propriedades:</h4>
-            <a href="">Editar dados</a>
+            <a href="">Editar dados</a><br>
             <a href="">Desativar conta</a></div>
         </div>
 
