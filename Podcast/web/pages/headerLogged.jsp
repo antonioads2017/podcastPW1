@@ -82,3 +82,5 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
+
+<script src="../js/dropdown.js"></script>
