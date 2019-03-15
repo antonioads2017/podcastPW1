@@ -25,5 +25,5 @@
         </div>
     </div>
 </div></div> <br>
-<div class="col s4"><a class="btn-large waves-effect waves-light orange" href="">Criar turma virtual</a></div>
+<div class="col s4"><a class="btn-large waves-effect waves-light orange" href="criarturma.jsp">Criar turma virtual</a></div>
 
