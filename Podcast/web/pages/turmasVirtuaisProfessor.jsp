@@ -1,18 +1,20 @@
 <div class="col s8">
-<div class="card horizontal">
+    <c:forEach var="turma" items="${turmas}">
+        <div class="card horizontal">
 
-    <div class="card-stacked">
-        <div class="card-content">
-            <div class="col s9">
-                <h4>Título</h4>
-                <p>Descrição</p>
-            </div>
-            <div class="col s3">
-                <div class="right-align">
-                    <a class="btn-floating waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">close</i></a>
+            <div class="card-stacked">
+
+            <div class="card-content">
+                <div class="col s9">
+                    <h4 ${turma.nome}></h4>
+                    <p ${turma.descricao}></p>
+                </div>
+                <div class="col s3">
+                    <div class="right-align">
+                        <a class="btn-floating waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">close</i></a>
+                    </div>
                 </div>
             </div>
-        </div>
         <div class="card-action">
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width">
@@ -31,6 +33,8 @@
             </div>
         </div>
     </div>
-</div></div> <br>
+</div>
+    </c:forEach>
+</div> <br>
 <div class="col s4"><a class="btn-large waves-effect waves-light orange" href="criarturma.jsp">Criar turma virtual</a></div>
 

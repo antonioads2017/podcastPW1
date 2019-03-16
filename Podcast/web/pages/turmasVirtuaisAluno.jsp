@@ -1,10 +1,11 @@
 <div class="col s8">
+    <c:forEach var="turma" items="${turmas}">
 <div class="card horizontal">
 
     <div class="card-stacked">
         <div class="card-content">
-            <h4>Título</h4>
-            <p>Descrição</p>
+            <h4 ${turma.nome}></h4>
+            <p${turma.descricao}></p>
         </div>
         <div class="card-action">
             <div class="card-tabs">
@@ -20,4 +21,4 @@
             </div>
         </div>
     </div>
-</div></div>
+</div></c:forEach></div>

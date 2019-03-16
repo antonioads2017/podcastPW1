@@ -91,7 +91,7 @@ public class TurmaVirtualController implements Command {
         try {
             turmaVirtualDao.salvar(turma);
         } catch (DataAccessException e) {
-            throw new CommandException(400,"Não foi possível concluir a criação da turam virtual");
+            throw new CommandException(400,"Não foi possível concluir a criação da turma virtual");
         }
 
         request.setAttribute("turmaCriada","turma virtual criada com sucesso!");
@@ -109,6 +109,9 @@ public class TurmaVirtualController implements Command {
     }
 
     private void listarTurmaService(HttpServletRequest request, HttpServletResponse response) {
+
+
+
 
     }
 
