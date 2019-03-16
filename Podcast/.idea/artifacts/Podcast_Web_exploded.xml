@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="Podcast:Web exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/Podcast_Web_exploded</output-path>
+    <output-path>$PROJECT_DIR$/web</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Podcast/web/Web" />
       <element id="directory" name="WEB-INF">

@@ -21,16 +21,16 @@
                 </form>
             </li>
             <li>
+
                 <!-- Modal Trigger -->
-                <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal2">Upload Podcast</a>
+                <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal2">Envie seu PodCast</a>
 
                 <!-- Modal Structure -->
                 <div id="modal2" class="modal">
                     <div class="modal-content">
                         <center>
                             <div class="row">
-                                <div class="center">
-                                    <form class="center col s4">
+                                    <form class="s4">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <input id="título" type="text" class="validate">
@@ -47,26 +47,33 @@
                                                 <label for="decricao">Descrição</label>
                                             </div>
                                         </div>
-                                        <div class="file-field input-field">
-                                            <div class="btn">
-                                                <span>Arquivo de áudio PodCast</span>
-                                                <input type="file">
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text">
+                                        <div>
+                                            <div class = "file-field input-field">
+                                                <div class = "btn">
+                                                    <span>Browse</span>
+                                                    <input type = "file" />
+                                                </div>
+
+                                                <div class = "file-path-wrapper">
+                                                    <input class = "file-path validate" type = "text"
+                                                           placeholder = "Upload file" />
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="bottom">
+                                            <button class="btn"> Enviar PodCast </button>
+                                        </div>
                                     </form>
-                                </div>
                             </div>
                         </center>
                     </div>
+
                 </div>
+
             </li>
             <li>
                 <ul id="dropdown" class="dropdown-content">
-                    <li><a href="/pages/perfilUsuario.jsp">Meus dados</a>
-                    </li>
+                    <li><a href="/pages/perfilUsuario.jsp">Meus dados</a></li>
                     <li><a href="/pages/turmasvirtuais.jsp">Turmas virtuais</a></li>
                     <li><a href="/inicio?comando=UsuariosController&acao=sair">Sair</a></li>
                 </ul>
@@ -84,3 +91,14 @@
 </nav>
 
 <script src="../js/dropdown.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+</script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../js/materialize.js"></script>
+<script src="../js/init.js"></script>
