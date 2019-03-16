@@ -25,7 +25,7 @@
                 <%@ include file = "turmasVirtuaisProfessor.jsp" %>
             </c:when>
             <c:otherwise>
-                <<%@ include file = "turmasVirtuaisAluno.jsp" %>
+                <%@ include file = "turmasVirtuaisAluno.jsp" %>
             </c:otherwise>
         </c:choose>
 

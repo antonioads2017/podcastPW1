@@ -116,8 +116,23 @@ public class TurmaVirtualController implements Command {
         //TODO
     }
 
-    private void buscarTurmaService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void buscarTurmaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String nomeTurma = request.getParameter("nomeTurma");
+
+        TurmaVirtual turma;
+
+        try {
+            turma = turmaVirtualDao.buscar(nomeTurma);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Não foi possível carregar a página para a turma requisitada");
+        }
+
+        request.setAttribute("turma",turma);
+        try {
+            request.getRequestDispatcher("/pages/perfilTurma.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            throw new CommandException(400,"Falha ao abrir a página da turma");
+        }
     }
 
     private void adicionarAlunoService(HttpServletRequest request, HttpServletResponse response) {
