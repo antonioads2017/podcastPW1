@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head><title>IFCast - Criar turma </title>
     <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -18,16 +18,16 @@
 
 <div class="card-panel">
     <div class="row">
-        <form class="col s12">
+        <form class="col s12" action="/inicio?comando=TurmaVirtualController&acao=criar" method="POST">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="nome" type="text" class="validate">
+                    <input name="nomeTurma" id="nome" type="text" class="validate" minlength="5" required>
                     <label for="nome">Nome</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="descricao" type="text" class="validate">
+                    <input name="descricao" id="descricao" type="text" class="validate" minlength="10" required>
                     <label for="descricao">Descrição</label>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <span class="card-title">Alunos adicionados</span>
-                                <ul class="collection with-header" id="listaAlunos">
+                                <ul class="collection with-header" id="listaAlunos" >
                                     <%--<li class="collection-item black-text">Alvin<a class="secondary-content"><i class="material-icons">send</i></a></li>--%>
                                 </ul>
 

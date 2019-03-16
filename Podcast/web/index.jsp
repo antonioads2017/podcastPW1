@@ -160,5 +160,14 @@
 </script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
+<c:if test="${cadastroSucesso != null}">
+    <script>
+        $(document).ready(function(){
+
+            M.toast({html: 'Usuário cadatrado com sucesso!'}, 4000)
+
+        });
+    </script>
+</c:if>
 </body>
 </html>
