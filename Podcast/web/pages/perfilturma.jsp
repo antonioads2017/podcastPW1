@@ -24,7 +24,8 @@
 
 
         <div class="row">
-            <div class="col s9">
+            <div class="col s1"></div>
+            <div class="col s8">
                 <div class="card horizontal left-align">
                     <div class="card-title">
                         <h4>${turma.nome}Nome da turma</h4>
@@ -43,6 +44,100 @@
             </div>
             <div class="col s3">
                 <span class="center-align">Criado por: Mailson ${turma.criador.nome}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card col s12">
+                <div class="card-content">
+                    <div class="card-title">
+                        <h4>Podcasts</h4>
+                    </div>
+                    <div class="col s8">
+                        <ul>
+                            <li>
+                                <div class="col s6 card">
+                                    <div class="card-content">
+                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
+                                        <p>Categoria: Escolar ${podcast.categoria}</p>
+                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col s6 card">
+                                    <div class="card-content">
+                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
+                                        <p>Categoria: Escolar ${podcast.categoria}</p>
+                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col s6 card">
+                                    <div class="card-content">
+                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
+                                        <p>Categoria: Escolar ${podcast.categoria}</p>
+                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col s6 card">
+                                    <div class="card-content">
+                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
+                                        <p>Categoria: Escolar ${podcast.categoria}</p>
+                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col s4">
+                        <div class="card">
+                            <%--<h5 class="card-title">Participantes</h5>--%>
+                            <div class="card-content">
+                                <ul class="collection">
+                                    <li class="collection-item avatar">
+                                        <img src="images/yuna.jpg" alt="" class="circle">
+                                        <span class="title">Title</span>
+                                        <p>First Line <br>
+                                            Second Line
+                                        </p>
+                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                    </li>
+                                    <li class="collection-item avatar">
+                                        <i class="material-icons circle">folder</i>
+                                        <span class="title">Title</span>
+                                        <p>First Line <br>
+                                            Second Line
+                                        </p>
+                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                    </li>
+                                    <li class="collection-item avatar">
+                                        <i class="material-icons circle green">insert_chart</i>
+                                        <span class="title">Title</span>
+                                        <p>First Line <br>
+                                            Second Line
+                                        </p>
+                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                    </li>
+                                    <li class="collection-item avatar">
+                                        <i class="material-icons circle red">play_arrow</i>
+                                        <span class="title">Title</span>
+                                        <p>First Line <br>
+                                            Second Line
+                                        </p>
+                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
