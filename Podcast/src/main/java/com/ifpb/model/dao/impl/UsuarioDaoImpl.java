@@ -2,7 +2,6 @@ package com.ifpb.model.dao.impl;
 
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
-import com.ifpb.model.domain.Endereco;
 import com.ifpb.model.domain.Enum.NivelAcesso;
 import com.ifpb.model.domain.Enum.Sexo;
 import com.ifpb.model.domain.Enum.Tipo;
