@@ -3,8 +3,15 @@
 
     <div class="card-stacked">
         <div class="card-content">
-            <h4>Título</h4>
-            <p>Descrição</p>
+            <div class="col s9">
+                <h4>Título</h4>
+                <p>Descrição</p>
+            </div>
+            <div class="col s3">
+                <div class="right-align">
+                    <a class="btn-floating waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">close</i></a>
+                </div>
+            </div>
         </div>
         <div class="card-action">
             <div class="card-tabs">
