@@ -37,7 +37,7 @@
 
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
-<c:if test="${turamCriada != null}">
+<c:if test="${turmaCriada != null}">
     <script>
         $(document).ready(function(){
 
