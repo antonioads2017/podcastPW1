@@ -49,7 +49,7 @@ public class TurmaVirtualController implements Command {
                 buscarTurmaService(request,response);
                 break;
             case "atualizar":
-                atualizarTurmaSerice(request,response);
+                atualizarTurmaService(request,response);
                 break;
             case "adicionarAluno":
                 adicionarAlunoService(request,response);
@@ -109,7 +109,7 @@ public class TurmaVirtualController implements Command {
     }
 
     private void listarTurmaService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+
     }
 
     private void buscarTurmaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
@@ -139,7 +139,7 @@ public class TurmaVirtualController implements Command {
         //TODO
     }
 
-    private void atualizarTurmaSerice(HttpServletRequest request, HttpServletResponse response) {
+    private void atualizarTurmaService(HttpServletRequest request, HttpServletResponse response) {
         //TODO
     }
 
