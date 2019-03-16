@@ -67,10 +67,6 @@ public class TurmaVirtualController implements Command {
         String[] emailAlunos = request.getParameterValues("alunos");
         List<Usuario> alunos = new ArrayList();
 
-        System.out.println(nomeTurma);
-        System.out.println(descricao);
-        System.out.println(alunos);
-
         //====================================================
 
         try{

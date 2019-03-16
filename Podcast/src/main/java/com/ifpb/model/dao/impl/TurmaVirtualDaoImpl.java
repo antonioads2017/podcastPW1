@@ -117,10 +117,32 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(2,emailAluno);
             statement.setString(1,nomeTurma);
-            System.out.println(statement.execute());
+            statement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar inserur um aluno em uma turma virutal");
         }
+    }
+
+    @Override
+    public void removerAlunodeTurma(String nomeTurma, String emailAluno) throws DataAccessException {
+        String query = "DELETE FROM participa_turma WHERE turma = ? AND aluno_email = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,nomeTurma);
+            statement.setString(2,emailAluno);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar inserur um aluno em uma turma virutal");
+        }
+    }
+
+    @Override
+    public List<TurmaVirtual> listarTurmasCriadas() throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public List<TurmaVirtual> listarTurmasParticiantes(String emailAluno) throws DataAccessException {
+        return null;
     }
 }
