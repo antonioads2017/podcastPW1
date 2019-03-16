@@ -7,6 +7,7 @@ import com.ifpb.model.domain.TurmaVirtual;
 import com.ifpb.model.domain.Usuario;
 import com.ifpb.model.jdbc.ConnectionException;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,7 +87,7 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
 
     @Override
     public TurmaVirtual buscar(String reference) throws DataAccessException {
-        String query = "SELECT * FROM torma_virtual WHERE nome = ?";
+        String query = "SELECT * FROM turma_virtual WHERE nome = ?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
@@ -137,8 +138,20 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
     }
 
     @Override
-    public List<TurmaVirtual> listarTurmasCriadas() throws DataAccessException {
-        return null;
+    public List<TurmaVirtual> listarTurmasCriadas(String criador) throws DataAccessException {
+        String query = "SELECT * FROM turma_virtual WHERE professor_email = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,criador);
+            ResultSet result = statement.executeQuery();
+            List<TurmaVirtual> turmas = new ArrayList<>();
+            while(result.next()){
+                turmas.add(construirTurma(result));
+            }
+            return turmas;
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao listar as turmas virtuais criadas por um professor");
+        }
     }
 
     @Override

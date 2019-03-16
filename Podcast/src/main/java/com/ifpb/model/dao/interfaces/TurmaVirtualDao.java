@@ -15,6 +15,6 @@ import java.util.List;
 public interface TurmaVirtualDao extends DaoIF<TurmaVirtual> {
     void adicionarAlunoaTurma(String nomeTurma, String emailAluno) throws DataAccessException;
     void removerAlunodeTurma(String nomeTurma,String emailAluno) throws DataAccessException;
-    List<TurmaVirtual> listarTurmasCriadas() throws DataAccessException;
+    List<TurmaVirtual> listarTurmasCriadas(String criador) throws DataAccessException;
     List<TurmaVirtual> listarTurmasParticiantes(String emailAluno) throws DataAccessException;
 }
