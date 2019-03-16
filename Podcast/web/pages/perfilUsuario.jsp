@@ -38,7 +38,7 @@
                 <p>Telefone : </p>
             </div>
             <div id="settings"> <h4>Configurção e propriedades:</h4>
-            <a href="">Editar dados</a><br>
+            <a href="editarUsuario.jsp">Editar dados</a><br>
             <a href="">Desativar conta</a></div>
         </div>
 
