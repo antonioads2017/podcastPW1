@@ -20,7 +20,16 @@
         <h6>Suas turmas virtuais:</h6>
         <li class="divider"></li>
 
-        <%@ include file = "turmasVirtuaisProfessor.jsp" %>
+        <c:choose>
+            <c:when test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
+                <%@ include file = "turmasVirtuaisProfessor.jsp" %>
+            </c:when>
+            <c:otherwise>
+                <<%@ include file = "turmasVirtuaisAluno.jsp" %>
+            </c:otherwise>
+        </c:choose>
+
+
     </div>
 </div>
 
@@ -29,11 +38,9 @@
 <%@ include file = "footer.jsp" %>
 
 <!--  Scripts-->
-<script type="text/javascript"
-        src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
 </script>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
