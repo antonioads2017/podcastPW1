@@ -24,25 +24,24 @@ public class Usuario {
     private LocalDate nascimento;
     private Tipo tipo;
     private NivelAcesso nivelAcesso;
-    private File foto;
+    private String fotoPath;
     private Sexo sexo;
     private String telefone;
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha, LocalDate nascimento, Tipo tipo, NivelAcesso nivelAcesso, File foto, Sexo sexo, String telefone) {
+    public Usuario(String nome, String email, String senha, LocalDate nascimento, Tipo tipo, NivelAcesso nivelAcesso, String fotoPath, Sexo sexo, String telefone) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.nascimento = nascimento;
         this.tipo = tipo;
         this.nivelAcesso = nivelAcesso;
-        this.foto = foto;
+        this.fotoPath = fotoPath;
         this.sexo = sexo;
         this.telefone = telefone;
     }
-
 
     public String getNome() {
         return nome;
@@ -84,12 +83,12 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public File getFoto() {
-        return foto;
+    public String getFotoPath() {
+        return fotoPath;
     }
 
-    public void setFoto(File foto) {
-        this.foto = foto;
+    public void setFotoPath(String fotoPath) {
+        this.fotoPath = fotoPath;
     }
 
     public Sexo getSexo() {
@@ -127,14 +126,14 @@ public class Usuario {
                 Objects.equals(nascimento, usuario.nascimento) &&
                 tipo == usuario.tipo &&
                 nivelAcesso == usuario.nivelAcesso &&
-                Objects.equals(foto, usuario.foto) &&
+                Objects.equals(fotoPath, usuario.fotoPath) &&
                 sexo == usuario.sexo &&
                 Objects.equals(telefone, usuario.telefone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, email, senha, nascimento, tipo, nivelAcesso, foto, sexo, telefone);
+        return Objects.hash(nome, email, senha, nascimento, tipo, nivelAcesso, fotoPath, sexo, telefone);
     }
 
     @Override
@@ -146,7 +145,7 @@ public class Usuario {
                 ", nascimento=" + nascimento +
                 ", tipo=" + tipo +
                 ", nivelAcesso=" + nivelAcesso +
-                ", foto=" + foto +
+                ", fotoPath='" + fotoPath + '\'' +
                 ", sexo=" + sexo +
                 ", telefone='" + telefone + '\'' +
                 '}';
