@@ -22,80 +22,81 @@
 </head>
 <body>
 <%@ include file="headerLogged.jsp" %>
+<div class="row">
+    <div class="col s12"></div>
+    <div class="col s12 m4 l2"></div>
+    <div class="col s12 m4 l8"><div class="card">
 
+        <div class="card-content">
+            <div>
+                <img src="${sessionScope.usuarioLogado.foto.path == null ? "http://www.wfmu.org/images/generic_avatar_300.png" : sessionScope.usuarioLogado.foto.path }"/>
+            </div>
+            <!-- Modal Trigger -->
+            <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal3">Mudar foto</a><br><br>
 
-<center>
-    <div class="row">
-        <div class="col s1"></div>
-        <div>
-            <img src="${sessionScope.usuarioLogado.foto.path == null ? "http://www.wfmu.org/images/generic_avatar_300.png" : sessionScope.usuarioLogado.foto.path }"/>
-        </div>
-        <!-- Modal Trigger -->
-        <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal3">Mudar foto</a><br><br>
+            <!-- Modal Structure -->
+            <div id="modal3" class="modal">
+                <div class="modal-content">
+                    <center>
+                        <div class="row">
+                            <form class="s4" enctype="multipart/form-data">
+                                <div>
+                                    <div class="file-field input-field">
+                                        <div class="btn">
+                                            <span>Escolher foto</span>
+                                            <input type="file"/>
+                                        </div>
 
-        <!-- Modal Structure -->
-        <div id="modal3" class="modal">
-            <div class="modal-content">
-                <center>
-                    <div class="row">
-                        <form class="s4" enctype="multipart/form-data">
-                            <div>
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>Escolher foto</span>
-                                        <input type="file"/>
-                                    </div>
-
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text"
-                                               placeholder="Upload file"/>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text"
+                                                   placeholder="Upload file"/>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="bottom">
-                                <button class="btn"> Enviar imagem</button>
-                            </div>
-                        </form>
+                                <div class="bottom">
+                                    <button class="btn"> Enviar imagem</button>
+                                </div>
+                            </form>
+                        </div>
+                    </center>
+                </div>
+            </div>
+            <form class="col10 s10" action="/inicio?comando=UsuariosController&acao=salvarImagem"
+                  method="POST">
+                <div class="row">
+
+                    <div class="input-field col10 s10">
+                        <input id="name" type="text" class="validate" name="nome" value="${sessionScope.usuarioLogado.nome}"
+                               maxlength="40" required>
+                        <label for="name">Nome</label></div>
+                    <div class="input-field col10 s10">
+                        <input id="email" type="email" class="validate" name="email"
+                               value="${sessionScope.usuarioLogado.email}" required>
+                        <label for="email">E-mail</label></div>
+                    <div class="input-field col10 s10">
+                        <input id="password" type="password" class="validate" name="senha" value="" minlength="6" required>
+                        <label for="password">Senha</label></div>
+                    <div class="input-field col10 s10">
+                        <input id="cellphone" type="text" class="validate" name="telefone"
+                               value="${sessionScope.usuarioLogado.telefone}">
+                        <label for="cellphone">Telefone</label>
                     </div>
-                </center>
-            </div>
-        </div>
-        <form class="col10 s10" action="/inicio?comando=UsuariosController&acao=salvarImagem"
-              method="POST">
-            <div class="row">
+                    <div class="input-field col10 s10">
+                        <input id="date" type="date" class="validate" name="nascimento"
+                               value="${sessionScope.usuarioLogado.nascimento}" required>
+                        <label for="date">Data de Nascimento</label>
+                    </div>
 
-                <div class="input-field col10 s10">
-                    <input id="name" type="text" class="validate" name="nome" value="${sessionScope.usuarioLogado.nome}"
-                           maxlength="40" required>
-                    <label for="name">Nome</label></div>
-                <div class="input-field col10 s10">
-                    <input id="email" type="email" class="validate" name="email"
-                           value="${sessionScope.usuarioLogado.email}" required>
-                    <label for="email">E-mail</label></div>
-                <div class="input-field col10 s10">
-                    <input id="password" type="password" class="validate" name="senha" value="" minlength="6" required>
-                    <label for="password">Senha</label></div>
-                <div class="input-field col10 s10">
-                    <input id="cellphone" type="text" class="validate" name="telefone"
-                           value="${sessionScope.usuarioLogado.telefone}">
-                    <label for="cellphone">Telefone</label>
+
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Editar
+                        <i class="material-icons right">cloud</i>
+                    </button>
                 </div>
-                <div class="input-field col10 s10">
-                    <input id="date" type="date" class="validate" name="nascimento"
-                           value="${sessionScope.usuarioLogado.nascimento}" required>
-                    <label for="date">Data de Nascimento</label>
-                </div>
+            </form>
 
-
-                <button class="btn waves-effect waves-light" type="submit" name="action">Editar
-                    <i class="material-icons right">cloud</i>
-                </button>
-            </div>
-        </form>
-        <div class="col s1"></div>
     </div>
-</center>
-
+    </div></div></div>
+<div class="col s12 m4 l2"></div>
 
 <%@ include file="footer.jsp" %>
 

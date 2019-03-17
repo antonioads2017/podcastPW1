@@ -1,4 +1,4 @@
-<div class="col s8">
+
 <div class="card horizontal">
 
     <div class="card-stacked">
@@ -20,4 +20,4 @@
             </div>
         </div>
     </div>
-</div></div>
+</div>
