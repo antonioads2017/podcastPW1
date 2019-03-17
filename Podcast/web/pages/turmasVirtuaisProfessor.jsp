@@ -1,4 +1,4 @@
-<div class="col s8">
+
 <div class="card horizontal">
 
     <div class="card-stacked">
@@ -31,6 +31,6 @@
             </div>
         </div>
     </div>
-</div></div> <br>
+</div> <br>
 <div class="col s4"><a class="btn-large waves-effect waves-light orange" href="criarturma.jsp">Criar turma virtual</a></div>
 

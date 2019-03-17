@@ -16,21 +16,17 @@
 <body>
 <%@ include file = "headerLogged.jsp" %>
 <div class="row">
-    <div class="col s12"><br>
-        <h6>Suas turmas virtuais:</h6>
-        <li class="divider"></li>
-
-        <c:choose>
-            <c:when test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
-                <%@ include file = "turmasVirtuaisProfessor.jsp" %>
-            </c:when>
-            <c:otherwise>
-                <%@ include file = "turmasVirtuaisAluno.jsp" %>
-            </c:otherwise>
-        </c:choose>
-
-
-    </div>
+    <div class="col s12"></div>
+    <div class="col s12 m4 l2"></div>
+    <div class="col s12 m4 l8"><p><c:choose>
+        <c:when test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
+            <%@ include file = "turmasVirtuaisProfessor.jsp" %>
+        </c:when>
+        <c:otherwise>
+            <%@ include file = "turmasVirtuaisAluno.jsp" %>
+        </c:otherwise>
+    </c:choose></p></div>
+    <div class="col s12 m4 l2"></div>
 </div>
 
 
