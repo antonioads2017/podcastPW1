@@ -59,8 +59,8 @@
                                     <div class="col s6 card">
                                         <div class="card-content">
                                             <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
-                                            <p>Categoria: Escolar ${podcast.categoria}</p>
-                                            <p>Dono: Mailson ${podcast.dono.nome}</p>
+                                            <p>Categoria: ${podcast.categoria}</p>
+                                            <p>Dono: ${podcast.dono.nome}</p>
                                             <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
                                         </div>
                                     </div>
@@ -73,38 +73,21 @@
                             <%--<h5 class="card-title">Participantes</h5>--%>
                             <div class="card-content">
                                 <ul class="collection">
-                                    <li class="collection-item avatar">
-                                        <img src="${pageContext.servletContext.IMG_DIR+usuario.foto}" alt="" class="circle">
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                    </li>
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle">folder</i>
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                     asdasdqw   <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                    </li>
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle green">insert_chart</i>
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              e                      </li>
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle red">play_arrow</i>
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                    </li>
+                                    <c:forEach var="aluno" items="turma.participantes">
+                                        <li class="collection-item avatar">
+                                            <c:choose>
+                                                <c:when test="${aluno.fotoPath == ''}">
+                                                    <img src="http://www.wfmu.org/images/generic_avatar_300.png" alt="" class="circle"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img src="/img/${aluno.fotoPath}" alt="" class="circle">
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <span class="title">${aluno.nome}</span>
+                                            <p>${aluno.email}</p>
+                                            <a href="/inicio?comando=UsuariosController&acao=buscar&emailUsuario="${aluno.email} class="secondary-content"><i class="material-icons">info_outline</i></a>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>
