@@ -17,7 +17,7 @@ import java.io.IOException;
  *
  */
 @MultipartConfig(
-        location = "/home/loopis/Uploads"
+        location = "/home/mailson/Imagens/"
 
 )
 @WebServlet("/inicio")

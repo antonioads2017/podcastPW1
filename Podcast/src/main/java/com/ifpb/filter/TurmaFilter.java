@@ -19,7 +19,7 @@ import java.util.List;
  * @author antonio miguel
  */
 
-@WebFilter(urlPatterns = {"pages/turmasvirtuais.jsp"})
+@WebFilter(urlPatterns = {"/pages/turmasvirtuais.jsp"})
 public class TurmaFilter implements Filter {
 
     TurmaVirtualDao turmaVirtualDao;

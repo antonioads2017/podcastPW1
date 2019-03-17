@@ -8,10 +8,14 @@ import com.ifpb.model.domain.Enum.NivelAcesso;
 import com.ifpb.model.domain.Enum.Sexo;
 import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.Usuario;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -50,6 +54,9 @@ public class UsuariosController implements Command {
                 break;
             case "listar":
                 listarService(request,response);
+                break;
+            case "salvarImagem":
+                salvarImagemService(request,response);
                 break;
             case "buscar":
                 buscarService(request,response);
@@ -237,6 +244,39 @@ public class UsuariosController implements Command {
         request.setAttribute("alunos",alunos);
     }
 
+    private void salvarImagemService(HttpServletRequest request, HttpServletResponse response) {
+//        /*Identifica se o formulario é do tipo multipart/form-data*/
+//        if (ServletFileUpload.isMultipartContent(request)) {
+//            try {
+//                /*Faz o parse do request*/
+//                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+//
+//                /*Escreve a o arquivo na pasta img*/
+//                for (FileItem item : multiparts) {
+//                    if (!item.isFormField()) {
+//                        item.write(new File(request.getServletContext().getRealPath("img")+ File.separator + "uploadfile"));
+//                        System.out.println(request.getServletContext().getRealPath("img"));
+//                        System.out.println(File.separator);
+//                    }
+//                }
+//
+//                request.setAttribute("message", "Arquivo carregado com sucesso");
+//            } catch (Exception ex) {
+//                request.setAttribute("message", "Upload de arquivo falhou devido a "+ ex);
+//            }
+//
+//        } else {
+//            request.setAttribute("message","Desculpe este Servlet lida apenas com pedido de upload de arquivos");
+//        }
+//
+//        try {
+//            request.getRequestDispatcher("/pages/editarUsuario.jsp").forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
 
 
 }
