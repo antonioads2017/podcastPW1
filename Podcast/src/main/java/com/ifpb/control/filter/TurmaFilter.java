@@ -3,7 +3,9 @@ package com.ifpb.control.filter;
 
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.impl.TurmaVirtualDaoImpl;
+import com.ifpb.model.dao.impl.UsuarioDaoImpl;
 import com.ifpb.model.dao.interfaces.TurmaVirtualDao;
+import com.ifpb.model.dao.interfaces.UsuarioDao;
 import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.TurmaVirtual;
 import com.ifpb.model.domain.Usuario;
@@ -24,10 +26,12 @@ import java.util.logging.Logger;
 public class TurmaFilter implements Filter {
 
     TurmaVirtualDao turmaVirtualDao;
+    UsuarioDao usuarioDao;
     Logger log = Logger.getLogger("log");
 
     public TurmaFilter(){
         turmaVirtualDao = new TurmaVirtualDaoImpl();
+        usuarioDao = new UsuarioDaoImpl();
     }
 
 
@@ -41,11 +45,15 @@ public class TurmaFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest)request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         List<TurmaVirtual> turmas;
+        List<Usuario> alunos;
         Usuario usuarioLogado = (Usuario) httpRequest.getSession(true).getAttribute("usuarioLogado");
         if(usuarioLogado.getTipo().equals(Tipo.PROFESSOR)){
             try {
                 turmas = turmaVirtualDao.listarTurmasCriadas(usuarioLogado.getEmail());
                 log.info("turmas listadas do "+usuarioLogado.getTipo());
+                alunos = usuarioDao.listarAlunos();
+                log.info("listando os alunos para adição em turmas virtuais");
+                request.setAttribute("alunos",alunos);
             } catch (DataAccessException e) {
                 log.severe("Erro ao carregar a página");
                 throw new ServletException("Erro ao carregar a página");
