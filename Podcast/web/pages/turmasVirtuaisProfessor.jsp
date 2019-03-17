@@ -32,55 +32,44 @@
                         </div>
                     </div>
                     <div id="md2${turma.nome}" class="modal">
-                        <form>
+                        <form method="POST" action="/inicio?comando=TurmaVirtualController&acao=adicionarMembro">
                             <div class="modal-content">
                                 <div class="row">
                                     <div class="col s12">
-                                        <h4 class="center-align">Selecione os alunos que deseja adicionar a turma</h4>
+                                        <h4 class="center-align">Selecione o aluno que deseja adicionar a turma</h4>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col s6">
+                                    <div class="col s12">
                                         <div class="input-field col s8">
-                                            <select class="icons" id="select">
+                                            <select class="icons center-align" id="select" name="alunoEmail">
                                                 <option value="" disabled selected>Selecione um aluno</option>
-                                                <c:forEach var="aluno" items="${alunos}">
+                                                <c:forEach var="aluno"
+                                                           items="${requestScope['AlunosNaoParticipantes'.concat(turma.nome)]}">
                                                     <option value="${aluno.email}" data-icon="#">${aluno.email}</option>
                                                 </c:forEach>
                                             </select>
-                                            <label>Materialize Select</label>
+                                            <label>Alunos</label>
                                         </div>
+
+                                        <input type="hidden" name="nomeTurma" value="${turma.nome}">
+
                                         <div class="input-field col s4">
-                                            <div id="membros">
-                                                <a class="btn-floating btn-large waves-effect waves-light red"><i
-                                                        class="material-icons" onclick="adicionaAluno()">add</i></a> Adicionar membros
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col s6">
-                                        <div class="col s12">
-                                            <div class="card blue-grey darken-1">
-                                                <div class="card-content white-text">
-                                                    <span class="card-title">Alunos adicionados</span>
-                                                    <ul class="collection with-header" id="listaAlunos" >
-                                                        <c:forEach var="alunoAdicionado" items="${turma.participantes}">
-                                                            <li class="collection-item black-text" id="${alunoAdicionado.email}Li">${alunoAdicionado.email}
-                                                                <a onclick="removerAluno('${alunoAdicionado.email}')" class="secondary-content"><i class="material-icons">close</i>
-                                                                </a>
-                                                            </li>
-                                                            <input type="hidden" id="${alunoAdicionado.email}" value="${alunoAdicionado.email}" name="alunos">
-                                                        </c:forEach>
-                                                    </ul>
-                                                </div>
+                                            <div id="membros" class="center-align">
+                                                <button class="btn waves-effect waves-light right" type="submit" name="action">Adicionar
+                                                    <i class="material-icons right">cloud</i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <input type="hidden" name="nomeTurma" value="${turma.nome}">
+
                             <div class="modal-footer">
                                 <a href="" class="waves-effect waves-red btn-flat"
                                    onclick="$('#md2${turma.nome}').closeModal(); return false;">Cancelar</a>
-                                <input type="submit" class="waves-effect waves-green btn-flat" id="md2_YesBtn" value="atualizar turma"/>
                             </div>
                         </form>
                     </div>
@@ -94,7 +83,8 @@
                     </div>
                     <div class="card-content grey lighten-4">
                         <div id="membros${turma.nome}">
-                            <a onclick="showModal(this,'md2${turma.nome}')" class="btn-large waves-effect waves-light orange" >Adicionar membros</a>
+                            <a onclick="showModal(this,'md2${turma.nome}')"
+                               class="btn-large waves-effect waves-light orange">Adicionar membros</a>
 
                         </div>
                         <div id="podcasts${turma.nome}">

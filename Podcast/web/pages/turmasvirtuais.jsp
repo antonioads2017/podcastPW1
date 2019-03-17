@@ -47,11 +47,11 @@
 
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
-<c:if test="${turmaCriada != null}">
+<c:if test="${msg != null}">
     <script>
         $(document).ready(function () {
 
-            M.toast({html: ${turmaCriada}}, 4000)
+            M.toast({html: ${msg}}, 4000)
 
         });
     </script>
