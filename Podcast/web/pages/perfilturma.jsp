@@ -73,7 +73,7 @@
                             <%--<h5 class="card-title">Participantes</h5>--%>
                             <div class="card-content">
                                 <ul class="collection">
-                                    <c:forEach var="aluno" items="turma.participantes">
+                                    <c:forEach var="aluno" items="${turma.participantes}">
                                         <li class="collection-item avatar">
                                             <c:choose>
                                                 <c:when test="${aluno.fotoPath == ''}">
