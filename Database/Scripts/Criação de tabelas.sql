@@ -16,19 +16,19 @@ CREATE TABLE usuario(
 
 CREATE TABLE aluno(
 	email TEXT PRIMARY KEY, 
-	FOREIGN KEY (email) REFERENCES usuario(email)
+	FOREIGN KEY (email) REFERENCES usuario(email) ON UPDATE CASCADE
 );
 
 CREATE TABLE professor(
 	email TEXT PRIMARY KEY,
-	FOREIGN KEY (email) REFERENCES usuario(email)
+	FOREIGN KEY (email) REFERENCES usuario(email) ON UPDATE CASCADE
 );
 
 CREATE TABLE turma_virtual(
 	nome VARCHAR(30) PRIMARY KEY,
 	descricao TEXT,
 	professor_email TEXT NOT NULL,
-	FOREIGN KEY (professor_email) REFERENCES professor(email)
+	FOREIGN KEY (professor_email) REFERENCES professor(email) ON UPDATE CASCADE
 );
 
 CREATE TABLE podcast(
@@ -38,7 +38,7 @@ CREATE TABLE podcast(
 	descricao TEXT,
 	criador TEXT NOT NULL,
 	nome_turma VARCHAR(30) NOT NULL,
-	FOREIGN KEY (criador) REFERENCES usuario(email),
+	FOREIGN KEY (criador) REFERENCES usuario(email) ON UPDATE CASCADE,
 	FOREIGN KEY (nome_turma) REFERENCES turma_virtual(nome)
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE avalia_podcast(
 	podcast VARCHAR(100) NOT NULL,
 	comentario TEXT NOT NULL,
 	PRIMARY KEY (usuario,podcast),
-	FOREIGN KEY (usuario) REFERENCES usuario(email),
+	FOREIGN KEY (usuario) REFERENCES usuario(email) ON UPDATE CASCADE,
 	FOREIGN KEY (podcast) REFERENCES podcast(audio)
 );
 
@@ -55,6 +55,6 @@ CREATE TABLE participa_turma(
 	aluno_email TEXT,
 	turma VARCHAR(30),
 	PRIMARY KEY (aluno_email,turma),
-	FOREIGN KEY (aluno_email) REFERENCES aluno(email),
+	FOREIGN KEY (aluno_email) REFERENCES aluno(email) ON UPDATE CASCADE,
 	FOREIGN KEY (turma) REFERENCES turma_virtual(nome)
 )
