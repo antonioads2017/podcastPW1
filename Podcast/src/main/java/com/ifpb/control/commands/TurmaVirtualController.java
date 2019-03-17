@@ -137,7 +137,7 @@ public class TurmaVirtualController implements Command {
 
         request.setAttribute("turma",turma);
         try {
-            request.getRequestDispatcher("/pages/perfilTurma.jsp").forward(request,response);
+            request.getRequestDispatcher("/pages/perfilturma.jsp").forward(request,response);
         } catch (ServletException | IOException e) {
             throw new CommandException(400,"Falha ao abrir a página da turma");
         }
