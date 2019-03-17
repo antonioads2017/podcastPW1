@@ -13,7 +13,12 @@
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <style>
+        .perfil{
+        width: 200px;
+        border-radius: 50%;}
+    </style>
 </head>
 <body>
 
@@ -21,11 +26,10 @@
 <div class="row"><div class="card horizontal">
 
     <div class="card-content">
-        <img class="profile" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-        <h4>Usuário </h4>
-        <p>Aluno/Professor</p>
-    </div>
-    <div class="card-content">
+        <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+        <h4>${sessionScope.usuarioLogado.nome} </h4>
+        <p>${sessionScope.usuarioLogado.tipo}</p>
+
         <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
                 <li class="tab"><a href="#dados">Meus dados</a></li>
@@ -35,15 +39,15 @@
         <div class="card-content grey lighten-4">
             <div id="dados">
                 <h4>Detalhes da conta:</h4>
-                <p>Nome completo:</p>
-                <p>Telefone: </p>
-                <p>E-mail:</p>
-                <p>Nascimento:</p>
+                <p><b>Nome completo:</b> ${sessionScope.usuarioLogado.nome}</p>
+                <p><b>Telefone:</b> ${sessionScope.usuarioLogado.telefone} </p>
+                <p><b>E-mail: </b>${sessionScope.usuarioLogado.email} </p>
+                <p><b>Nascimento:</b> ${sessionScope.usuarioLogado.nascimento} </p>
             </div>
             <div id="settings"> <h4>Configuração e propriedades:</h4>
             <a href="editarUsuario.jsp">Editar dados</a><br>
             <a href="">Desativar conta</a></div>
-        </div>
+        </div></div>
 
     </div>
 </div></div>
