@@ -30,7 +30,7 @@
 
             <div class="card-content">
                 <div>
-                    <img src="${sessionScope.usuarioLogado.foto.path == null ? "http://www.wfmu.org/images/generic_avatar_300.png" : sessionScope.usuarioLogado.foto.path }"/>
+                    <img src="${sessionScope.usuarioLogado.fotoPath == null ? "http://www.wfmu.org/images/generic_avatar_300.png" : sessionScope.usuarioLogado.fotoPath }"/>
                 </div>
                 <!-- Modal Trigger -->
                 <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal3">Mudar foto</a><br><br>
@@ -38,13 +38,6 @@
 
                 <center>
                     <div class="row">
-                        <div class="col s1"></div>
-                        <div>
-                            <img src="${sessionScope.usuarioLogado.foto.path == null ? "http://www.wfmu.org/images/generic_avatar_300.png" : sessionScope.usuarioLogado.foto.path }"/>
-                        </div>
-                        <!-- Modal Trigger -->
-                        <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal3">Mudar
-                            foto</a><br><br>
 
                         <!-- Modal Structure -->
                         <div id="modal3" class="modal">
