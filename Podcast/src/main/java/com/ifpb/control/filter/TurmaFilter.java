@@ -45,15 +45,14 @@ public class TurmaFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest)request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         List<TurmaVirtual> turmas;
-        List<Usuario> alunos;
         Usuario usuarioLogado = (Usuario) httpRequest.getSession(true).getAttribute("usuarioLogado");
         if(usuarioLogado.getTipo().equals(Tipo.PROFESSOR)){
             try {
                 turmas = turmaVirtualDao.listarTurmasCriadas(usuarioLogado.getEmail());
                 log.info("turmas listadas do "+usuarioLogado.getTipo());
-                alunos = usuarioDao.listarAlunos();
-                log.info("listando os alunos para adição em turmas virtuais");
-                request.setAttribute("alunos",alunos);
+                for (TurmaVirtual turma: turmas) {
+                    request.setAttribute("AlunosNaoParticipantes"+turma.getNome(),usuarioDao.buscarAlunosQueNaoParticipamDeTurma(turma.getNome()));
+                }
             } catch (DataAccessException e) {
                 log.severe("Erro ao carregar a página");
                 throw new ServletException("Erro ao carregar a página");
