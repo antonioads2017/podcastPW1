@@ -88,6 +88,7 @@ public class UsuariosController implements Command {
             if(usuarioDao.autenticarUsuario(email,senha)){
                 Usuario user = usuarioDao.buscar(email);
                 request.getSession().setAttribute("usuarioLogado",user);
+
                 //request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
                 response.sendRedirect("/pages/timeline.jsp");
                 log.info("Logado");
@@ -253,10 +254,11 @@ public class UsuariosController implements Command {
             String fileName = id+getFileName(part);
             String uploadImgPath = request.getServletContext().getAttribute("IMG_DIR").toString();
             part.write(uploadImgPath + File.separator + fileName);
-            String emailUsuarioLogado = ((Usuario)request.getSession().getAttribute("usuarioLogado")).getEmail();
-            usuarioDao.salvarFoto(fileName,emailUsuarioLogado);
-            request.getSession().setAttribute("usuarioLogado",usuarioDao.buscar(emailUsuarioLogado));
-            request.getRequestDispatcher("/pages/perfilUsuario");
+            Usuario usuarioLogado = ((Usuario)request.getSession().getAttribute("usuarioLogado"));
+            usuarioDao.salvarFoto(fileName,usuarioLogado.getEmail());
+            usuarioLogado.setFotoPath(fileName);
+            request.getSession().setAttribute("usuarioLogado",usuarioLogado);
+            request.getRequestDispatcher("/pages/perfilUsuario").forward(request,response);
         } catch (IOException |ServletException e) {
             throw new CommandException(400,"Falha ao salvar a foto no servidor");
         } catch (DataAccessException e) {

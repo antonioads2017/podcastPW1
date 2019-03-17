@@ -31,6 +31,8 @@ public class FileLocationContextListener implements ServletContextListener {
         //Setando no contexto a referencia ao diretório e o caminho para o mesmo
         ctx.setAttribute("IMG_DIR_FILE", fileImg);
         ctx.setAttribute("IMG_DIR", rootPath + File.separator + relativePathImg);
+        System.out.println(ctx.getAttribute("IMG_DIR"));
+        System.out.println(File.separator);
         ctx.setAttribute("AUDIO_DIR_FILE",fileAudio);
         ctx.setAttribute("AUDIO_DIR",rootPath + File.separator + relativePathAudio);
     }

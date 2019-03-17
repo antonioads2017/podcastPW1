@@ -30,7 +30,14 @@
 
             <div class="card-content">
                 <div>
-                    <img src="${sessionScope.usuarioLogado.fotoPath == null ? "http://www.wfmu.org/images/generic_avatar_300.png" : sessionScope.usuarioLogado.fotoPath }"/>
+                    <c:choose>
+                        <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
+                            <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                        </c:when>
+                        <c:otherwise>
+                            <img class="perfil" src="/img/${sessionScope.usuarioLogado.fotoPath}"/>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <!-- Modal Trigger -->
                 <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal3">Mudar foto</a><br><br>
@@ -44,12 +51,12 @@
                             <div class="modal-content">
                                 <center>
                                     <div class="row">
-                                        <form class="s4" enctype="multipart/form-data">
+                                        <form class="s4" action="/inicio?comando=UsuariosController&acao=salvarImagem" method="POST" enctype="multipart/form-data">
                                             <div>
                                                 <div class="file-field input-field">
                                                     <div class="btn">
                                                         <span>Escolher foto</span>
-                                                        <input type="file"/>
+                                                        <input type="file" name="foto"/>
                                                     </div>
 
 
