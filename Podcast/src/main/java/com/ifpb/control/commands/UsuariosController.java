@@ -10,8 +10,10 @@ import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.Usuario;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -19,12 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static jdk.nashorn.internal.objects.NativeError.getFileName;
+
 
 /**
  *
  * @author Mailson Dennis
  *
  */
+@MultipartConfig()
 public class UsuariosController implements Command {
 
     private UsuarioDao usuarioDao;
@@ -242,7 +247,29 @@ public class UsuariosController implements Command {
     }
 
     private void salvarImagemService(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(request.getParameter("foto"));
+        try {
+            String id = new Double(Math.random()).toString();
+            Part part = request.getPart("foto");
+            String fileName = id+getFileName(part);
+            String uploadImgPath = request.getServletContext().getAttribute("IMG_DIR").toString();
+            part.write(uploadImgPath + File.separator + fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        System.out.println("content-disposition header= "+contentDisp);
+        String[] tokens = contentDisp.split(";");
+        for (String token : tokens) {
+            if (token.trim().startsWith("filename")) {
+                return token.substring(token.indexOf("=") + 2, token.length()-1);
+            }
+        }
+        return "";
     }
 
 
