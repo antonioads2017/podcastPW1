@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @author antonio miguel
@@ -23,6 +24,7 @@ import java.util.List;
 public class TurmaFilter implements Filter {
 
     TurmaVirtualDao turmaVirtualDao;
+    Logger log = Logger.getLogger("log");
 
     public TurmaFilter(){
         turmaVirtualDao = new TurmaVirtualDaoImpl();
@@ -38,18 +40,22 @@ public class TurmaFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest)request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        List<TurmaVirtual> turmas = null;
+        List<TurmaVirtual> turmas;
         Usuario usuarioLogado = (Usuario) httpRequest.getSession(true).getAttribute("usuarioLogado");
         if(usuarioLogado.getTipo().equals(Tipo.PROFESSOR)){
             try {
                 turmas = turmaVirtualDao.listarTurmasCriadas(usuarioLogado.getEmail());
+                log.info("turmas listadas do "+usuarioLogado.getTipo());
             } catch (DataAccessException e) {
+                log.severe("Erro ao carregar a página");
                 throw new ServletException("Erro ao carregar a página");
             }
         }else {
             try {
                 turmas = turmaVirtualDao.listarTurmasParticiantes(usuarioLogado.getEmail());
+                log.info("turmas listadas do "+usuarioLogado.getTipo());
             } catch (DataAccessException e) {
+                log.severe("Erro ao carregar a página");
                 throw new ServletException("Erro ao carregar a página");
             }
         }
