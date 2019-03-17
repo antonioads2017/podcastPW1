@@ -17,7 +17,7 @@
                     <div class="card-content grey lighten-4">
 
                         <div id="podcasts">
-                            <a class="btn-large waves-effect waves-light orange" href="">Upload de novo podcast</a>
+                            <a class="btn-large waves-effect waves-light orange modal-trigger" href="#modalUpload${turma.nome}">Upload de novo podcast</a>
                         </div>
                     </div>
                 </div>
