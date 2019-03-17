@@ -126,10 +126,11 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
         String query = "INSERT INTO participa_turma (aluno_email,turma) VALUES(?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(2, emailAluno);
-            statement.setString(1, nomeTurma);
+            statement.setString(1, emailAluno);
+            statement.setString(2, nomeTurma);
             statement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar inserur um aluno em uma turma virutal");
         }
     }
