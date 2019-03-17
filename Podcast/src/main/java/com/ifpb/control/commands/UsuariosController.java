@@ -204,8 +204,63 @@ public class UsuariosController implements Command {
         request.setAttribute("usuario",usuario);
     }
 
-    private void atualizarService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void atualizarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String email = request.getParameter("email");
+        String nome = request.getParameter("nome");
+        String senha = request.getParameter("senha");
+        String telefone = request.getParameter("telefone");
+        String nascimento = request.getParameter("nascimento");
+
+        //=============================================================
+
+        Usuario usuarioLogado = (Usuario) request.getSession().getAttribute("usuarioLogado");
+        String emailUsuarioLogado = usuarioLogado.getEmail();
+        boolean atualizado = false;
+        if(!email.equals(emailUsuarioLogado)){
+            usuarioLogado.setEmail(email);
+            atualizado = true;
+        }
+        if(!nome.equals(usuarioLogado.getNome())){
+            usuarioLogado.setNome(nome);
+            atualizado = true;
+        }
+        if(!senha.equals(usuarioLogado.getSenha())){
+            usuarioLogado.setSenha(senha);
+            atualizado = true;
+        }
+        if(!telefone.equals(usuarioLogado.getTelefone())){
+            usuarioLogado.setTelefone(telefone);
+            atualizado = true;
+        }
+        if(!usuarioLogado.getNascimento().equals(LocalDate.parse(nascimento))){
+            usuarioLogado.setNascimento(LocalDate.parse(nascimento));
+            atualizado = true;
+        }
+
+        //===============================================================
+
+        try {
+            usuarioDao.atualizar(emailUsuarioLogado,usuarioLogado);
+
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falah ao atualizar os dados do usuário no banco");
+        }
+
+        if(!atualizado){
+            request.setAttribute("dadosAtualizados","Nenhum dado foi alterado!");
+        }else{
+            request.setAttribute("dadosAtualizados","Dados atualziados com sucesso!");
+        }
+
+
+        request.getSession().setAttribute("usuarioLogado",usuarioLogado);
+        try {
+            request.getRequestDispatcher("/pages/perfilUsuario.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            throw new CommandException(404,"Falha ao carregar a página de perfil");
+        }
+
+
     }
 
     private void listarAlunosService(HttpServletRequest request, HttpServletResponse response) throws CommandException {

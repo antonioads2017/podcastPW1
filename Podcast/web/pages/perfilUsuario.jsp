@@ -61,7 +61,7 @@
                         <p><b>Nascimento:</b> ${sessionScope.usuarioLogado.nascimento} </p>
                     </div>
                     <div id="settings"><h4>Configuração da conta:</h4>
-                        <a href="editarUsuario.jsp">Editar dados</a><br>
+                        <a href="/pages/editarUsuario.jsp">Editar dados</a><br>
                         <a href="">Desativar conta</a></div>
                 </div>
             </div>
@@ -77,12 +77,19 @@
 <%@ include file="footer.jsp" %>
 
 <!--  Scripts-->
-<script type="text/javascript"
-        src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
 </script>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
+<c:if test="${dadosAtualizados != null}">
+    <script>
+        $(document).ready(function(){
+
+            M.toast({html: '${dadosAtualizados}'}, 4000);
+
+        });
+    </script>
+</c:if>
 </body>
 </html>
