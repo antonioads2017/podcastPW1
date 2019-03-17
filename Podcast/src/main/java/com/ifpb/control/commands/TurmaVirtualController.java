@@ -104,8 +104,17 @@ public class TurmaVirtualController implements Command {
 
     }
 
-    private void deletarTurmaService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void deletarTurmaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String nomeTurma = request.getParameter("nomeTurma");
+        try {
+            turmaVirtualDao.remover(nomeTurma);
+            response.sendRedirect("/pages/turmasvirtuais.jsp");
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha na exclusão da turma");
+        } catch (IOException e) {
+            throw new CommandException(404,"Falha ao recarregar a página de turmas virtuais");
+        }
+
     }
 
     private void listarTurmaService(HttpServletRequest request, HttpServletResponse response) {

@@ -60,9 +60,23 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, reference);
             podcastDao.deletarPodcastsPorTurma(reference);
+            deletarParticipantes(reference);
             statement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar apagar uma turma vitural;");
+        }
+    }
+
+    private void deletarParticipantes(String reference) throws DataAccessException {
+        String query = "DELETE FROM participa_turma WHERE turma = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,reference);
+            statement.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new DataAccessException("Falha ao tentar apagar os participantes da turma");
         }
     }
 
