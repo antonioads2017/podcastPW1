@@ -1,13 +1,11 @@
 package com.ifpb.model.dao.impl;
 
-import com.ifpb.model.dao.Exceptions.ConnectionFactory;
+import com.ifpb.model.jdbc.ConnectionFactory;
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.interfaces.*;
 import com.ifpb.model.domain.TurmaVirtual;
 import com.ifpb.model.domain.Usuario;
-import com.ifpb.model.jdbc.ConnectionException;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

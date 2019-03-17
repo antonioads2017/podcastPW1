@@ -1,6 +1,6 @@
-package com.ifpb.model.dao.Exceptions;
+package com.ifpb.model.jdbc;
 
-import com.ifpb.model.jdbc.ConnectionException;
+import com.ifpb.model.dao.Exceptions.ConnectionException;
 
 import java.io.IOException;
 import java.io.InputStream;

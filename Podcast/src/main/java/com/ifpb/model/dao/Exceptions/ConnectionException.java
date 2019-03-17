@@ -1,4 +1,4 @@
-package com.ifpb.model.jdbc;
+package com.ifpb.model.dao.Exceptions;
 
 public class ConnectionException extends RuntimeException {
 

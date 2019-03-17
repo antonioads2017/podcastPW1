@@ -1,13 +1,12 @@
 package com.ifpb.model.dao.impl;
 
-import com.ifpb.model.dao.Exceptions.ConnectionFactory;
+import com.ifpb.model.jdbc.ConnectionFactory;
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.interfaces.ComentarioDao;
 import com.ifpb.model.dao.interfaces.PodcastDao;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
 import com.ifpb.model.domain.Podcast;
-import com.ifpb.model.domain.Usuario;
-import com.ifpb.model.jdbc.ConnectionException;
+import com.ifpb.model.dao.Exceptions.ConnectionException;
 
 import java.io.File;
 import java.sql.Connection;
