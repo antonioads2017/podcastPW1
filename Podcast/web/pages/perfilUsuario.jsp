@@ -18,14 +18,14 @@
 <body>
 
 <%@ include file = "headerLogged.jsp" %>
-<div class="row"><div class="card">
+<div class="row"><div class="card horizontal">
 
     <div class="card-content">
-        <img src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+        <img class="profile" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
         <h4>Usuário </h4>
         <p>Aluno/Professor</p>
     </div>
-    <div class="card-footer">
+    <div class="card-content">
         <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
                 <li class="tab"><a href="#dados">Meus dados</a></li>
@@ -35,9 +35,12 @@
         <div class="card-content grey lighten-4">
             <div id="dados">
                 <h4>Detalhes da conta:</h4>
-                <p>Telefone : </p>
+                <p>Nome completo:</p>
+                <p>Telefone: </p>
+                <p>E-mail:</p>
+                <p>Nascimento:</p>
             </div>
-            <div id="settings"> <h4>Configurção e propriedades:</h4>
+            <div id="settings"> <h4>Configuração e propriedades:</h4>
             <a href="editarUsuario.jsp">Editar dados</a><br>
             <a href="">Desativar conta</a></div>
         </div>
