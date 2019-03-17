@@ -253,9 +253,9 @@ public class UsuariosController implements Command {
             String fileName = id+getFileName(part);
             String uploadImgPath = request.getServletContext().getAttribute("IMG_DIR").toString();
             part.write(uploadImgPath + File.separator + fileName);
-            String emailUsuarioLogado = ((Usuario)request.getSession().getAttribute("UsuarioLogado")).getEmail();
+            String emailUsuarioLogado = ((Usuario)request.getSession().getAttribute("usuarioLogado")).getEmail();
             usuarioDao.salvarFoto(fileName,emailUsuarioLogado);
-            request.getSession().setAttribute("UsuarioLogado",usuarioDao.buscar(emailUsuarioLogado));
+            request.getSession().setAttribute("usuarioLogado",usuarioDao.buscar(emailUsuarioLogado));
             request.getRequestDispatcher("/pages/perfilUsuario");
         } catch (IOException |ServletException e) {
             throw new CommandException(400,"Falha ao salvar a foto no servidor");

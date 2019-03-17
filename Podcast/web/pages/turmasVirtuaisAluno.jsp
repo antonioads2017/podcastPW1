@@ -4,8 +4,8 @@
 
     <div class="card-stacked">
         <div class="card-content">
-            <h4 ${turma.nome}></h4>
-            <p${turma.descricao}></p>
+            <h4>${turma.nome}</h4>
+            <p>${turma.descricao}</p>
         </div>
         <div class="card-action">
             <div class="card-tabs">

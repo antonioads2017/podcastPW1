@@ -6,28 +6,28 @@
 
             <div class="card-content">
                 <div class="col s9">
-                    <h4 ${turma.nome}></h4>
-                    <p ${turma.descricao}></p>
+                    <h4>${turma.nome}</h4>
+                    <p>${turma.descricao}</p>
                 </div>
                 <div class="col s3">
                     <div class="right-align">
-                        <a class="btn-floating waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">close</i></a>
+                        <a class="btn-floating waves-effect waves-light red" href="/inicio?comando=TurmaVirtualController&acao=deletar&nomeTurma=${turma.nome}"><i class="material-icons">close</i></a>
                     </div>
                 </div>
             </div>
         <div class="card-action">
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a href="#membros">Membros</a></li>
-                    <li class="tab"><a href="#podcasts">Podcasts</a></li>
+                    <li class="tab"><a href="#membros${turma.nome}">Membros</a></li>
+                    <li class="tab"><a href="#podcasts${turma.nome}">Podcasts</a></li>
                 </ul>
             </div>
             <div class="card-content grey lighten-4">
-                <div id="membros">
+                <div id="membros${turma.nome}">
                     <a class="btn-large waves-effect waves-light orange" href="">Adicionar membros</a>
 
                 </div>
-                <div id="podcasts">
+                <div id="podcasts${turma.nome}">
                     <a class="btn-large waves-effect waves-light orange" href="">Upload de novo podcast</a>
                 </div>
             </div>
