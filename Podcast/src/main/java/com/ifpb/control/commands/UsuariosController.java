@@ -88,8 +88,6 @@ public class UsuariosController implements Command {
             if(usuarioDao.autenticarUsuario(email,senha)){
                 Usuario user = usuarioDao.buscar(email);
                 request.getSession().setAttribute("usuarioLogado",user);
-
-                //request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
                 response.sendRedirect("/pages/timeline.jsp");
                 log.info("Logado");
             }else{
@@ -258,7 +256,7 @@ public class UsuariosController implements Command {
             usuarioDao.salvarFoto(fileName,usuarioLogado.getEmail());
             usuarioLogado.setFotoPath(fileName);
             request.getSession().setAttribute("usuarioLogado",usuarioLogado);
-            request.getRequestDispatcher("/pages/perfilUsuario").forward(request,response);
+            request.getRequestDispatcher("/pages/perfilusuario.jsp").forward(request,response);
         } catch (IOException |ServletException e) {
             throw new CommandException(400,"Falha ao salvar a foto no servidor");
         } catch (DataAccessException e) {
