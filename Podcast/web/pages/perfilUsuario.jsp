@@ -23,17 +23,20 @@
 <body>
 
 <%@ include file = "headerLogged.jsp" %>
-<div class="row"><div class="card horizontal">
+<div class="row">
+    <div class="col s12"></div>
+    <div class="col s12 m4 l2"></div>
+    <div class="col s12 m4 l8"><div class="card horizontal">
 
-    <div class="card-content">
-        <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-        <h4>${sessionScope.usuarioLogado.nome} </h4>
+        <div class="card-content">
+            <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+            <h4>${sessionScope.usuarioLogado.nome} </h4>
         <p>${sessionScope.usuarioLogado.tipo}</p>
 
         <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
-                <li class="tab"><a href="#dados">Meus dados</a></li>
-                <li class="tab"><a href="#settings">Configurações da conta</a></li>
+                <li class="tab"><a href="#dados">Meus dados  <i class="small material-icons">person</i></a></li>
+                <li class="tab"><a href="#settings">Configurações<i class="small material-icons">settings</i></a></li>
             </ul>
         </div>
         <div class="card-content grey lighten-4">
@@ -44,13 +47,15 @@
                 <p><b>E-mail: </b>${sessionScope.usuarioLogado.email} </p>
                 <p><b>Nascimento:</b> ${sessionScope.usuarioLogado.nascimento} </p>
             </div>
-            <div id="settings"> <h4>Configuração e propriedades:</h4>
-            <a href="editarUsuario.jsp">Editar dados</a><br>
-            <a href="">Desativar conta</a></div>
+            <div id="settings"> <h4>Configuração da conta:</h4>
+                <a href="editarUsuario.jsp">Editar dados</a><br>
+                <a href="">Desativar conta</a></div>
         </div></div>
 
-    </div>
-</div></div>
+</div>
+</div></div></div>
+    <div class="col s12 m4 l2"></div>
+</div>
 
 
 
