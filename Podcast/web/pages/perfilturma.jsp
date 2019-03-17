@@ -28,11 +28,11 @@
             <div class="col s8">
                 <div class="card horizontal left-align">
                     <div class="card-title">
-                        <h4>${turma.nome}Nome da turma</h4>
+                        <h4>${turma.nome}</h4>
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            ajsduihausedhaisdjiasjdiasjdiasjdiasjdiajsdiasjdiajsdiajsdijasdijasidjaidsjaisd
+                            ${turma.descricao}
                         </div>
                         <div class="card-action">
                             <c:if test="${sessionScope.usuarioLogado.tipo == 'ALUNO'}">
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="col s3">
-                <span class="center-align">Criado por: Mailson ${turma.criador.nome}</span>
+                <span class="center-align">Criado por: ${turma.criador.nome}</span>
             </div>
         </div>
         <div class="row">
@@ -54,46 +54,18 @@
                     </div>
                     <div class="col s8">
                         <ul>
-                            <li>
-                                <div class="col s6 card">
-                                    <div class="card-content">
-                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
-                                        <p>Categoria: Escolar ${podcast.categoria}</p>
-                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                            <c:forEach var="podcast" items="${turma.podcasts}">
+                                <li>
+                                    <div class="col s6 card">
+                                        <div class="card-content">
+                                            <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
+                                            <p>Categoria: Escolar ${podcast.categoria}</p>
+                                            <p>Dono: Mailson ${podcast.dono.nome}</p>
+                                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col s6 card">
-                                    <div class="card-content">
-                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
-                                        <p>Categoria: Escolar ${podcast.categoria}</p>
-                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col s6 card">
-                                    <div class="card-content">
-                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
-                                        <p>Categoria: Escolar ${podcast.categoria}</p>
-                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col s6 card">
-                                    <div class="card-content">
-                                        <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
-                                        <p>Categoria: Escolar ${podcast.categoria}</p>
-                                        <p>Dono: Mailson ${podcast.dono.nome}</p>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <div class="col s4">
@@ -102,7 +74,7 @@
                             <div class="card-content">
                                 <ul class="collection">
                                     <li class="collection-item avatar">
-                                        <img src="images/yuna.jpg" alt="" class="circle">
+                                        <img src="${pageContext.servletContext.IMG_DIR+usuario.foto}" alt="" class="circle">
                                         <span class="title">Title</span>
                                         <p>First Line <br>
                                             Second Line
@@ -115,7 +87,7 @@
                                         <p>First Line <br>
                                             Second Line
                                         </p>
-                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                     asdasdqw   <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
                                     </li>
                                     <li class="collection-item avatar">
                                         <i class="material-icons circle green">insert_chart</i>
@@ -124,7 +96,7 @@
                                             Second Line
                                         </p>
                                         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                    </li>
+              e                      </li>
                                     <li class="collection-item avatar">
                                         <i class="material-icons circle red">play_arrow</i>
                                         <span class="title">Title</span>

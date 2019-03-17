@@ -6,7 +6,7 @@
 
             <div class="card-content">
                 <div class="col s9">
-                    <h4>${turma.nome}</h4>
+                    <h4><a href="/inicio?comando=TurmaVirtualController&acao=buscar&nomeTurma=${turma.nome}">${turma.nome}</a></h4>
                     <p>${turma.descricao}</p>
                 </div>
                 <div class="col s3">
