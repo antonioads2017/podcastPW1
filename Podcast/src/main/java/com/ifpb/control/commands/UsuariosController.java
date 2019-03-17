@@ -246,17 +246,21 @@ public class UsuariosController implements Command {
         request.setAttribute("alunos",alunos);
     }
 
-    private void salvarImagemService(HttpServletRequest request, HttpServletResponse response) {
+    private void salvarImagemService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         try {
             String id = new Double(Math.random()).toString();
             Part part = request.getPart("foto");
             String fileName = id+getFileName(part);
             String uploadImgPath = request.getServletContext().getAttribute("IMG_DIR").toString();
             part.write(uploadImgPath + File.separator + fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
+            String emailUsuarioLogado = ((Usuario)request.getSession().getAttribute("UsuarioLogado")).getEmail();
+            usuarioDao.salvarFoto(fileName,emailUsuarioLogado);
+            request.getSession().setAttribute("UsuarioLogado",usuarioDao.buscar(emailUsuarioLogado));
+            request.getRequestDispatcher("/pages/perfilUsuario");
+        } catch (IOException |ServletException e) {
+            throw new CommandException(400,"Falha ao salvar a foto no servidor");
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha ao acessar a base de dados");
         }
     }
 
