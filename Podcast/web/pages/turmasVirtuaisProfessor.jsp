@@ -11,7 +11,17 @@
                 </div>
                 <div class="col s3">
                     <div class="right-align">
-                        <a class="btn-floating waves-effect waves-light red" href="/inicio?comando=TurmaVirtualController&acao=deletar&nomeTurma=${turma.nome}"><i class="material-icons">close</i></a>
+                        <a class="btn-floating waves-effect waves-light red" onclick="showModal(this,'md1${turma.nome}')"><i class="material-icons">close</i></a>
+                    </div>
+                </div>
+                <div id="md1${turma.nome}" class="modal">
+                    <div class="modal-content">
+                        <h4>Porfavor confirme</h4>
+                        <p>Deseja continuar com esta ação?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="waves-effect waves-red btn-flat" onclick="$('#md1${turma.nome}').closeModal(); return false;">Cancelar</a>
+                        <a href="/inicio?comando=TurmaVirtualController&acao=deletar&nomeTurma=${turma.nome}" class="waves-effect waves-green btn-flat" id="md1_YesBtn">Sim</a>
                     </div>
                 </div>
             </div>
@@ -38,3 +48,9 @@
 </div> <br>
 <div class="col s4"><a class="btn-large waves-effect waves-light orange" href="criarturma.jsp">Criar turma virtual</a></div>
 
+<script>
+    function showModal(but, modal){
+        $('#' + modal).openModal();
+        $('#' + modal + '_YesBtn').click(function(){ $('#' + modal).closeModal(); document.location = but.href; });
+    }
+</script>

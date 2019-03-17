@@ -12,12 +12,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <%@ include file = "headerLogged.jsp" %>
 <div class="row">
     <div class="col s12"><br>
-        <h6>Suas turmas virtuais:</h6>
         <li class="divider"></li>
 
         <c:choose>
@@ -40,7 +40,7 @@
 <!--  Scripts-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
@@ -52,6 +52,9 @@
 
         });
     </script>
+</c:if>
+<c:if test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
+
 </c:if>
 </body>
 </html>
