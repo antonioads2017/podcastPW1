@@ -1,4 +1,4 @@
-package com.ifpb.filter;
+package com.ifpb.control.filter;
 
 
 import com.ifpb.model.domain.Usuario;

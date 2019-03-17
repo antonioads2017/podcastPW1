@@ -38,12 +38,13 @@
             <div class="modal-content">
                 <center>
                     <div class="row">
-                        <form class="s4" enctype="multipart/form-data">
+                        <form class="s4" enctype="multipart/form-data" action="/inicio?comando=UsuariosController&acao=salvarImagem"
+                              method="POST">
                             <div>
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span>Escolher foto</span>
-                                        <input type="file"/>
+                                        <input type="file" name="foto" accept="image/*" required/>
                                     </div>
 
                                     <div class="file-path-wrapper">
@@ -60,7 +61,7 @@
                 </center>
             </div>
         </div>
-        <form class="col10 s10" action="/inicio?comando=UsuariosController&acao=salvarImagem"
+        <form class="col10 s10" action="/inicio?comando=UsuariosController&acao=atualizar"
               method="POST">
             <div class="row">
 

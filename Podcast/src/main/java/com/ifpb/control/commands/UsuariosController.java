@@ -8,9 +8,6 @@ import com.ifpb.model.domain.Enum.NivelAcesso;
 import com.ifpb.model.domain.Enum.Sexo;
 import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.Usuario;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -245,37 +242,7 @@ public class UsuariosController implements Command {
     }
 
     private void salvarImagemService(HttpServletRequest request, HttpServletResponse response) {
-//        /*Identifica se o formulario é do tipo multipart/form-data*/
-//        if (ServletFileUpload.isMultipartContent(request)) {
-//            try {
-//                /*Faz o parse do request*/
-//                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-//
-//                /*Escreve a o arquivo na pasta img*/
-//                for (FileItem item : multiparts) {
-//                    if (!item.isFormField()) {
-//                        item.write(new File(request.getServletContext().getRealPath("img")+ File.separator + "uploadfile"));
-//                        System.out.println(request.getServletContext().getRealPath("img"));
-//                        System.out.println(File.separator);
-//                    }
-//                }
-//
-//                request.setAttribute("message", "Arquivo carregado com sucesso");
-//            } catch (Exception ex) {
-//                request.setAttribute("message", "Upload de arquivo falhou devido a "+ ex);
-//            }
-//
-//        } else {
-//            request.setAttribute("message","Desculpe este Servlet lida apenas com pedido de upload de arquivos");
-//        }
-//
-//        try {
-//            request.getRequestDispatcher("/pages/editarUsuario.jsp").forward(request, response);
-//        } catch (ServletException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        System.out.println(request.getParameter("foto"));
     }
 
 
