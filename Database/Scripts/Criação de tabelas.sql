@@ -8,7 +8,7 @@ CREATE TABLE usuario(
 	senha TEXT NOT NULL,
 	admin BOOLEAN NOT NULL,
 	nome TEXT NOT NULL,
-	foto VARCHAR(50),
+	foto VARCHAR(100),
 	nascimento DATE NOT NULL,
     sexo VARCHAR(10) NOT NULL,
     telefone VARCHAR(15)
@@ -32,7 +32,7 @@ CREATE TABLE turma_virtual(
 );
 
 CREATE TABLE podcast(
-	audio VARCHAR(50) PRIMARY KEY,
+	audio VARCHAR(100) PRIMARY KEY,
 	titulo VARCHAR(30) NOT NULL,
 	categoria TEXT NOT NULL,
 	descricao TEXT,
@@ -44,7 +44,7 @@ CREATE TABLE podcast(
 
 CREATE TABLE avalia_podcast(
 	usuario TEXT NOT NULL,
-	podcast VARCHAR(50) NOT NULL,
+	podcast VARCHAR(100) NOT NULL,
 	comentario TEXT NOT NULL,
 	PRIMARY KEY (usuario,podcast),
 	FOREIGN KEY (usuario) REFERENCES usuario(email),

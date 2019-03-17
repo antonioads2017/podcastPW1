@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta http-equiv=”Content-Type” charset="UTF-8" content=”text/html;″>
+
+    <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - Início</title>
 
@@ -11,6 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
 </head>
 <body>
 
@@ -22,7 +26,7 @@
                 <div class="card-image">
                     <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" class="capa-podcast">
                     <span class="card-title">Bohemian Rhapsody</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">play_arrow</i></a>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
                 </div>
                 <div class="card-content">
                     <p class="autor">Queen</p><br>
@@ -46,9 +50,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
 </script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
 
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+</script>
 </body>
 </html>

@@ -2,7 +2,6 @@ package com.ifpb.model.dao.impl;
 
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.interfaces.UsuarioDao;
-import com.ifpb.model.domain.Endereco;
 import com.ifpb.model.domain.Enum.NivelAcesso;
 import com.ifpb.model.domain.Enum.Sexo;
 import com.ifpb.model.domain.Enum.Tipo;
@@ -23,7 +22,6 @@ import java.util.List;
 public class UsuarioDaoImpl implements UsuarioDao {
 
     private Connection connection;
-    private final String CaminhoFotos = "/home/loopis/Imagens/";
 
     public UsuarioDaoImpl() {
         connection = ConnectionFactory.getInstance().getConnection();
@@ -145,13 +143,27 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     }
 
+    @Override
+    public void salvarFoto(String path, String emailUsuario) throws DataAccessException {
+        String query = "UPDATE usuario SET foto = ? WHERE email = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,path);
+            statement.setString(2,emailUsuario);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar salvar a foto do usuário");
+        }
+    }
+
     private List<Usuario> buscarPorTipo(Tipo tipo) throws DataAccessException {
-        String query = "SELECT * FROM usuario WHERE tipo = " + (tipo.equals(Tipo.ALUNO) ? "Aluno" : "Professor");
+        String query = "SELECT * FROM usuario u,"+ (tipo.equals(Tipo.ALUNO) ? "aluno u2" : "professor u2")+"  WHERE u.email = u2.email";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             return percorrerResultado(resultSet);
         } catch (SQLException | NullPointerException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar buscar todos os" + (tipo.equals(Tipo.ALUNO) ? "Aluno" : "Professor") + "de uma turma");
         }
     }
@@ -169,7 +181,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
         user.setEmail(resultSet.getString("email"));
         user.setNome(resultSet.getString("nome"));
         user.setSenha(resultSet.getString("senha"));
-        user.setFoto(new File(CaminhoFotos+resultSet.getString("foto")));
+        user.setFotoPath(resultSet.getString("foto"));
         user.setNascimento(resultSet.getDate("nascimento").toLocalDate());
         user.setNivelAcesso(resultSet.getBoolean("admin")? NivelAcesso.ADMIN : NivelAcesso.USER);
         user.setSexo(resultSet.getString("sexo").equals("Masculino") ? Sexo.MASCULINO : Sexo.FEMININO);

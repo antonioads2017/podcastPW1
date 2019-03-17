@@ -1,6 +1,10 @@
 package com.ifpb.model.dao.interfaces;
 
+import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.domain.TurmaVirtual;
+import com.ifpb.model.domain.Usuario;
+
+import java.util.List;
 
 
 /**
@@ -9,5 +13,8 @@ import com.ifpb.model.domain.TurmaVirtual;
  *
  */
 public interface TurmaVirtualDao extends DaoIF<TurmaVirtual> {
-
+    void adicionarAlunoaTurma(String nomeTurma, String emailAluno) throws DataAccessException;
+    void removerAlunodeTurma(String nomeTurma,String emailAluno) throws DataAccessException;
+    List<TurmaVirtual> listarTurmasCriadas(String criador) throws DataAccessException;
+    List<TurmaVirtual> listarTurmasParticiantes(String emailAluno) throws DataAccessException;
 }
