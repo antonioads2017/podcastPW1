@@ -96,10 +96,11 @@
 
                 </li>
 
-                <li ><a href="perfilUsuario.jsp" class="white-text">Meus dados</a></li>
+                <li ><a href="perfilUsuario.jsp" class="white-text">${sessionScope.usuarioLogado.nome}</a></li>
 
                 <li><a href="turmasvirtuais.jsp" class="white-text">Turmas virtuais</a></li>
-<li> <a class="btn waves-effect waves-light orange btn modal-trigger" href="#modal2">Upload</a></li></li>
+<li> <a class="btn waves-effect waves-light orange btn modal-trigger" href="#modal2">Upload</a></li>
+                <li><a href="/inicio?comando=UsuariosController&acao=sair">Sair</a></li>
 
 
             </ul>
