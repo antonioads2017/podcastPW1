@@ -311,7 +311,7 @@ public class UsuariosController implements Command {
             usuarioDao.salvarFoto(fileName,usuarioLogado.getEmail());
             usuarioLogado.setFotoPath(fileName);
             request.getSession().setAttribute("usuarioLogado",usuarioLogado);
-            request.getRequestDispatcher("/pages/perfilusuario.jsp").forward(request,response);
+            request.getRequestDispatcher("/pages/perfilUsuario.jsp").forward(request,response);
         } catch (IOException |ServletException e) {
             throw new CommandException(400,"Falha ao salvar a foto no servidor");
         } catch (DataAccessException e) {

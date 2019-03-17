@@ -85,7 +85,10 @@
                                             </c:choose>
                                             <span class="title">${aluno.nome}</span>
                                             <p>${aluno.email}</p>
-                                            <a href="/inicio?comando=UsuariosController&acao=buscar&emailUsuario="${aluno.email} class="secondary-content"><i class="material-icons">info_outline</i></a>
+                                            <c:if test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
+                                                <a href="/inicio?comando=UsuariosController&acao=deletar&emailUsuario=${aluno.email}"> <i class="material-icons">close</i> </a>
+                                            </c:if>
+                                            <a href="/inicio?comando=UsuariosController&acao=buscar&emailUsuario=${aluno.email}" class="secondary-content"><i class="material-icons">info_outline</i></a>
                                         </li>
                                     </c:forEach>
                                 </ul>
