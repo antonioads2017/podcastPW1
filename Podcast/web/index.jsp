@@ -12,22 +12,51 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/home.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-<%--<jsp: include page=“/pages/header.jsp”/>--%>
-<%@ include file = "/pages/header.jsp" %>
+<img src="img/invisibleBG.png" class="fundo">
+<%--&lt;%&ndash;<jsp: include page=“/pages/header.jsp”/>&ndash;%&gt;--%>
+<%--<%@ include file = "/pages/header.jsp" %>--%>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <br><br>
-        <h1 class="header center orange-text">Conecte-se ao IFCast</h1>
+        <h1 class="header center white-text">Conecte-se ao IFCast</h1>
         <div class="row center">
-            <h5 class="header col s12 light">Descubra, faça e compartilhe podcasts.</h5>
+            <h5 class="header col s12 light white-text">Descubra, faça e compartilhe podcasts.</h5>
         </div>
         <div class="row center">
 
             <!-- Modal Trigger -->
-            <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal2">Cadastre-se
-                gratuitamente</a>
+            <a class="btn-large waves-effect waves-light orange accent-4 btn modal-trigger" href="#modal2">Cadastre-se
+                gratuitamente</a> <p class="white-text">ou</p>  <a class="waves-effect waves-light btn modal-trigger transparent" href="#modal1">Entrar</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <center>
+                        <div class="row">
+                            <form class="col10 s10"
+                                  action="/inicio?comando=UsuariosController&acao=autenticar" method="POST">
+                                <div class="row">
+                                    <div class="input-field col10 s10">
+                                        <input id="email" type="email" name="email" class="validate">
+                                        <label for="email">E-mail</label>
+                                    </div>
+                                    <div class="input-field col10 s10">
+                                        <input id="password" type="password" name="senha" class="validate">
+                                        <label for="password">Senha</label>
+                                    </div>
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">Log-In
+                                        <i class="material-icons right">cloud</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </center>
+                </div>
+
+            </div>
 
             <!-- Modal Structure -->
             <div id="modal2" class="modal">
@@ -109,47 +138,45 @@
 </div>
 
 
-<div class="container">
-    <div class="section">
+<%--<div class="container">--%>
+    <%--<div class="section">--%>
 
-        <!--   Icon Section   -->
-        <div class="row">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">mode_comment</i></h2>
-                    <h5 class="center">Interaja com Usuários</h5>
+        <%--<!--   Icon Section   -->--%>
+        <%--<div class="row">--%>
+            <%--<div class="col s12 m4">--%>
+                <%--<div class="icon-block">--%>
+                    <%--<h2 class="center light-blue-text"><i class="material-icons">mode_comment</i></h2>--%>
+                    <%--<h5 class="center">Interaja com Usuários</h5>--%>
 
-                    <p class="light">Nossa plataforma permite a interação por comentários em podcasts.</p>
-                </div>
-            </div>
+                    <%--<p class="light">Nossa plataforma permite a interação por comentários em podcasts.</p>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">keyboard_voice</i></h2>
-                    <h5 class="center">Fácil acesso e upload</h5>
+            <%--<div class="col s12 m4">--%>
+                <%--<div class="icon-block">--%>
+                    <%--<h2 class="center light-blue-text"><i class="material-icons">keyboard_voice</i></h2>--%>
+                    <%--<h5 class="center">Fácil acesso e upload</h5>--%>
 
-                    <p class="light">Nossa equipe preparou um ambiente prático e de fácil ultilização, para uma melhor
-                        experiência do usuário.</p>
-                </div>
-            </div>
+                    <%--<p class="light">Nossa equipe preparou um ambiente prático e de fácil ultilização, para uma melhor--%>
+                        <%--experiência do usuário.</p>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-                    <h5 class="center">Turmas virtuais</h5>
+            <%--<div class="col s12 m4">--%>
+                <%--<div class="icon-block">--%>
+                    <%--<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>--%>
+                    <%--<h5 class="center">Turmas virtuais</h5>--%>
 
-                    <p class="light">Com a criação de Turmas virtuais, nossa plataforma permite uma melhor interação de
-                        usuários que participam de uma mesma turma.</p>
-                </div>
-            </div>
-        </div>
+                    <%--<p class="light">Com a criação de Turmas virtuais, nossa plataforma permite uma melhor interação de--%>
+                        <%--usuários que participam de uma mesma turma.</p>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
 
-    </div>
-    <br><br>
-</div>
+    <%--</div>--%>
+    <%--<br><br>--%>
+<%--</div>--%>
     <%--<jsp: include page=“/pages/footer.jsp”/>--%>
-<%@ include file = "pages/footer.jsp" %>
-
 
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

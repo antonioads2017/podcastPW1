@@ -5,7 +5,7 @@
   Time: 00:05
   To change this template use File | Settings | File Templates.
 --%>
-<nav class="light-blue" role="navigation">
+<nav class="transparent" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">IFCast</a>
         <ul class="right hide-on-med-and-down">
             <li><!-- Modal Trigger -->
