@@ -56,5 +56,13 @@
         });
     </script>
 </c:if>
+<c:if test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+            $('.sidenav').sidenav();
+        });
+    </script>
+</c:if>
 </body>
 </html>
