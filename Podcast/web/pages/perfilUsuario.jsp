@@ -16,7 +16,7 @@
     <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <style>
         .perfil{
-        width: 200px;
+        width: 150px;
         border-radius: 50%;}
     </style>
 </head>
@@ -26,7 +26,7 @@
 <div class="row">
     <div class="col s12"></div>
     <div class="col s12 m4 l2"></div>
-    <div class="col s12 m4 l8"><div class="card horizontal">
+    <div class="col s12 m4 l8"><div class="card">
 
         <div class="card-content">
             <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
