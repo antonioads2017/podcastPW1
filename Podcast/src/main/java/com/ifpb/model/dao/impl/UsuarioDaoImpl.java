@@ -126,6 +126,23 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public void atualizar(String email, Usuario usuario) throws DataAccessException {
+        String query = "UPDATE usuario SET email = ?, nome = ?, senha = ?, telefone = ?, nascimento = ? WHERE email = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,usuario.getEmail());
+            statement.setString(2,usuario.getNome());
+            statement.setString(3,usuario.getSenha());
+            statement.setString(4,usuario.getTelefone());
+            statement.setDate(5,Date.valueOf(usuario.getNascimento()));
+            statement.setString(6,email);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar atualizar um usuário");
+        }
+    }
+
+    @Override
     public boolean autenticarUsuario(String email, String senha) throws DataAccessException{
         String query = "SELECT senha FROM usuario WHERE email = ?";
         try{
