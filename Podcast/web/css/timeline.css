@@ -12,5 +12,6 @@ body{
     width: 320px;
     box-shadow: 5px 5px 20px black;
 }
-.capa{
+#cabecalhoP{
+    background-image: url("https://css-tricks.com/wp-content/uploads/2017/09/linear-gradient.png");
 }
