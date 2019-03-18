@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -17,39 +18,42 @@
 
     <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <style>
-        .circle{ border-radius: 50%;}
+        .circle {
+            border-radius: 50%;
+        }
     </style>
-
 
 
 </head>
 <body>
 
-<%@ include file = "headerLogged.jsp" %>
+<%@ include file="headerLogged.jsp" %>
 <div class="timeline">
     <div class="row">
-        <div class="col s8 m3">
-            <div class="card" id="podcast">
-                <div class="card-image">
-                    <img src="/img/cover.png" class="capa">
-                    <span class="card-title">Bohemian Rhapsody</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
-                </div>
-                <div class="card-content">
-                    <p class="autor"><b>Queen</b></p><br>
-                    <p class="descricao "> Composta em 1975 por Freddie Mercury. Foi a primeira música a alcançar a
-                        primeira posição duas vezes com a mesma versão.</p>
+        <c:forEach var="podcast" items="${podcasts}">
+            <div class="col s6 m3">
+                <div class="card" id="podcast">
+                    <div class="card-image">
+                        <img src="/img/cover.png" class="capa">
+                        <span class="card-title">${podcast.titulo}</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${podcast.audioPath}"><i
+                                class="material-icons">play_arrow</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="autor"><b> Postado por ${podcast.dono.nome}
+                        </b></p><br>
+                        <p class="descricao "> ${podcast.descricao}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </c:forEach>
     </div>
 
 
 </div>
 
 
-
-<%@ include file = "footer.jsp" %>
+<%@ include file="footer.jsp" %>
 
 <!--  Scripts-->
 <script type="text/javascript"
