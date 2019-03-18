@@ -30,15 +30,16 @@
                 <div class="card-image">
                     <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" alt="music" onClick="togglePlay()">
                 </div>
-                <div class="card-stacked">
-                    <div class="card-content" id="cabecalhoP">
+                <div class="card-stacked" id="cabecalhoP">
+                    <div class="card-content" >
                         <div class="row valign-wrapper">
                             <div class="col s2" id="position"></div>
                             <div class="col s6 range-field valign-wrapper"><input id="seekbar" type="range" min="0" max="0" step="1" oninput="setSeek(this.value)" onchange="setSeek(this.value)"></div>
                             <div class="col s2 center-align" id="total"></div>
                             <div class="col s2 center-align"><a class="" onClick="toggleMute()"><i class="material-icons teal-text lighten-1" id="Muted">volume_up</i></a></div>
                             <div class="col s3 range-field valign-wrapper"><input id="vol-control" type="range" min="0" max="100" step="1" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)"></div>
-                        </div>  </div>
+                        </div> <a class="btn-floating btn-large halfway-fab waves-effect waves-light red" onClick="togglePlay()"><i class="material-icons" id="PausePlay">play_arrow</i></a>
+                    </div>
                     <div class="card-action">
                         <p>Postado por:  Autor</p>
                     </div>
@@ -47,14 +48,16 @@
                             <div class="card">
                                 <div class="card-image">
 
-                                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red" onClick="togglePlay()"><i class="material-icons" id="PausePlay">play_arrow</i></a>
-                                </div>
+                                     </div>
                                 <div class="card-content">
                                     <h5 class="">
                                         Bohemian Rhapsody
                                     </h5>
                                     <p>"Bohemian Rhapsody" é uma canção composta em 1975 por Freddie Mercury, integrante da banda britânica Queen, e incluída no seu álbum A Night at the Opera. Esta canção não possui refrão.</p>
-
+                                </div>
+                                <div class="card-action">
+                                    <a>Comentar</a>
+                                </div>
                                 </div>
 
 
@@ -69,7 +72,7 @@
 
 <div class="col s12 m4 l2"></div>
 </div>
-
+</div>
 
 
 
