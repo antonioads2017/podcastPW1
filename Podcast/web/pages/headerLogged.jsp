@@ -38,7 +38,7 @@
                                 <div class = "file-field input-field">
                                     <div class = "btn">
                                         <span>Browse</span>
-                                        <input type = "file" name="audio" />
+                                        <input type = "file" name="audio"  accept="audio/*" />
                                     </div>
 
                                     <div class = "file-path-wrapper">
