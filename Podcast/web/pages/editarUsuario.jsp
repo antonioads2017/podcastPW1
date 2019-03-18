@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
 <%@ include file="headerLogged.jsp" %>
@@ -29,7 +31,7 @@
         <div class="card">
 
             <div class="card-content">
-                <div>
+                <div><center>
                     <c:choose>
                         <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
                             <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
@@ -40,10 +42,8 @@
                     </c:choose>
                 </div>
                 <!-- Modal Trigger -->
-                <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal3">Mudar foto</a><br><br>
+                <a class="btn-large waves-effect waves-light orange btn modal-trigger center-block" href="#modal3">Mudar foto</a><br><br>
 
-
-                <center>
                     <div class="row">
 
                         <!-- Modal Structure -->
@@ -56,7 +56,7 @@
                                                 <div class="file-field input-field">
                                                     <div class="btn">
                                                         <span>Escolher foto</span>
-                                                        <input type="file" name="foto"/>
+                                                        <input type="file" name="foto" accept="image/*"/>
                                                     </div>
 
 

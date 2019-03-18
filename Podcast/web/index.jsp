@@ -191,7 +191,7 @@
     <script>
         $(document).ready(function(){
 
-            M.toast({html: 'Usuário cadatrado com sucesso!'}, 4000)
+            M.toast({html: 'Usuário cadastrado com sucesso!'}, 4000)
 
         });
     </script>

@@ -1,4 +1,7 @@
-﻿-- CRIADO POR MAILSON DENNIS 
+
+
+-- CRIADO POR MAILSON DENNIS 
+
 
 
 CREATE TABLE usuario(
@@ -35,7 +38,7 @@ CREATE TABLE podcast(
 	categoria TEXT NOT NULL,
 	descricao TEXT,
 	criador TEXT NOT NULL,
-	nome_turma VARCHAR(30) NOT NULL,
+	nome_turma VARCHAR(30),
 	FOREIGN KEY (criador) REFERENCES usuario(email) ON UPDATE CASCADE,
 	FOREIGN KEY (nome_turma) REFERENCES turma_virtual(nome)
 );
@@ -56,3 +59,4 @@ CREATE TABLE participa_turma(
 	FOREIGN KEY (aluno_email) REFERENCES aluno(email) ON UPDATE CASCADE,
 	FOREIGN KEY (turma) REFERENCES turma_virtual(nome)
 )
+

@@ -1,6 +1,8 @@
 <div class="col s8">
     <c:forEach var="turma" items="${turmas}">
 
+        <%@ include file = "moduloUpload.jsp" %>
+
         <div class="card horizontal">
 
             <div class="card-stacked">
@@ -17,7 +19,7 @@
                     <div class="card-content grey lighten-4">
 
                         <div id="podcasts">
-                            <a class="btn-large waves-effect waves-light orange" href="">Upload de novo podcast</a>
+                            <a class="btn-large waves-effect waves-light orange modal-trigger" href="#modalUpload${turma.nome}">Upload de novo podcast</a>
                         </div>
                     </div>
                 </div>

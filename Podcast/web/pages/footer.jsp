@@ -5,7 +5,7 @@
   Time: 00:08
   To change this template use File | Settings | File Templates.
 --%>
-<footer class="page-footer orange">
+<footer class="page-footer red darken-1">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">

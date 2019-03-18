@@ -74,11 +74,14 @@
                         </form>
                     </div>
                 </div>
+
+                <%@ include file = "moduloUpload.jsp" %>
+
                 <div class="card-action">
                     <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width">
                             <li class="tab"><a href="#membros${turma.nome}">Membros</a></li>
-                            <li class="tab"><a href="#podcasts${turma.nome}">Podcasts</a></li>
+                            <li class="tab "><a href="#podcasts${turma.nome}">Podcasts</a></li>
                         </ul>
                     </div>
                     <div class="card-content grey lighten-4">
@@ -88,7 +91,7 @@
 
                         </div>
                         <div id="podcasts${turma.nome}">
-                            <a class="btn-large waves-effect waves-light orange" href="">Upload de novo podcast</a>
+                            <a class="btn-large waves-effect waves-light orange modal-trigger" href="#modalUpload${turma.nome}">Upload de novo podcast</a>
                         </div>
                     </div>
                 </div>

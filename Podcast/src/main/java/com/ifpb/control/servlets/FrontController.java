@@ -17,8 +17,6 @@ import java.io.IOException;
  *
  */
 @MultipartConfig(
-        location = "/home/mailson/Imagens/"
-
 )
 @WebServlet("/inicio")
 public class FrontController extends HttpServlet {

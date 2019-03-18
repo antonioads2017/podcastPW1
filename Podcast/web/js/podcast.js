@@ -1,4 +1,4 @@
-var myAudio = document.getElementById("myAudio");
+
 
 window.onload = function () {
     document.getElementById("seekbar").max = myAudio.duration;

@@ -41,7 +41,7 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
             if (statement.executeUpdate() > 0 && object.getParticipantes().size() > 0) {
                 for (Usuario aluno : object.getParticipantes()) {
                     System.out.println(aluno);
-                    adicionarAlunoaTurma(aluno.getEmail(), object.getNome());
+                    adicionarAlunoaTurma(object.getNome(),aluno.getEmail());
                 }
             }
         } catch (SQLException e) {

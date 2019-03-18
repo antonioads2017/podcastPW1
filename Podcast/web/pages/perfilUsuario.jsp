@@ -15,9 +15,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <style>
         .perfil {
             width: 150px;
+            height: 150px;
             border-radius: 50%;
         }
     </style>
@@ -32,17 +35,21 @@
         <div class="card">
 
             <div class="card-content">
-                <c:choose>
-                    <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
-                        <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-                    </c:when>
-                    <c:otherwise>
-                        <img class="perfil" src="/img/${sessionScope.usuarioLogado.fotoPath}"/>
-                    </c:otherwise>
-                </c:choose>
+                <center>
+                    <c:choose>
+                        <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
+                            <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                        </c:when>
+                        <c:otherwise>
+                            <img class="perfil" src="/img/${sessionScope.usuarioLogado.fotoPath}"/>
+                        </c:otherwise>
+                    </c:choose>
 
-                <h4>${sessionScope.usuarioLogado.nome} </h4>
-                <p>${sessionScope.usuarioLogado.tipo} / ${sessionScope.usuarioLogado.nivelAcesso}</p>
+                    <h4>${sessionScope.usuarioLogado.nome} </h4>
+
+                    <p>${sessionScope.usuarioLogado.tipo} / ${sessionScope.usuarioLogado.nivelAcesso}</p>
+                </center>
+
 
                 <div class=" card-tabs">
                     <ul class="tabs tabs-fixed-width">
@@ -64,7 +71,7 @@
                         <a href="/pages/editarUsuario.jsp">Editar dados</a><br>
                         <a href="">Desativar conta</a><br>
                         <c:if test="${sessionScope.usuarioLogado.nivelAcesso=='ADMIN'}">
-                        <a href="admin/gerencia.jsp">Gêrencia de Usuários</a></c:if></div>
+                            <a href="admin/gerencia.jsp">Gêrencia de Usuários</a></c:if></div>
                 </div>
             </div>
 
@@ -86,7 +93,7 @@
 <script src="../js/init.js"></script>
 <c:if test="${dadosAtualizados != null}">
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
 
             M.toast({html: '${dadosAtualizados}'}, 4000);
 

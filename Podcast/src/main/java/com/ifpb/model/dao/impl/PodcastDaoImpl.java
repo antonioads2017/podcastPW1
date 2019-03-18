@@ -25,9 +25,11 @@ import java.util.List;
 public class PodcastDaoImpl implements PodcastDao {
 
     private ComentarioDao comentarioDao;
+    private Connection connection;
 
     public PodcastDaoImpl(){
         comentarioDao = new ComentarioDaoImpl();
+        connection = ConnectionFactory.getInstance().getConnection();
     }
 
     @Override
@@ -37,23 +39,27 @@ public class PodcastDaoImpl implements PodcastDao {
 
     @Override
     public void salvar(Podcast object) throws DataAccessException {
-        adicionaPodcast(object,null);
+        adicionaPodcast(object,"");
     }
 
     private void adicionaPodcast(Podcast podcast, String nomeTurma) throws DataAccessException {
-        String query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador,nome_turma) VALUES (?,?,?,?,?,?)";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        String query = "";
+        if(nomeTurma.equals("")){
+            query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador) VALUES (?,?,?,?,?)";
+        }else{
+            query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador,nome_turma) VALUES (?,?,?,?,?,?)";
+        }
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,podcast.getTitulo());
             statement.setString(2,podcast.getCategoria());
             statement.setString(3,podcast.getDescricao());
-            statement.setString(4,podcast.getAudio().getPath());
+            statement.setString(4,podcast.getAudioPath());
             statement.setString(5,podcast.getDono().getEmail());
-            statement.setString(6,nomeTurma);
+            if(!nomeTurma.equals("")) statement.setString(6,nomeTurma);
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar salvar um podcast");
         }
     }
@@ -61,13 +67,11 @@ public class PodcastDaoImpl implements PodcastDao {
     @Override
     public void remover(String reference) throws DataAccessException {
         String query = "DELETE FROM podcast WHERE audio = ? CASCADE";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar deletar um podcast");
         }
     }
@@ -75,7 +79,7 @@ public class PodcastDaoImpl implements PodcastDao {
     @Override
     public List<Podcast> listar() throws DataAccessException {
         String query = "SELECT * FROM podcast";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             List<Podcast> podcasts = new ArrayList<>();
@@ -83,9 +87,7 @@ public class PodcastDaoImpl implements PodcastDao {
                 podcasts.add(construirPodcast(resultSet));
             }
             return podcasts;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new DataAccessException("Falha ao acessar os dados no banco");
         }
     }
@@ -93,7 +95,7 @@ public class PodcastDaoImpl implements PodcastDao {
     @Override
     public Podcast buscar(String reference) throws DataAccessException {
         String query = "SELECT * FROM podcast WHERE audio = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,reference);
             ResultSet resultSet = statement.executeQuery();
@@ -101,8 +103,6 @@ public class PodcastDaoImpl implements PodcastDao {
                 return construirPodcast(resultSet);
             }
             return null;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falha ao acessar os dados no banco");
         }
@@ -111,7 +111,7 @@ public class PodcastDaoImpl implements PodcastDao {
     @Override
     public List<Podcast> buscarPorTurma(String nomeTurma) throws DataAccessException {
         String query = "SELECT * FROM podcast WHERE nome_turma = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,nomeTurma);
             ResultSet resultSet = statement.executeQuery();
@@ -120,8 +120,6 @@ public class PodcastDaoImpl implements PodcastDao {
                 podcasts.add(construirPodcast(resultSet));
             }
             return podcasts;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falha tentar buscar por turma");
         }
@@ -130,7 +128,7 @@ public class PodcastDaoImpl implements PodcastDao {
     @Override
     public List<Podcast> buscarPorCriador(String criador) throws DataAccessException {
         String query = "SELECT * FROM podcast WHERE criador = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,criador);
             ResultSet resultSet = statement.executeQuery();
@@ -139,8 +137,6 @@ public class PodcastDaoImpl implements PodcastDao {
                 podcasts.add(construirPodcast(resultSet));
             }
             return podcasts;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar buscar pro criador");
         }
@@ -149,12 +145,10 @@ public class PodcastDaoImpl implements PodcastDao {
     @Override
     public void deletarPodcastsPorTurma(String nomeTurma) throws DataAccessException {
         String query = "DELETE FROM podcast WHERE nome_turma = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,nomeTurma);
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
         } catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar apagar todos os podcasts de uma turma");
         }
@@ -167,7 +161,7 @@ public class PodcastDaoImpl implements PodcastDao {
         podcast.setTitulo(resultSet.getString("titulo"));
         podcast.setCategoria(resultSet.getString("categoria"));
         podcast.setDescricao(resultSet.getString("descricao"));
-        podcast.setAudio(new File(resultSet.getString("audio")));
+        podcast.setAudioPath(resultSet.getString("audio"));
         podcast.setDono(usuarioDao.buscar(resultSet.getString("criador")));
         podcast.setComentarios(comentarioDao.buscarPorPodcast(resultSet.getString("audio")));
         return podcast;
