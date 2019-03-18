@@ -17,5 +17,6 @@ public interface PodcastDao extends DaoIF<Podcast> {
     List<Podcast> buscarPorTurma(String nomeTurma) throws DataAccessException;
     List<Podcast> buscarPorCriador(String criador) throws DataAccessException;
     void deletarPodcastsPorTurma(String nomeTurma) throws DataAccessException;
+    List<Podcast> listarOrdenado() throws DataAccessException;
 
 }

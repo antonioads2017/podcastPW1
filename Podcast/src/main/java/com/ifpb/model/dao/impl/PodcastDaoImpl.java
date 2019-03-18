@@ -9,10 +9,9 @@ import com.ifpb.model.domain.Podcast;
 import com.ifpb.model.dao.Exceptions.ConnectionException;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,9 +44,9 @@ public class PodcastDaoImpl implements PodcastDao {
     private void adicionaPodcast(Podcast podcast, String nomeTurma) throws DataAccessException {
         String query = "";
         if(nomeTurma.equals("")){
-            query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador) VALUES (?,?,?,?,?)";
+            query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador,data_criacao,hora_criacao) VALUES (?,?,?,?,?,?,?)";
         }else{
-            query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador,nome_turma) VALUES (?,?,?,?,?,?)";
+            query = "INSERT INTO podcast (titulo,categoria,descricao,audio,criador,nome_turma,data_criacao,hora_criacao) VALUES (?,?,?,?,?,?,?,?)";
         }
         try{
             PreparedStatement statement = connection.prepareStatement(query);
@@ -56,7 +55,14 @@ public class PodcastDaoImpl implements PodcastDao {
             statement.setString(3,podcast.getDescricao());
             statement.setString(4,podcast.getAudioPath());
             statement.setString(5,podcast.getDono().getEmail());
-            if(!nomeTurma.equals("")) statement.setString(6,nomeTurma);
+            if(!nomeTurma.equals("")){
+                statement.setString(6,nomeTurma);
+                statement.setDate(7, Date.valueOf(LocalDate.now()));
+                statement.setTime(8, Time.valueOf(LocalTime.now()));
+            }else{
+                statement.setDate(6,Date.valueOf(LocalDate.now()));
+                statement.setTime(7, Time.valueOf(LocalTime.now()));
+            }
             statement.execute();
         }catch (SQLException e) {
             e.printStackTrace();
@@ -151,6 +157,25 @@ public class PodcastDaoImpl implements PodcastDao {
             statement.execute();
         } catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar apagar todos os podcasts de uma turma");
+        }
+    }
+
+    @Override
+    public List<Podcast> listarOrdenado() throws DataAccessException {
+        String query = "SELECT * " +
+                    " FROM podcast " +
+                    " ORDER BY data_criacao " +
+                    " DESC, hora_criacao DESC";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            List<Podcast> podcasts = new ArrayList<>();
+            while(resultSet.next()){
+                podcasts.add(construirPodcast(resultSet));
+            }
+            return podcasts;
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar listar a timeline");
         }
     }
 
