@@ -72,19 +72,22 @@
                     </p>
                 </div>
                 <div class="card-action">
-                    <div class="row">
-                        <div class="col s12">Comentários:</div>
-                        <div class="col s12 m4 l2">
-                            <c:choose>
-                                <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
-                                    <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-                                </c:when>
-                                <c:otherwise>
-                                    <img class="perfil" src="/img/${sessionScope.usuarioLogado.fotoPath}"/>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
-                        <form action="/inicio?comando=ComentarPodcastController&acao=comentar" method="POST" >
+                    <div class="card">
+                        <div class="col s12 card-title">Comentários:</div>
+                    </div>
+                <div class="row">
+
+                    <div class="col s12 m4 l2">
+                        <c:choose>
+                            <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
+                                <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                            </c:when>
+                            <c:otherwise>
+                                <img class="perfil responsive-img" src="/img/${sessionScope.usuarioLogado.fotoPath}"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <form action="/inicio?comando=ComentarPodcastController&acao=comentar" method="POST">
                         <div class="col s12 m4 l8"> x
 
                             <div class="input-field col5 s5">
@@ -99,23 +102,24 @@
                             <button class="btn-floating waves-effect waves-light" type="submit" name="action"><i
                                     class="material-icons right">chat</i>
                             </button>
-                            </form>
                         </div>
-                    </div>
-
-
+                    </form>
                 </div>
             </div>
 
 
-            <script src="../js/podcast.js"></script>
-
-
         </div>
-
-
-        <div class="col s12 m4 l2"></div>
     </div>
+
+
+    <script src="../js/podcast.js"></script>
+
+
+</div>
+
+
+<div class="col s12 m4 l2"></div>
+</div>
 </div>
 
 
