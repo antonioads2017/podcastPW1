@@ -56,7 +56,7 @@
                                                 <div class="file-field input-field">
                                                     <div class="btn">
                                                         <span>Escolher foto</span>
-                                                        <input type="file" name="foto"/>
+                                                        <input type="file" name="foto" accept="image/*"/>
                                                     </div>
 
 
