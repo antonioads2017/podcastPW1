@@ -38,7 +38,7 @@ CREATE TABLE podcast(
 	categoria TEXT NOT NULL,
 	descricao TEXT,
 	criador TEXT NOT NULL,
-	nome_turma VARCHAR(30) NOT NULL,
+	nome_turma VARCHAR(30),
 	FOREIGN KEY (criador) REFERENCES usuario(email) ON UPDATE CASCADE,
 	FOREIGN KEY (nome_turma) REFERENCES turma_virtual(nome)
 );
