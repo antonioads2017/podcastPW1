@@ -76,21 +76,22 @@
                         <div class="col s12 card-title">Comentários:</div> <br>
                         <div class="card-content">
                             <ul class="collapsible">
+                                <c:forEach var="comentario" items="${podcast.comentarios}">
                                 <li>
                                     <div class="collapsible-header">
-                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-                                         <p>Amei muito uauu</p>
-                                        <span class="badge" ><b>Camila Carvalho</b></span>
+                                        <c:choose>
+                                            <c:when test="${comentario.usuario.fotoPath == ''}">
+                                                <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img class="icone" src="/img/${comentario.usuario.fotoPath}"/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                         <p>${comentario.texto}</p>
+                                        <span class="badge" ><b>${comentario.usuario.nome}</b></span>
                                        </div>
                                 </li>
-                                <li>
-                                    <div class="collapsible-header">
-                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-                                        <p>Não gostei</p>
-                                        <span class="badge" ><b>Mailson Dennis</b></span>
-                                    </div>
-                                </li>
-
+                                </c:forEach>
                             </ul>
                         </div>
 
