@@ -98,7 +98,8 @@
 
                 <li><a href="/pages/turmasvirtuais.jsp" class="white-text">Turmas virtuais</a></li>
 <li> <a class="btn waves-effect waves-light red darken-1 btn modal-trigger" href="#modal2">Upload</a></li>
-                <li><a href="/inicio?comando=UsuariosController&acao=sair">Sair</a></li>
+                <li><a href="/inicio?comando=UsuariosController&acao=sair"><i class="material-icons" value="Sair">power_settings_new
+</i></a></li>
 
 
             </ul>
