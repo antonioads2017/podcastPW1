@@ -234,6 +234,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
         user.setNome(resultSet.getString("nome"));
         user.setSenha(resultSet.getString("senha"));
         user.setFotoPath(resultSet.getString("foto"));
+        user.setTelefone(resultSet.getString("telefone"));
         user.setNascimento(resultSet.getDate("nascimento").toLocalDate());
         user.setNivelAcesso(resultSet.getBoolean("admin") ? NivelAcesso.ADMIN : NivelAcesso.USER);
         user.setSexo(resultSet.getString("sexo").equals("Masculino") ? Sexo.MASCULINO : Sexo.FEMININO);
