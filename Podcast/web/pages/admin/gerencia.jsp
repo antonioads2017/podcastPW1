@@ -30,6 +30,7 @@
                 </thead>
                 <tbody>
                     <c:forEach var="usuario" items="${usuarios}">
+                        <c:if test="${usuario!=usuarioLogado}">
                         <tr>
                             <td>${usuario.nome}</td>
                             <td>${usuario.telefone}</td>
@@ -37,6 +38,7 @@
                             <td>${usuario.email}</td>
                             <td>${usuario.nivelAcesso}</td>
                         </tr>
+                        </c:if>
                     </c:forEach>
                 </tbody>
 
