@@ -57,15 +57,20 @@
                                     <p>"Bohemian Rhapsody" é uma canção composta em 1975 por Freddie Mercury, integrante da banda britânica Queen, e incluída no seu álbum A Night at the Opera. Esta canção não possui refrão.</p>
                                 </div>
                                 <div class="card-action">
-                                    <c:choose>
-                                        <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
-                                            <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <img class="icone" src="/img/${sessionScope.usuarioLogado.fotoPath}"/>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <a>Comentar</a>
+
+
+
+                                    <form>
+                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                                          <div class="input-field col5 s5">
+                                              <input id="comentario" type="text" name="comentario" >
+                                                <label for="comentario">Escreva um comentário...</label>
+
+                                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                                            <i class="material-icons right">question_answer</i>
+                                        </button> </div>
+
+                                    </form>
                                 </div>
                                 </div>
 
