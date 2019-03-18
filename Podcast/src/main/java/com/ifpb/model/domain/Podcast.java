@@ -16,7 +16,7 @@ public class Podcast {
     private String titulo;
     private String descricao;
     private String categoria;
-    private File audio;
+    private String audioPath;
     private Usuario dono;
     private List<Comentario> comentarios;
 
@@ -24,11 +24,11 @@ public class Podcast {
         comentarios = new ArrayList<>();
     }
 
-    public Podcast(String titulo, String descricao, String categoria, File audio, Usuario dono, List<Comentario> comentarios) {
+    public Podcast(String titulo, String descricao, String categoria, String audioPath, Usuario dono, List<Comentario> comentarios) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.categoria = categoria;
-        this.audio = audio;
+        this.audioPath = audioPath;
         this.dono = dono;
         this.comentarios = comentarios;
     }
@@ -57,12 +57,12 @@ public class Podcast {
         this.categoria = categoria;
     }
 
-    public File getAudio() {
-        return audio;
+    public String getAudioPath() {
+        return audioPath;
     }
 
-    public void setAudio(File audio) {
-        this.audio = audio;
+    public void setAudioPath(String audioPath) {
+        this.audioPath = audioPath;
     }
 
     public Usuario getDono() {
@@ -90,14 +90,14 @@ public class Podcast {
         return Objects.equals(titulo, podcast.titulo) &&
                 Objects.equals(descricao, podcast.descricao) &&
                 Objects.equals(categoria, podcast.categoria) &&
-                Objects.equals(audio, podcast.audio) &&
+                Objects.equals(audioPath, podcast.audioPath) &&
                 Objects.equals(dono, podcast.dono) &&
                 Objects.equals(comentarios, podcast.comentarios);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo, descricao, categoria, audio, dono, comentarios);
+        return Objects.hash(titulo, descricao, categoria, audioPath, dono, comentarios);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class Podcast {
                 "titulo='" + titulo + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", categoria='" + categoria + '\'' +
-                ", audio=" + audio +
+                ", audioPath='" + audioPath + '\'' +
                 ", dono=" + dono +
                 ", comentarios=" + comentarios +
                 '}';

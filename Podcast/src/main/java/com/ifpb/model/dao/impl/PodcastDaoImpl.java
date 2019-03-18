@@ -47,7 +47,7 @@ public class PodcastDaoImpl implements PodcastDao {
             statement.setString(1,podcast.getTitulo());
             statement.setString(2,podcast.getCategoria());
             statement.setString(3,podcast.getDescricao());
-            statement.setString(4,podcast.getAudio().getPath());
+            statement.setString(4,podcast.getAudioPath());
             statement.setString(5,podcast.getDono().getEmail());
             statement.setString(6,nomeTurma);
             statement.execute();
@@ -167,7 +167,7 @@ public class PodcastDaoImpl implements PodcastDao {
         podcast.setTitulo(resultSet.getString("titulo"));
         podcast.setCategoria(resultSet.getString("categoria"));
         podcast.setDescricao(resultSet.getString("descricao"));
-        podcast.setAudio(new File(resultSet.getString("audio")));
+        podcast.setAudioPath(resultSet.getString("audio"));
         podcast.setDono(usuarioDao.buscar(resultSet.getString("criador")));
         podcast.setComentarios(comentarioDao.buscarPorPodcast(resultSet.getString("audio")));
         return podcast;
