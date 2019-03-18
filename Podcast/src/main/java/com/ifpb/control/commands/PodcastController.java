@@ -77,7 +77,18 @@ public class PodcastController implements Command {
 
     }
 
-    private void buscarPodcastService(HttpServletRequest request, HttpServletResponse response) {
+    private void buscarPodcastService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String referencia = request.getParameter("referencia");
+        Podcast podcast;
+        try {
+            podcast = podcastDao.buscar(referencia);
+        } catch (DataAccessException e) {
+            throw new CommandException(404,"Não foi possível buscar o podcast desejado!");
+        }
+
+        request.setAttribute("podcast",podcast);
+
+        request.getRequestDispatcher("/pages/moduloPodcast.jsp");
 
     }
 

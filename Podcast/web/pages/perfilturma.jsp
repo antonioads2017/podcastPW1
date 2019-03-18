@@ -60,10 +60,10 @@
                                 <li>
                                     <div class="col s6 card">
                                         <div class="card-content">
-                                            <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
+                                            <span class="card-title grey-text text-darken-4">${podcast.titulo}<span ><i class="material-icons right">info</i></span></span>
                                             <p>Categoria: ${podcast.categoria}</p>
                                             <p>Dono: ${podcast.dono.nome}</p>
-                                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${podcast.audioPath}"><i class="material-icons">play_arrow</i></a>
                                         </div>
                                     </div>
                                 </li>

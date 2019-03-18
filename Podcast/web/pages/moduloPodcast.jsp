@@ -24,7 +24,7 @@
     <div class="col s12 m4 l8">
         <div class="card">
                     <audio id="myAudio" preload="auto">
-                        <source src="../audio/music.mp3" type="audio/mpeg">
+                        <source src="../audio/${podcast.audioPath}" type="audio/mpeg">
                     </audio>
             <div class="card horizontal">
                 <div class="card-image">
@@ -42,7 +42,7 @@
                         </div> <a class="btn-floating btn-large halfway-fab waves-effect waves-light red" onClick="togglePlay()"><i class="material-icons" id="PausePlay">play_arrow</i></a>
                     </div>
                     <div class="card-action">
-                        <p>Postado por: <b> Autor</b></p>
+                        <p>Postado por: <b>${podcast.dono.nome}</b></p>
                     </div>
                 </div>
             </div>
@@ -52,9 +52,12 @@
                                      </div>
                                 <div class="card-content">
                                     <h5 class="">
-                                        Bohemian Rhapsody
+                                        ${podcast.titulo}
                                     </h5>
-                                    <p>"Bohemian Rhapsody" é uma canção composta em 1975 por Freddie Mercury, integrante da banda britânica Queen, e incluída no seu álbum A Night at the Opera. Esta canção não possui refrão.</p>
+                                    <p>
+                                        ${podcast.descricao}
+                                        <%--"Bohemian Rhapsody" é uma canção composta em 1975 por Freddie Mercury, integrante da banda britânica Queen, e incluída no seu álbum A Night at the Opera. Esta canção não possui refrão.--%>
+                                    </p>
                                 </div>
                                 <div class="card-action">
                                     <div class="row">
