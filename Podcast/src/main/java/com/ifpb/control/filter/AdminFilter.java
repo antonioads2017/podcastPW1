@@ -39,8 +39,6 @@ public class AdminFilter implements Filter {
         List<Usuario> usuarios;
         if(!usuarioLogado.getNivelAcesso().equals(NivelAcesso.ADMIN)){
             httpResponse.sendRedirect("pages/timeline.jsp");
-
-
         }
         try {
             usuarios=usuarioDao.listar();

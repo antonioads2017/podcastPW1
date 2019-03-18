@@ -37,6 +37,11 @@
                             <td>${usuario.nascimento}</td>
                             <td>${usuario.email}</td>
                             <td>${usuario.nivelAcesso}</td>
+                            <td><a class="btn waves-effect waves-light red btn modal-trigger" />Excluir</a>
+                            <td> <c:if test="${usuario.nivelAcesso=='USER'}">
+                                <a class="btn waves-effect waves-light orange btn modal-trigger" />Tornar ADMIN</a>
+                            </c:if></td>
+                            </td>
                         </tr>
                         </c:if>
                     </c:forEach>
