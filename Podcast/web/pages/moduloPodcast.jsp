@@ -33,16 +33,16 @@
 
 
                     <div class="col xl4 s10 m15">
-                        <div class="card">
+                        <div class="card" id="podcast">
                             <div class="card-image">
                                 <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" alt="music" onClick="togglePlay()">
-                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal" onClick="togglePlay()"><i class="material-icons" id="PausePlay">play_arrow</i></a>
+                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red" onClick="togglePlay()"><i class="material-icons" id="PausePlay">play_arrow</i></a>
                             </div>
-                            <div class="card-content">
-                                <h5>
+                            <div class="card-content deep-purple darken-1">
+                                <h5 class="white-text">
                                     Bohemian Rhapsody
                                 </h5>
-                                <div class="row valign-wrapper">
+                                <div class="row valign-wrapper white-text">
                                     <div class="col s2" id="position"></div>
                                     <div class="col s6 range-field valign-wrapper"><input id="seekbar" type="range" min="0" max="0" step="1" oninput="setSeek(this.value)" onchange="setSeek(this.value)"></div>
                                     <div class="col s2 center-align" id="total"></div>

@@ -31,13 +31,13 @@
         <div class="col s8 m3">
             <div class="card" id="podcast">
                 <div class="card-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" class="circle">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" class="capa">
                     <span class="card-title">Bohemian Rhapsody</span>
                     <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
                 </div>
-                <div class="card-content">
-                    <p class="autor">Queen</p><br>
-                    <p class="descricao"> Composta em 1975 por Freddie Mercury. Foi a primeira música a alcançar a
+                <div class="card-content deep-purple darken-1">
+                    <p class="autor white-text">Queen</p><br>
+                    <p class="descricao white-text"> Composta em 1975 por Freddie Mercury. Foi a primeira música a alcançar a
                         primeira posição duas vezes com a mesma versão.</p>
                 </div>
             </div>

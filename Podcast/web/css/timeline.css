@@ -5,8 +5,12 @@ body{
 #podcast{
     -webkit-transition: width 2s; /* Safari */
     transition: width 2s;
+    border-bottom-style: solid;
+    border-bottom-color: #f96e22;
 }
 #podcast:hover{
-    width: 350px;
+    width: 320px;
     box-shadow: 5px 5px 20px black;
+}
+.capa{
 }
