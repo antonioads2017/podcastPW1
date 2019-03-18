@@ -138,48 +138,11 @@
 </div>
 
 
-<%--<div class="container">--%>
-    <%--<div class="section">--%>
-
-        <%--<!--   Icon Section   -->--%>
-        <%--<div class="row">--%>
-            <%--<div class="col s12 m4">--%>
-                <%--<div class="icon-block">--%>
-                    <%--<h2 class="center light-blue-text"><i class="material-icons">mode_comment</i></h2>--%>
-                    <%--<h5 class="center">Interaja com Usuários</h5>--%>
-
-                    <%--<p class="light">Nossa plataforma permite a interação por comentários em podcasts.</p>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-
-            <%--<div class="col s12 m4">--%>
-                <%--<div class="icon-block">--%>
-                    <%--<h2 class="center light-blue-text"><i class="material-icons">keyboard_voice</i></h2>--%>
-                    <%--<h5 class="center">Fácil acesso e upload</h5>--%>
-
-                    <%--<p class="light">Nossa equipe preparou um ambiente prático e de fácil ultilização, para uma melhor--%>
-                        <%--experiência do usuário.</p>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-
-            <%--<div class="col s12 m4">--%>
-                <%--<div class="icon-block">--%>
-                    <%--<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>--%>
-                    <%--<h5 class="center">Turmas virtuais</h5>--%>
-
-                    <%--<p class="light">Com a criação de Turmas virtuais, nossa plataforma permite uma melhor interação de--%>
-                        <%--usuários que participam de uma mesma turma.</p>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-
-    <%--</div>--%>
-    <%--<br><br>--%>
-<%--</div>--%>
-    <%--<jsp: include page=“/pages/footer.jsp”/>--%>
 
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.modal').modal();
@@ -187,6 +150,8 @@
 </script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
+
+<script src="js/mask.js"></script>
 <c:if test="${cadastroSucesso != null}">
     <script>
         $(document).ready(function(){
