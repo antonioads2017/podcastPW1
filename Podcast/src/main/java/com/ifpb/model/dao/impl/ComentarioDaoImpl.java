@@ -21,20 +21,24 @@ import java.util.List;
  */
 public class ComentarioDaoImpl implements ComentarioDao {
 
-    UsuarioDao usuarioDao = new UsuarioDaoImpl();
+    UsuarioDao usuarioDao;
+    Connection connection;
+
+    public ComentarioDaoImpl(){
+        usuarioDao = new UsuarioDaoImpl();
+        connection = ConnectionFactory.getInstance().getConnection();
+    }
 
     @Override
     public void salvar(Comentario comentario,String podcast) throws DataAccessException {
         String query = "INSERT INTO avalia_podcast (usuario,podcast,comentario) VALUES (?,?,?)";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,comentario.getUsuario().getEmail());
             statement.setString(2,podcast);
             statement.setString(3,comentario.getTexto());
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar salvar um comentario");
         }
     }
@@ -42,14 +46,12 @@ public class ComentarioDaoImpl implements ComentarioDao {
     @Override
     public void deletar(String usuario, String podcast) throws DataAccessException {
         String query = "DELETE FROM avalia_podcast WHERE usuario = ? AND podcast = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,usuario);
             statement.setString(2,podcast);
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar deletar um comentario");
         }
     }
@@ -57,13 +59,11 @@ public class ComentarioDaoImpl implements ComentarioDao {
     @Override
     public void deletarPorPodcast(String podcast) throws DataAccessException {
         String query = "DELETE FROM avalia_podcast WHERE podcast = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,podcast);
             statement.execute();
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar deletar todos os comentario de um podcast");
         }
     }
@@ -71,7 +71,7 @@ public class ComentarioDaoImpl implements ComentarioDao {
     @Override
     public List<Comentario> buscarPorPodcast(String podcast) throws DataAccessException {
         String query = "SELECT * FROM avalia_podcast WHERE podcast = ?";
-        try(Connection connection = ConnectionFactory.getInstance().getConnection()){
+        try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,podcast);
             ResultSet resultSet = statement.executeQuery();
@@ -80,9 +80,7 @@ public class ComentarioDaoImpl implements ComentarioDao {
                 comentarios.add(construirComentario(resultSet));
             }
             return comentarios;
-        } catch (ConnectionException e) {
-            throw new DataAccessException("Falha ao tentar se conectar com o banco de dados");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar buscar todos os comentarios de um podcast");
         }
     }
