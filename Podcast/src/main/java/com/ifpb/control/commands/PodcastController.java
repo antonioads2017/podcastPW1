@@ -88,7 +88,11 @@ public class PodcastController implements Command {
 
         request.setAttribute("podcast",podcast);
 
-        request.getRequestDispatcher("/pages/moduloPodcast.jsp");
+        try {
+            request.getRequestDispatcher("/pages/moduloPodcast.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            throw new CommandException(404,"Não foi possível buscar o podcast desejado!");
+        }
 
     }
 
