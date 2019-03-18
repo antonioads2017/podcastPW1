@@ -59,11 +59,11 @@
 
 
 
-    <nav>
+    <nav class="transparent">
 
         <div class="nav-wrapper">
 
-            <a href="/pages/timeline.jsp" class="brand-logo white-text">IFCast</a>
+            <a href="/pages/timeline.jsp" class="brand-logo white-text"> <i class="material-icons">keyboard_voice</i>IFCast</a>
 
             <ul class="hide-on-med-and-down  right">
 
@@ -97,7 +97,7 @@
                 <li ><a href="/pages/perfilUsuario.jsp" class="white-text">${sessionScope.usuarioLogado.nome}</a></li>
 
                 <li><a href="/pages/turmasvirtuais.jsp" class="white-text">Turmas virtuais</a></li>
-<li> <a class="btn waves-effect waves-light orange btn modal-trigger" href="#modal2">Upload</a></li>
+<li> <a class="btn waves-effect waves-light red darken-1 btn modal-trigger" href="#modal2">Upload</a></li>
                 <li><a href="/inicio?comando=UsuariosController&acao=sair">Sair</a></li>
 
 
