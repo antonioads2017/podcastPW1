@@ -57,20 +57,25 @@
                                     <p>"Bohemian Rhapsody" é uma canção composta em 1975 por Freddie Mercury, integrante da banda britânica Queen, e incluída no seu álbum A Night at the Opera. Esta canção não possui refrão.</p>
                                 </div>
                                 <div class="card-action">
+                                    <div class="row">
+                                        <div class="col s12"></div>
+                                        <div class="col s12 m4 l2"><img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/></div>
+                                        <div class="col s12 m4 l8"> <form>
 
-
-
-                                    <form>
-                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-                                          <div class="input-field col5 s5">
-                                              <input id="comentario" type="text" name="comentario" >
+                                            <div class="input-field col5 s5">
+                                                <input id="comentario" type="text" name="comentario" >
                                                 <label for="comentario">Escreva um comentário...</label>
 
-                                        <button class="btn waves-effect waves-light" type="submit" name="action">
-                                            <i class="material-icons right">question_answer</i>
-                                        </button> </div>
+                                               </div>
 
-                                    </form>
+                                        </form></div>
+                                        <div class="col s12 m4 l2"><button class="btn-floating waves-effect waves-light" type="submit" name="action"><i class="material-icons right">chat</i>
+                                        </button></div>
+                                    </div>
+
+
+
+
                                 </div>
                                 </div>
 
