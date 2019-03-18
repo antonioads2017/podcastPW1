@@ -1,11 +1,12 @@
 body{
-    background-color: #1b2b42;
+    background: rgb(27,43,66);
+    background: linear-gradient(180deg, rgba(27,43,66,1) 0%, rgba(27,43,66,1) 57%, rgba(60,77,133,1) 86%);
 }
-.card{
+#podcast{
     -webkit-transition: width 2s; /* Safari */
     transition: width 2s;
 }
-.card:hover{
+#podcast:hover{
     width: 350px;
     box-shadow: 5px 5px 20px black;
 }

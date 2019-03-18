@@ -16,6 +16,10 @@
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
     <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <style>
+        .circle{ border-radius: 50%;}
+    </style>
+
 
 
 </head>
@@ -25,9 +29,9 @@
 <div class="timeline">
     <div class="row">
         <div class="col s8 m3">
-            <div class="card">
+            <div class="card" id="podcast">
                 <div class="card-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" class="capa-podcast">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" class="circle">
                     <span class="card-title">Bohemian Rhapsody</span>
                     <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
                 </div>
