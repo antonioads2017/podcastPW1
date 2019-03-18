@@ -29,13 +29,13 @@
                     <th>Nivel de Acesso</th>
                 </thead>
                 <tbody>
-                    <c:forEach var="usuario" items="${sessionScope.usuarios}">
+                    <c:forEach var="usuario" items="${usuarios}">
                         <tr>
-                            <td>${sessionScope.usuario.nome}</td>
-                            <td>${sessionScope.usuario.telefone}</td>
-                            <td>${sessionScope.usuario.nascimento}</td>
-                            <td>${sessionScope.usuario.email}</td>
-                            <td>${sessionScope.usuario.nivelAcesso}</td>
+                            <td>${usuario.nome}</td>
+                            <td>${usuario.telefone}</td>
+                            <td>${usuario.nascimento}</td>
+                            <td>${usuario.email}</td>
+                            <td>${usuario.nivelAcesso}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
