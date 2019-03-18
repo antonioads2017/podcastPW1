@@ -72,9 +72,28 @@
                     </p>
                 </div>
                 <div class="card-action">
-                    <div class="card">
-                        <div class="col s12 card-title">Comentários:</div>
-                    </div>
+
+                        <div class="col s12 card-title">Comentários:</div> <br>
+                        <div class="card-content">
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header">
+                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                                         <p>Amei muito uauu</p>
+                                        <span class="badge" ><b>Autor</b></span>
+                                       </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header">
+                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                                        <b>Autor:</b><br> <p>Mt ruim kkk</p>
+
+                                        </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
                 <div class="row">
 
                     <div class="col s12 m4 l2">
