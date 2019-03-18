@@ -42,7 +42,7 @@
                         </div> <a class="btn-floating btn-large halfway-fab waves-effect waves-light red" onClick="togglePlay()"><i class="material-icons" id="PausePlay">play_arrow</i></a>
                     </div>
                     <div class="card-action">
-                        <p>Postado por:  Autor</p>
+                        <p>Postado por: <b> Autor</b></p>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="card-action">
                                     <div class="row">
-                                        <div class="col s12"></div>
+                                        <div class="col s12">Comentários:</div>
                                         <div class="col s12 m4 l2"><img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/></div>
                                         <div class="col s12 m4 l8"> <form>
 
