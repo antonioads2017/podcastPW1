@@ -52,6 +52,9 @@ public class TurmaVirtualController implements Command {
             case "adicionarMembro":
                 adicionarMembroService(request, response);
                 break;
+            case "removerMembro":
+                removerMembroService(request,response);
+                break;
             case "adicionarPodcast":
                 adicioanarPodcastService(request, response);
                 break;
@@ -152,6 +155,23 @@ public class TurmaVirtualController implements Command {
             throw new CommandException(400, "Falha ao abrir a página das turmas");
         }
 
+    }
+
+    private void removerMembroService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String emailAluno = request.getParameter("emailAluno");
+        String nomeTurma = request.getParameter("nomeTurma");
+
+        try {
+            turmaVirtualDao.removerAlunodeTurma(nomeTurma,emailAluno);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha ao remover o aluno da turma!");
+        }
+
+        try {
+            response.sendRedirect("/inicio?comando=TurmaVirtualController&acao=buscar&nomeTurma="+nomeTurma);
+        } catch (IOException e) {
+            throw new CommandException(404,"Falha ao recarregar a pagina da turma!");
+        }
     }
 
     private void adicioanarPodcastService(HttpServletRequest request, HttpServletResponse response) {
