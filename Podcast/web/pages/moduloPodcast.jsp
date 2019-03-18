@@ -80,15 +80,15 @@
                                     <div class="collapsible-header">
                                         <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
                                          <p>Amei muito uauu</p>
-                                        <span class="badge" ><b>Autor</b></span>
+                                        <span class="badge" ><b>Camila Carvalho</b></span>
                                        </div>
                                 </li>
                                 <li>
                                     <div class="collapsible-header">
                                         <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
-                                        <b>Autor:</b><br> <p>Mt ruim kkk</p>
-
-                                        </div>
+                                        <p>Não gostei</p>
+                                        <span class="badge" ><b>Mailson Dennis</b></span>
+                                    </div>
                                 </li>
 
                             </ul>
