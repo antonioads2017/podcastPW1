@@ -69,9 +69,23 @@
                     </div>
                     <div id="settings"><h4>Configuração da conta:</h4>
                         <a href="/pages/editarUsuario.jsp">Editar dados</a><br>
-                        <a href="">Desativar conta</a><br>
+                        <a class="modal-trigger" href="#md1" >Desativar conta</a><br>
                         <c:if test="${sessionScope.usuarioLogado.nivelAcesso=='ADMIN'}">
                             <a href="admin/gerencia.jsp">Gêrencia de Usuários</a></c:if></div>
+                </div>
+            </div>
+
+            <div id="md1" class="modal">
+                <div class="modal-content">
+                    <h4>Porfavor confirme</h4>
+                    <p>Todos os seus dados, podcasts ou turmas virtuais cadastrados no sistema também serão excluídos!
+                        </p>
+                    <p>Deseja continuar com esta ação?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close btn">Não</a>
+                    <a href="/inicio?comando=UsuariosController&acao=desativarConta&emailUsuario=${sessionScope.usuarioLogado.email}"
+                       class="waves-effect waves-green red btn-flat center-align" id="md1_YesBtn">Sim</a>
                 </div>
             </div>
 
