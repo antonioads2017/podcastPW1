@@ -1,6 +1,8 @@
 <div class="col s8">
     <c:forEach var="turma" items="${turmas}">
 
+        <%@ include file = "moduloUpload.jsp" %>
+
         <div class="card horizontal">
 
             <div class="card-stacked">

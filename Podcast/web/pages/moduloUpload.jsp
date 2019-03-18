@@ -12,17 +12,17 @@
                 <form class="s4" method="post" action="/inicio?comando=PodcastController&acao=salvarEmTurma" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="título" type="text" class="validate">
+                            <input id="título" type="text" class="validate" name="titulo" required>
                             <label for="título">Título</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="categoria" type="text" class="validate">
+                            <input id="categoria" type="text" class="validate" name="categoria" required>
                             <label for="categoria">Categoria</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="decricao" type="text" class="validate">
+                            <input id="decricao" type="text" class="validate" name="descricao" required>
                             <label for="decricao">Descrição</label>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         <div class = "file-field input-field">
                             <div class = "btn">
                                 <span>Browse</span>
-                                <input type = "file" />
+                                <input type = "file" name="audio" required/>
                             </div>
 
                             <div class = "file-path-wrapper">

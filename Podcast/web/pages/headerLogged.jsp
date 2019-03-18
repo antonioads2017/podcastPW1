@@ -59,8 +59,6 @@
 
 
 
-            <%--<li class="tab disabled"><a href="/inicio?comando=UsuariosController&acao=sair">Sair</a></li>--%>
-
     <nav>
 
         <div class="nav-wrapper">
