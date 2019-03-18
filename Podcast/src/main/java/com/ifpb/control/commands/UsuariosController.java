@@ -63,6 +63,9 @@ public class UsuariosController implements Command {
             case "buscar":
                 buscarService(request,response);
                 break;
+            case "desativarConta":
+                desativarContaService(request,response);
+                break;
             case "atualizar":
                 atualizarService(request,response);
                 break;
@@ -83,6 +86,7 @@ public class UsuariosController implements Command {
                 break;
         }
     }
+
 
     private void tornarAdmin(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String referece = request.getParameter("emailUsuario");
@@ -110,7 +114,7 @@ public class UsuariosController implements Command {
                 log.info("Logado");
             }else{
                 log.severe("Falha na autencação");
-                throw new CommandException(402,"Falha de autenticação");
+                response.sendRedirect("index.jsp");
             }
         } catch (DataAccessException| IOException e) {
             log.severe("Falha ao acessar a base de dados");
@@ -354,6 +358,23 @@ public class UsuariosController implements Command {
             }
         }
         return "";
+    }
+
+    private void desativarContaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String emailUsuario = request.getParameter("emailUsuario");
+        try {
+            usuarioDao.remover(emailUsuario);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha ao excluir o usuário da base de dados");
+        }
+
+        request.getSession().invalidate();
+
+        try {
+            response.sendRedirect("index.jsp");
+        } catch (IOException e) {
+            throw new CommandException(404,"Falha ao carregar a página de login!");
+        }
     }
 
 
