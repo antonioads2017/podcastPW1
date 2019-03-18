@@ -29,7 +29,7 @@
             </audio>
             <div class="card horizontal">
                 <div class="card-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" alt="music"
+                    <img src="/img/cover.png" alt="music"
                          onClick="togglePlay()">
                 </div>
                 <div class="card-stacked" id="cabecalhoP">
@@ -72,9 +72,28 @@
                     </p>
                 </div>
                 <div class="card-action">
-                    <div class="card">
-                        <div class="col s12 card-title">Comentários:</div>
-                    </div>
+
+                        <div class="col s12 card-title">Comentários:</div> <br>
+                        <div class="card-content">
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header">
+                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                                         <p>Amei muito uauu</p>
+                                        <span class="badge" ><b>Camila Carvalho</b></span>
+                                       </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header">
+                                        <img class="icone" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                                        <p>Não gostei</p>
+                                        <span class="badge" ><b>Mailson Dennis</b></span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
                 <div class="row">
 
                     <div class="col s12 m4 l2">

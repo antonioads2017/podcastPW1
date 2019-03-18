@@ -31,7 +31,7 @@
         <div class="col s8 m3">
             <div class="card" id="podcast">
                 <div class="card-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" class="capa">
+                    <img src="/img/cover.png" class="capa">
                     <span class="card-title">Bohemian Rhapsody</span>
                     <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
                 </div>
