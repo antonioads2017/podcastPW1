@@ -36,7 +36,7 @@
                     <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
                 </div>
                 <div class="card-content">
-                    <p class="autor">Queen</p><br>
+                    <p class="autor"><b>Queen</b></p><br>
                     <p class="descricao "> Composta em 1975 por Freddie Mercury. Foi a primeira música a alcançar a
                         primeira posição duas vezes com a mesma versão.</p>
                 </div>
