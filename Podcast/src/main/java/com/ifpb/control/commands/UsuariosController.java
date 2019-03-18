@@ -75,9 +75,27 @@ public class UsuariosController implements Command {
             case "buscarAlunosTurma":
                 buscarAlunosTurma(request,response);
                 break;
+            case "tornarAdmin":
+                tornarAdmin(request,response);
+                break;
             case "sair":
                 logoutService(request,response);
                 break;
+        }
+    }
+
+    private void tornarAdmin(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String referece = request.getParameter("emailUsuario");
+        try {
+            usuarioDao.setAdmin(referece);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha a atualizar Nivel do Usuário");
+        }
+        try {
+            response.sendRedirect("/pages/admin/gerencia.jsp");
+        } catch (IOException e) {
+            log.severe("Falha ao carregar a página de gerência de usuários");
+            throw new CommandException(404,"Falha ao carregar a página de gerência de usuários");
         }
     }
 
@@ -176,6 +194,13 @@ public class UsuariosController implements Command {
         } catch (DataAccessException e) {
             log.severe("Não foi possivel excluir o usuário");
             throw new CommandException(400,"Não foi possível excluir o usuário");
+        }
+
+        try {
+            response.sendRedirect("/pages/admin/gerencia.jsp");
+        } catch (IOException e) {
+            log.severe("Falha ao carregar a página de gerência de usuários");
+            throw new CommandException(404,"Falha ao carregar a página de gerência de usuários");
         }
     }
 
