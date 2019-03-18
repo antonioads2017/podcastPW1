@@ -17,44 +17,56 @@
 </head>
 <body>
 <%@ include file="../headerLogged.jsp" %>
+
 <div class="row">
-    <center><h4>Gêrencia de Usuários</h4></center>
-    <table class="responsive-table">
-        <thead>
-        <th>Nome</th>
-        <th>Telefone</th>
-        <th>Data de Nascimento</th>
-        <th>E-mail</th>
-        <th>Nivel de Acesso</th>
-        </thead>
-        <tbody>
-        <c:forEach var="usuario" items="${usuarios}">
-            <c:if test="${usuario!=usuarioLogado}">
-                <tr>
-                    <td>${usuario.nome}</td>
-                    <td>${usuario.telefone}</td>
-                    <td>${usuario.nascimento}</td>
-                    <td>${usuario.email}</td>
-                    <td>${usuario.nivelAcesso}</td>
-                    <td><a href="/inicio?comando=UsuariosController&acao=deletar&emailUsuario=${usuario.email}"
-                           class="btn waves-effect waves-light red btn modal-trigger"/>Excluir</a>
-                    </td>
-                    <td><c:if test="${usuario.nivelAcesso=='USER'}">
-                        <a href="/inicio?comando=UsuariosController&acao=tornarAdmin&emailUsuario=${usuario.email}"
-                           class="btn waves-effect waves-light orange btn modal-trigger"/>Tornar ADMIN</a>
-                    </c:if></td>
-                    </td>
-                </tr>
-            </c:if>
-        </c:forEach>
-        </tbody>
+    <div class="col s12"></div>
+    <div class="col s12 m4 l1"></div>
+    <div class="col s12 m4 l10">
+        <div class="card">
+            <h4 align="center">Gêrencia de Usuários</h4>
+            <div class="card-content">
+                <table class="striped card-content">
+                    <thead>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Data de Nascimento</th>
+                    <th>E-mail</th>
+                    <th>Nivel de Acesso</th>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="usuario" items="${usuarios}">
+                        <c:if test="${usuario!=usuarioLogado}">
+                            <tr>
+                                <td>${usuario.nome}</td>
+                                <td>${usuario.telefone}</td>
+                                <td>${usuario.nascimento}</td>
+                                <td>${usuario.email}</td>
+                                <td>${usuario.nivelAcesso}</td>
+                                <td><a href="/inicio?comando=UsuariosController&acao=deletar&emailUsuario=${usuario.email}"
+                                       class="btn waves-effect waves-light red btn modal-trigger"/>Excluir</a>
+                                </td>
+                                <td><c:if test="${usuario.nivelAcesso=='USER'}">
+                                    <a href="/inicio?comando=UsuariosController&acao=tornarAdmin&emailUsuario=${usuario.email}"
+                                       class="btn waves-effect waves-light orange btn modal-trigger"/>Tornar ADMIN</a>
+                                </c:if></td>
+                                </td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
+                    </tbody>
 
 
-    </table>
+                </table>
 
+                </div>
+            </div>
 
+        </div>
+    </div>
 </div>
-
+</div>
+<div class="col s12 m4 l1"></div>
+</div>
 
 <%@ include file="../footer.jsp" %>
 
