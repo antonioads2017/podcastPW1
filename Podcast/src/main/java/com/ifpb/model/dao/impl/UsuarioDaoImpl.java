@@ -63,6 +63,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             statement.setString(1, reference);
             statement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha tentar deletar um usuário");
         }
     }
@@ -190,6 +191,21 @@ public class UsuarioDaoImpl implements UsuarioDao {
         } catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar salvar a foto do usuário");
         }
+    }
+
+    @Override
+    public void setAdmin(String emailUsuaio) throws DataAccessException{
+            String query = "UPDATE usuario SET admin='TRUE' WHERE email = ? ";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,emailUsuaio);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar mudar Nivel de Acesso");
+        }
+
+
     }
 
     private List<Usuario> buscarPorTipo(Tipo tipo) throws DataAccessException {
