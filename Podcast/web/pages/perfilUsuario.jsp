@@ -34,7 +34,7 @@
     <div class="col s12 m4 l8">
         <div class="card">
 
-            <div class="card-content">
+            <div class="card-content"><center>
                 <c:choose>
                     <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
                         <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
@@ -45,7 +45,7 @@
                 </c:choose>
 
                 <h4>${sessionScope.usuarioLogado.nome} </h4>
-                <p>${sessionScope.usuarioLogado.tipo}</p>
+                <p>${sessionScope.usuarioLogado.tipo}</p></center>
 
                 <div class=" card-tabs">
                     <ul class="tabs tabs-fixed-width">
