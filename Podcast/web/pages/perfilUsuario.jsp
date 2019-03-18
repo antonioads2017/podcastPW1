@@ -62,7 +62,9 @@
                     </div>
                     <div id="settings"><h4>Configuração da conta:</h4>
                         <a href="/pages/editarUsuario.jsp">Editar dados</a><br>
-                        <a href="">Desativar conta</a></div>
+                        <a href="">Desativar conta</a><br>
+                        <c:if test="${sessionScope.usuarioLogado.nivelAcesso=='ADMIN'}">
+                        <a href="admin/gerencia.jsp">Gêrencia de Usuários</a></c:if></div>
                 </div>
             </div>
 
