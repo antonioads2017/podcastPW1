@@ -39,6 +39,8 @@ CREATE TABLE podcast(
 	descricao TEXT,
 	criador TEXT NOT NULL,
 	nome_turma VARCHAR(30),
+    data_criacao DATE,
+	hora_criacao TIME,
 	FOREIGN KEY (criador) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (nome_turma) REFERENCES turma_virtual(nome) ON DELETE CASCADE
 );
