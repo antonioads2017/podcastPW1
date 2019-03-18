@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="col s3">
-                <span class="center-align">Criado por: ${turma.criador.nome}</span>
+                <span class="center-align white-text">Criado por: ${turma.criador.nome}</span>
             </div>
         </div>
         <div class="row">
@@ -88,7 +88,7 @@
                                             <span class="title">${aluno.nome}</span>
                                             <p>${aluno.email}</p>
                                             <c:if test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
-                                                <a href="/inicio?comando=UsuariosController&acao=deletar&emailUsuario=${aluno.email}"> <i class="material-icons">close</i> </a>
+                                                <a href="/inicio?comando=TurmaVirtualController&acao=removerMembro&emailAluno=${aluno.email}&nomeTurma=${turma.nome}"> <i class="material-icons">close</i> </a>
                                             </c:if>
                                             <a href="/inicio?comando=UsuariosController&acao=buscar&emailUsuario=${aluno.email}" class="secondary-content"><i class="material-icons">info_outline</i></a>
                                         </li>

@@ -108,7 +108,7 @@
                         </c:choose>
                     </div>
                     <form action="/inicio?comando=ComentarPodcastController&acao=comentar" method="POST">
-                        <div class="col s12 m4 l8"> x
+                        <div class="col s12 m4 l8">
 
                             <div class="input-field col5 s5">
                                 <input id="comentario" type="text" name="comentario">
