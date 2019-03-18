@@ -42,7 +42,7 @@
                 </c:choose>
 
                 <h4>${sessionScope.usuarioLogado.nome} </h4>
-                <p>${sessionScope.usuarioLogado.tipo}</p>
+                <p>${sessionScope.usuarioLogado.tipo} / ${sessionScope.usuarioLogado.nivelAcesso}</p>
 
                 <div class=" card-tabs">
                     <ul class="tabs tabs-fixed-width">

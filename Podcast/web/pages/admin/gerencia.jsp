@@ -12,13 +12,47 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <%@ include file="../headerLogged.jsp" %>
+<div class="row">
+        <center><h4>Gêrencia de Usuários</h4></center>
+            <table class="responsive-table">
+                <thead>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Data de Nascimento</th>
+                    <th>E-mail</th>
+                    <th>Nivel de Acesso</th>
+                </thead>
+                <tbody>
+                    <c:forEach var="usuario" items="${sessionScope.usuarios}">
+                        <tr>
+                            <td>${sessionScope.usuario.nome}</td>
+                            <td>${sessionScope.usuario.telefone}</td>
+                            <td>${sessionScope.usuario.nascimento}</td>
+                            <td>${sessionScope.usuario.email}</td>
+                            <td>${sessionScope.usuario.nivelAcesso}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
 
+
+            </table>
+
+
+
+
+
+
+
+
+
+
+</div>
 
 
 
