@@ -29,7 +29,7 @@
             </audio>
             <div class="card horizontal">
                 <div class="card-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" alt="music"
+                    <img src="/img/cover.png" alt="music"
                          onClick="togglePlay()">
                 </div>
                 <div class="card-stacked" id="cabecalhoP">
