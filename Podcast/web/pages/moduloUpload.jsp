@@ -33,7 +33,7 @@
                         <div class = "file-field input-field">
                             <div class = "btn">
                                 <span>Browse</span>
-                                <input type = "file" name="audio" required/>
+                                <input type = "file" name="audio" accept="audio/*" required/>
                             </div>
 
                             <div class = "file-path-wrapper">
