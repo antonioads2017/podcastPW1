@@ -38,7 +38,7 @@ public class AdminFilter implements Filter {
         Usuario usuarioLogado = (Usuario) httpRequest.getSession(true).getAttribute("usuarioLogado");
         List<Usuario> usuarios;
         if(!usuarioLogado.getNivelAcesso().equals(NivelAcesso.ADMIN)){
-            httpResponse.sendRedirect("pages/timeline.jsp");
+            httpResponse.sendRedirect("/pages/timeline.jsp");
         }
         try {
             usuarios=usuarioDao.listar();
