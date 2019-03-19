@@ -3,7 +3,7 @@ package com.ifpb.control.filter;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
-@WebFilter(urlPatterns="/*")
+@WebFilter(urlPatterns={"/*","/pages/*","/pages/moduloPodcast.jsp"})
 public class CharsetFilter implements Filter {
 
     private String encoding;

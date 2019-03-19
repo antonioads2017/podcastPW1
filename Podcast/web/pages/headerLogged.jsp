@@ -10,7 +10,6 @@
                 <%--<a class="btn waves-effect waves-light orange btn modal-trigger" href="#modal2">Envie seu PodCast</a></li>--%>
     <%----%>
 
-
         <!-- Modal Structure -->
         <div id="modal2" class="modal">
             <div class="modal-content">
@@ -19,8 +18,8 @@
                         <form class="s4" method="post" action="/inicio?comando=PodcastController&acao=salvar" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input id="t�tulo" type="text" class="validate" name="titulo" required>
-                                    <label for="t�tulo">T�tulo</label>
+                                    <input id="título" type="text" class="validate" name="titulo" required>
+                                    <label for="título">Título</label>
                                 </div>
                                 <div class="input-field col s6">
                                     <input id="categoria" type="text" class="validate" name="categoria" required>
@@ -30,7 +29,7 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="decricao" type="text" class="validate" name="descricao">
-                                    <label for="decricao">Descri��o</label>
+                                    <label for="decricao">Descrição</label>
                                 </div>
                             </div>
                             <div>
