@@ -1,13 +1,11 @@
 package com.ifpb.model.dao.impl;
 
-import com.ifpb.model.dao.Exceptions.ConnectionFactory;
+import com.ifpb.model.jdbc.ConnectionFactory;
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.interfaces.*;
 import com.ifpb.model.domain.TurmaVirtual;
 import com.ifpb.model.domain.Usuario;
-import com.ifpb.model.jdbc.ConnectionException;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,7 +41,7 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
             if (statement.executeUpdate() > 0 && object.getParticipantes().size() > 0) {
                 for (Usuario aluno : object.getParticipantes()) {
                     System.out.println(aluno);
-                    adicionarAlunoaTurma(aluno.getEmail(), object.getNome());
+                    adicionarAlunoaTurma(object.getNome(),aluno.getEmail());
                 }
             }
         } catch (SQLException e) {
@@ -128,10 +126,11 @@ public class TurmaVirtualDaoImpl implements TurmaVirtualDao {
         String query = "INSERT INTO participa_turma (aluno_email,turma) VALUES(?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(2, emailAluno);
-            statement.setString(1, nomeTurma);
+            statement.setString(1, emailAluno);
+            statement.setString(2, nomeTurma);
             statement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha ao tentar inserur um aluno em uma turma virutal");
         }
     }

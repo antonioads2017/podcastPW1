@@ -6,18 +6,15 @@ import com.ifpb.model.domain.Enum.NivelAcesso;
 import com.ifpb.model.domain.Enum.Sexo;
 import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.Usuario;
-import com.ifpb.model.dao.Exceptions.ConnectionFactory;
+import com.ifpb.model.jdbc.ConnectionFactory;
 
-import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- *
  * @author Mailson Dennis
- *
  */
 public class UsuarioDaoImpl implements UsuarioDao {
 
@@ -30,26 +27,26 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public void salvar(Usuario usuario) throws DataAccessException {
         String query = "INSERT INTO usuario (email,senha,nome,foto,nascimento,admin,sexo,telefone) VALUES (?,?,?,?,?,?,?,?)";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,usuario.getEmail());
-            statement.setString(2,usuario.getSenha());
-            statement.setString(3,usuario.getNome());
-            statement.setString(4,"");
-            statement.setDate(5,Date.valueOf(usuario.getNascimento()));
-            statement.setBoolean(6,usuario.getNivelAcesso().equals(NivelAcesso.ADMIN));
-            statement.setString(7,usuario.getSexo().equals(Sexo.MASCULINO) ? "Masculino" : "Feminino");
-            statement.setString(8,usuario.getTelefone());
-            if(statement.executeUpdate() > 0){
+            statement.setString(1, usuario.getEmail());
+            statement.setString(2, usuario.getSenha());
+            statement.setString(3, usuario.getNome());
+            statement.setString(4, "");
+            statement.setDate(5, Date.valueOf(usuario.getNascimento()));
+            statement.setBoolean(6, usuario.getNivelAcesso().equals(NivelAcesso.ADMIN));
+            statement.setString(7, usuario.getSexo().equals(Sexo.MASCULINO) ? "Masculino" : "Feminino");
+            statement.setString(8, usuario.getTelefone());
+            if (statement.executeUpdate() > 0) {
                 System.out.println(usuario.getTipo());
                 String query2;
-                if(usuario.getTipo().equals(Tipo.ALUNO)){
+                if (usuario.getTipo().equals(Tipo.ALUNO)) {
                     query2 = "INSERT INTO aluno (email) VALUES (?)";
-                }else{
+                } else {
                     query2 = "INSERT INTO professor (email) VALUES (?)";
                 }
                 PreparedStatement statement2 = connection.prepareStatement(query2);
-                statement2.setString(1,usuario.getEmail());
+                statement2.setString(1, usuario.getEmail());
                 statement2.execute();
             }
         } catch (SQLException e) {
@@ -61,11 +58,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public void remover(String reference) throws DataAccessException {
         String query = "DELETE FROM usuario WHERE email = ?";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,reference);
+            statement.setString(1, reference);
             statement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DataAccessException("Falha tentar deletar um usuário");
         }
     }
@@ -73,7 +71,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public List<Usuario> listar() throws DataAccessException {
         String query = "SELECT * FROM usuario";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             return percorrerResultado(resultSet);
@@ -85,11 +83,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public Usuario buscar(String reference) throws DataAccessException {
         String query = "SELECT * FROM usuario WHERE email = ?";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,reference);
+            statement.setString(1, reference);
             ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return construirUsuario(resultSet);
             }
             return null;
@@ -112,12 +110,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public List<Usuario> buscarAlunosPorTurma(String nomeTurma) throws DataAccessException {
         String query = "SELECT * FROM usuario u, participa_turma pt WHERE u.email = pt.aluno_email AND pt.turma = ?";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,nomeTurma);
+            statement.setString(1, nomeTurma);
             ResultSet resultSet = statement.executeQuery();
             List<Usuario> alunos = new ArrayList<>();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 alunos.add(construirUsuario(resultSet));
             }
             return alunos;
@@ -127,13 +125,52 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
-    public boolean autenticarUsuario(String email, String senha) throws DataAccessException{
-        String query = "SELECT senha FROM usuario WHERE email = ?";
-        try{
+    public List<Usuario> buscarAlunosQueNaoParticipamDeTurma(String nomeTurma) throws DataAccessException {
+        String query = "SELECT * " +
+                        "FROM usuario NATURAL JOIN aluno  " +
+                        "WHERE email in " +
+                        "(SELECT email " +
+                        " FROM USUARIO " +
+                        " EXCEPT " +
+                        " SELECT aluno_email " +
+                        " from participa_turma " +
+                        " where turma = ? " +
+                        " ) ";
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,email);
+            statement.setString(1,nomeTurma);
             ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
+            return percorrerResultado(resultSet);
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar atualizar um usuário");
+        }
+    }
+
+    @Override
+    public void atualizar(String email, Usuario usuario) throws DataAccessException {
+        String query = "UPDATE usuario SET email = ?, nome = ?, senha = ?, telefone = ?, nascimento = ? WHERE email = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, usuario.getEmail());
+            statement.setString(2, usuario.getNome());
+            statement.setString(3, usuario.getSenha());
+            statement.setString(4, usuario.getTelefone());
+            statement.setDate(5, Date.valueOf(usuario.getNascimento()));
+            statement.setString(6, email);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar atualizar um usuário");
+        }
+    }
+
+    @Override
+    public boolean autenticarUsuario(String email, String senha) throws DataAccessException {
+        String query = "SELECT senha FROM usuario WHERE email = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
                 return resultSet.getString("senha").equals(senha);
             }
             return false;
@@ -146,19 +183,34 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public void salvarFoto(String path, String emailUsuario) throws DataAccessException {
         String query = "UPDATE usuario SET foto = ? WHERE email = ?";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,path);
-            statement.setString(2,emailUsuario);
+            statement.setString(1, path);
+            statement.setString(2, emailUsuario);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DataAccessException("Falha ao tentar salvar a foto do usuário");
         }
     }
 
+    @Override
+    public void setAdmin(String emailUsuaio) throws DataAccessException{
+            String query = "UPDATE usuario SET admin='TRUE' WHERE email = ? ";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,emailUsuaio);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataAccessException("Falha ao tentar mudar Nivel de Acesso");
+        }
+
+
+    }
+
     private List<Usuario> buscarPorTipo(Tipo tipo) throws DataAccessException {
-        String query = "SELECT * FROM usuario u,"+ (tipo.equals(Tipo.ALUNO) ? "aluno u2" : "professor u2")+"  WHERE u.email = u2.email";
-        try{
+        String query = "SELECT * FROM usuario u," + (tipo.equals(Tipo.ALUNO) ? "aluno u2" : "professor u2") + "  WHERE u.email = u2.email";
+        try {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             return percorrerResultado(resultSet);
@@ -170,7 +222,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     private List<Usuario> percorrerResultado(ResultSet resultSet) throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
-        while(resultSet.next()){
+        while (resultSet.next()) {
             usuarios.add(construirUsuario(resultSet));
         }
         return usuarios;
@@ -182,16 +234,18 @@ public class UsuarioDaoImpl implements UsuarioDao {
         user.setNome(resultSet.getString("nome"));
         user.setSenha(resultSet.getString("senha"));
         user.setFotoPath(resultSet.getString("foto"));
+        user.setTelefone(resultSet.getString("telefone"));
         user.setNascimento(resultSet.getDate("nascimento").toLocalDate());
-        user.setNivelAcesso(resultSet.getBoolean("admin")? NivelAcesso.ADMIN : NivelAcesso.USER);
+        user.setNivelAcesso(resultSet.getBoolean("admin") ? NivelAcesso.ADMIN : NivelAcesso.USER);
         user.setSexo(resultSet.getString("sexo").equals("Masculino") ? Sexo.MASCULINO : Sexo.FEMININO);
         user.setTipo(isAluno(user.getEmail()) ? Tipo.ALUNO : Tipo.PROFESSOR);
         return user;
     }
+
     private boolean isAluno(String email) throws SQLException {
         String query = "SELECT * FROM aluno WHERE email = ?";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1,email);
+        statement.setString(1, email);
         ResultSet result = statement.executeQuery();
         return result.next();
     }

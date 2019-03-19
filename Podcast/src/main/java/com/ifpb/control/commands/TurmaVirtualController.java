@@ -17,16 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Mailson Dennis
- *
  */
 public class TurmaVirtualController implements Command {
 
     private TurmaVirtualDao turmaVirtualDao;
     private UsuarioDao usuarioDao;
 
-    public TurmaVirtualController(){
+    public TurmaVirtualController() {
         turmaVirtualDao = new TurmaVirtualDaoImpl();
         usuarioDao = new UsuarioDaoImpl();
     }
@@ -35,27 +33,30 @@ public class TurmaVirtualController implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String acao = request.getParameter("acao");
-        switch(acao){
+        switch (acao) {
             case "criar":
-                criarTurmaService(request,response);
+                criarTurmaService(request, response);
                 break;
             case "deletar":
-                deletarTurmaService(request,response);
+                deletarTurmaService(request, response);
                 break;
             case "listar":
-                listarTurmaService(request,response);
+                listarTurmaService(request, response);
                 break;
             case "buscar":
-                buscarTurmaService(request,response);
+                buscarTurmaService(request, response);
                 break;
             case "atualizar":
-                atualizarTurmaService(request,response);
+                atualizarTurmaService(request, response);
                 break;
-            case "adicionarAluno":
-                adicionarAlunoService(request,response);
+            case "adicionarMembro":
+                adicionarMembroService(request, response);
+                break;
+            case "removerMembro":
+                removerMembroService(request,response);
                 break;
             case "adicionarPodcast":
-                adicioanarPodcastService(request,response);
+                adicioanarPodcastService(request, response);
                 break;
         }
     }
@@ -65,17 +66,13 @@ public class TurmaVirtualController implements Command {
         String nomeTurma = request.getParameter("nomeTurma");
         String descricao = request.getParameter("descricao");
         String[] emailAlunos = request.getParameterValues("alunos");
-        List<Usuario> alunos = new ArrayList();
-
+        List<Usuario> alunos;
         //====================================================
 
-        try{
-            for (String email:emailAlunos){
-                System.out.println(email);
-                alunos.add(usuarioDao.buscar(email));
-            }
+        try {
+            alunos = adicionarAlunos(emailAlunos);
         } catch (DataAccessException e) {
-            throw new CommandException(400,"Não foi possivel adicionar os alunos a turma");
+            throw new CommandException(400, "Não foi possivel adicionar os alunos a turma");
         }
 
         //====================================================
@@ -83,7 +80,7 @@ public class TurmaVirtualController implements Command {
         TurmaVirtual turma = new TurmaVirtual();
         turma.setNome(nomeTurma);
         turma.setDescricao(descricao);
-        turma.setCriador((Usuario)request.getSession().getAttribute("usuarioLogado"));
+        turma.setCriador((Usuario) request.getSession().getAttribute("usuarioLogado"));
         turma.setParticipantes(alunos);
 
         //====================================================
@@ -91,14 +88,14 @@ public class TurmaVirtualController implements Command {
         try {
             turmaVirtualDao.salvar(turma);
         } catch (DataAccessException e) {
-            throw new CommandException(400,"Não foi possível concluir a criação da turma virtual");
+            throw new CommandException(400, "Não foi possível concluir a criação da turma virtual");
         }
 
-        request.setAttribute("turmaCriada","turma virtual criada com sucesso!");
+        request.setAttribute("turmaCriada", "turma virtual criada com sucesso!");
         try {
-            request.getRequestDispatcher("/pages/turmasvirtuais.jsp").forward(request,response);
-        } catch (ServletException | IOException e) {
-            throw new CommandException(400,"Não foi possível redirecioanr a página de turmas virtuais");
+            response.sendRedirect("/pages/turmasvirtuais.jsp");
+        } catch (IOException e) {
+            throw new CommandException(400, "Não foi possível redirecioanr a página de turmas virtuais");
         }
 
 
@@ -110,16 +107,14 @@ public class TurmaVirtualController implements Command {
             turmaVirtualDao.remover(nomeTurma);
             response.sendRedirect("/pages/turmasvirtuais.jsp");
         } catch (DataAccessException e) {
-            throw new CommandException(400,"Falha na exclusão da turma");
+            throw new CommandException(400, "Falha na exclusão da turma");
         } catch (IOException e) {
-            throw new CommandException(404,"Falha ao recarregar a página de turmas virtuais");
+            throw new CommandException(404, "Falha ao recarregar a página de turmas virtuais");
         }
 
     }
 
     private void listarTurmaService(HttpServletRequest request, HttpServletResponse response) {
-
-
 
 
     }
@@ -132,19 +127,51 @@ public class TurmaVirtualController implements Command {
         try {
             turma = turmaVirtualDao.buscar(nomeTurma);
         } catch (DataAccessException e) {
-            throw new CommandException(400,"Não foi possível carregar a página para a turma requisitada");
+            throw new CommandException(400, "Não foi possível carregar a página para a turma requisitada");
         }
 
-        request.setAttribute("turma",turma);
+        request.setAttribute("turma", turma);
         try {
-            request.getRequestDispatcher("/pages/perfilTurma.jsp").forward(request,response);
+            request.getRequestDispatcher("/pages/perfilturma.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
-            throw new CommandException(400,"Falha ao abrir a página da turma");
+            throw new CommandException(400, "Falha ao abrir a página da turma");
         }
     }
 
-    private void adicionarAlunoService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void adicionarMembroService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String emailAluno = request.getParameter("alunoEmail");
+        String nomeTurma = request.getParameter("nomeTurma");
+        if(emailAluno != null && nomeTurma!=null){
+            try {
+                turmaVirtualDao.adicionarAlunoaTurma(nomeTurma,emailAluno);
+            } catch (DataAccessException e) {
+                throw new CommandException(400, "Falha ao adicionar o aluno a turma");
+            }
+            request.setAttribute("msg","Aluno adicionado com sucesso!");
+        }
+        try {
+            response.sendRedirect("/pages/turmasvirtuais.jsp");
+        } catch (IOException e) {
+            throw new CommandException(400, "Falha ao abrir a página das turmas");
+        }
+
+    }
+
+    private void removerMembroService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String emailAluno = request.getParameter("emailAluno");
+        String nomeTurma = request.getParameter("nomeTurma");
+
+        try {
+            turmaVirtualDao.removerAlunodeTurma(nomeTurma,emailAluno);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha ao remover o aluno da turma!");
+        }
+
+        try {
+            response.sendRedirect("/inicio?comando=TurmaVirtualController&acao=buscar&nomeTurma="+nomeTurma);
+        } catch (IOException e) {
+            throw new CommandException(404,"Falha ao recarregar a pagina da turma!");
+        }
     }
 
     private void adicioanarPodcastService(HttpServletRequest request, HttpServletResponse response) {
@@ -153,6 +180,16 @@ public class TurmaVirtualController implements Command {
 
     private void atualizarTurmaService(HttpServletRequest request, HttpServletResponse response) {
         //TODO
+    }
+
+    private List<Usuario> adicionarAlunos(String[] emailAlunos) throws DataAccessException {
+        List<Usuario> alunos = new ArrayList();
+        for (String email : emailAlunos) {
+            System.out.println(email);
+            alunos.add(usuarioDao.buscar(email));
+        }
+        return alunos;
+
     }
 
 

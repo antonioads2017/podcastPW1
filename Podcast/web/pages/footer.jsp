@@ -5,12 +5,13 @@
   Time: 00:08
   To change this template use File | Settings | File Templates.
 --%>
-<footer class="page-footer orange">
+
+<footer class="page-footer red darken-1">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">AMEC Solutions</h5>
-                <p class="grey-text text-lighten-4">Projeto da disciplina de ProgramaÃ§Ã£o Web 1 do professor Diego -
+                <p class="grey-text text-lighten-4">Projeto da disciplina de Programação Web 1 do professor Diego -
                     IFPB</p>
 
 

@@ -3,7 +3,9 @@ package com.ifpb.control.filter;
 
 import com.ifpb.model.dao.Exceptions.DataAccessException;
 import com.ifpb.model.dao.impl.TurmaVirtualDaoImpl;
+import com.ifpb.model.dao.impl.UsuarioDaoImpl;
 import com.ifpb.model.dao.interfaces.TurmaVirtualDao;
+import com.ifpb.model.dao.interfaces.UsuarioDao;
 import com.ifpb.model.domain.Enum.Tipo;
 import com.ifpb.model.domain.TurmaVirtual;
 import com.ifpb.model.domain.Usuario;
@@ -24,10 +26,12 @@ import java.util.logging.Logger;
 public class TurmaFilter implements Filter {
 
     TurmaVirtualDao turmaVirtualDao;
+    UsuarioDao usuarioDao;
     Logger log = Logger.getLogger("log");
 
     public TurmaFilter(){
         turmaVirtualDao = new TurmaVirtualDaoImpl();
+        usuarioDao = new UsuarioDaoImpl();
     }
 
 
@@ -46,6 +50,9 @@ public class TurmaFilter implements Filter {
             try {
                 turmas = turmaVirtualDao.listarTurmasCriadas(usuarioLogado.getEmail());
                 log.info("turmas listadas do "+usuarioLogado.getTipo());
+                for (TurmaVirtual turma: turmas) {
+                    request.setAttribute("AlunosNaoParticipantes"+turma.getNome(),usuarioDao.buscarAlunosQueNaoParticipamDeTurma(turma.getNome()));
+                }
             } catch (DataAccessException e) {
                 log.severe("Erro ao carregar a página");
                 throw new ServletException("Erro ao carregar a página");

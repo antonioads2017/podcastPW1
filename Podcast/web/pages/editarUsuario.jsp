@@ -5,13 +5,13 @@
   Time: 3:50 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" charset="ISO-8859-1" content="text/html; charset=ISO-8859-1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - Editar dados</title>
 
@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
 <%@ include file="headerLogged.jsp" %>
@@ -29,14 +31,19 @@
         <div class="card">
 
             <div class="card-content">
-                <div>
-                    <img src="${sessionScope.usuarioLogado.fotoPath == null ? "http://www.wfmu.org/images/generic_avatar_300.png" : sessionScope.usuarioLogado.fotoPath }"/>
+                <div><center>
+                    <c:choose>
+                        <c:when test="${sessionScope.usuarioLogado.fotoPath == ''}">
+                            <img class="perfil" src="http://www.wfmu.org/images/generic_avatar_300.png"/>
+                        </c:when>
+                        <c:otherwise>
+                            <img class="perfil" src="/img/${sessionScope.usuarioLogado.fotoPath}"/>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <!-- Modal Trigger -->
-                <a class="btn-large waves-effect waves-light orange btn modal-trigger" href="#modal3">Mudar foto</a><br><br>
+                <a class="btn-large waves-effect waves-light orange btn modal-trigger center-block" href="#modal3">Mudar foto</a><br><br>
 
-
-                <center>
                     <div class="row">
 
                         <!-- Modal Structure -->
@@ -44,12 +51,12 @@
                             <div class="modal-content">
                                 <center>
                                     <div class="row">
-                                        <form class="s4" enctype="multipart/form-data">
+                                        <form class="s4" action="/inicio?comando=UsuariosController&acao=salvarImagem" method="POST" enctype="multipart/form-data">
                                             <div>
                                                 <div class="file-field input-field">
                                                     <div class="btn">
                                                         <span>Escolher foto</span>
-                                                        <input type="file"/>
+                                                        <input type="file" name="foto" accept="image/*"/>
                                                     </div>
 
 

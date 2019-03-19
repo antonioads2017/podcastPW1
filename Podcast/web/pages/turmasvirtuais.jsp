@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" charset="ISO-8859-1" content="text/html; charset=ISO-8859-1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - Turmas virtuais</title>
 
@@ -13,6 +13,8 @@
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
 <%@ include file="headerLogged.jsp" %>
@@ -47,12 +49,20 @@
 
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
-<c:if test="${turmaCriada != null}">
+<c:if test="${msg != null}">
     <script>
         $(document).ready(function () {
 
-            M.toast({html: ${turmaCriada}}, 4000)
+            M.toast({html: ${msg}}, 4000)
 
+        });
+    </script>
+</c:if>
+<c:if test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+            $('.sidenav').sidenav();
         });
     </script>
 </c:if>

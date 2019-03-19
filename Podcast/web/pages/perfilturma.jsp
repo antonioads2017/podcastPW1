@@ -5,12 +5,12 @@
   Time: 14:53
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head lang="pt">
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
+<head lang="pt-br">
+    <meta http-equiv="Content-Type" charset="ISO-8859-1" content="text/html; charset=ISO-8859-1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - ${turma.nome}</title>
 
@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
     <body>
         <%@ include file = "headerLogged.jsp" %>
@@ -43,7 +45,7 @@
                 </div>
             </div>
             <div class="col s3">
-                <span class="center-align">Criado por: ${turma.criador.nome}</span>
+                <span class="center-align white-text">Criado por: ${turma.criador.nome}</span>
             </div>
         </div>
         <div class="row">
@@ -58,10 +60,10 @@
                                 <li>
                                     <div class="col s6 card">
                                         <div class="card-content">
-                                            <span class="card-title grey-text text-darken-4">Aula 02<span ><i class="material-icons right">info</i></span></span>
-                                            <p>Categoria: Escolar ${podcast.categoria}</p>
-                                            <p>Dono: Mailson ${podcast.dono.nome}</p>
-                                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
+                                            <span class="card-title grey-text text-darken-4">${podcast.titulo}<span ><i class="material-icons right">info</i></span></span>
+                                            <p>Categoria: ${podcast.categoria}</p>
+                                            <p>Dono: ${podcast.dono.nome}</p>
+                                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${podcast.audioPath}"><i class="material-icons">play_arrow</i></a>
                                         </div>
                                     </div>
                                 </li>
@@ -73,38 +75,24 @@
                             <%--<h5 class="card-title">Participantes</h5>--%>
                             <div class="card-content">
                                 <ul class="collection">
-                                    <li class="collection-item avatar">
-                                        <img src="${pageContext.servletContext.IMG_DIR+usuario.foto}" alt="" class="circle">
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                    </li>
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle">folder</i>
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                     asdasdqw   <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                    </li>
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle green">insert_chart</i>
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              e                      </li>
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle red">play_arrow</i>
-                                        <span class="title">Title</span>
-                                        <p>First Line <br>
-                                            Second Line
-                                        </p>
-                                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                    </li>
+                                    <c:forEach var="aluno" items="${turma.participantes}">
+                                        <li class="collection-item avatar">
+                                            <c:choose>
+                                                <c:when test="${aluno.fotoPath == ''}">
+                                                    <img src="http://www.wfmu.org/images/generic_avatar_300.png" alt="" class="circle"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img src="/img/${aluno.fotoPath}" alt="" class="circle">
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <span class="title">${aluno.nome}</span>
+                                            <p>${aluno.email}</p>
+                                            <c:if test="${sessionScope.usuarioLogado.tipo == 'PROFESSOR'}">
+                                                <a href="/inicio?comando=TurmaVirtualController&acao=removerMembro&emailAluno=${aluno.email}&nomeTurma=${turma.nome}"> <i class="material-icons">close</i> </a>
+                                            </c:if>
+                                            <a href="/inicio?comando=UsuariosController&acao=buscar&emailUsuario=${aluno.email}" class="secondary-content"><i class="material-icons">info_outline</i></a>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>

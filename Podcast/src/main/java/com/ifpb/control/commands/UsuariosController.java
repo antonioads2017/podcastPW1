@@ -63,6 +63,9 @@ public class UsuariosController implements Command {
             case "buscar":
                 buscarService(request,response);
                 break;
+            case "desativarConta":
+                desativarContaService(request,response);
+                break;
             case "atualizar":
                 atualizarService(request,response);
                 break;
@@ -75,9 +78,28 @@ public class UsuariosController implements Command {
             case "buscarAlunosTurma":
                 buscarAlunosTurma(request,response);
                 break;
+            case "tornarAdmin":
+                tornarAdmin(request,response);
+                break;
             case "sair":
                 logoutService(request,response);
                 break;
+        }
+    }
+
+
+    private void tornarAdmin(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String referece = request.getParameter("emailUsuario");
+        try {
+            usuarioDao.setAdmin(referece);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha a atualizar Nivel do Usuário");
+        }
+        try {
+            response.sendRedirect("/pages/admin/gerencia.jsp");
+        } catch (IOException e) {
+            log.severe("Falha ao carregar a página de gerência de usuários");
+            throw new CommandException(404,"Falha ao carregar a página de gerência de usuários");
         }
     }
 
@@ -88,12 +110,11 @@ public class UsuariosController implements Command {
             if(usuarioDao.autenticarUsuario(email,senha)){
                 Usuario user = usuarioDao.buscar(email);
                 request.getSession().setAttribute("usuarioLogado",user);
-                //request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
                 response.sendRedirect("/pages/timeline.jsp");
                 log.info("Logado");
             }else{
                 log.severe("Falha na autencação");
-                throw new CommandException(402,"Falha de autenticação");
+                response.sendRedirect("index.jsp");
             }
         } catch (DataAccessException| IOException e) {
             log.severe("Falha ao acessar a base de dados");
@@ -178,6 +199,13 @@ public class UsuariosController implements Command {
             log.severe("Não foi possivel excluir o usuário");
             throw new CommandException(400,"Não foi possível excluir o usuário");
         }
+
+        try {
+            response.sendRedirect("/pages/admin/gerencia.jsp");
+        } catch (IOException e) {
+            log.severe("Falha ao carregar a página de gerência de usuários");
+            throw new CommandException(404,"Falha ao carregar a página de gerência de usuários");
+        }
     }
 
     private void listarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
@@ -205,8 +233,63 @@ public class UsuariosController implements Command {
         request.setAttribute("usuario",usuario);
     }
 
-    private void atualizarService(HttpServletRequest request, HttpServletResponse response) {
-        //TODO
+    private void atualizarService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String email = request.getParameter("email");
+        String nome = request.getParameter("nome");
+        String senha = request.getParameter("senha");
+        String telefone = request.getParameter("telefone");
+        String nascimento = request.getParameter("nascimento");
+
+        //=============================================================
+
+        Usuario usuarioLogado = (Usuario) request.getSession().getAttribute("usuarioLogado");
+        String emailUsuarioLogado = usuarioLogado.getEmail();
+        boolean atualizado = false;
+        if(!email.equals(emailUsuarioLogado)){
+            usuarioLogado.setEmail(email);
+            atualizado = true;
+        }
+        if(!nome.equals(usuarioLogado.getNome())){
+            usuarioLogado.setNome(nome);
+            atualizado = true;
+        }
+        if(!senha.equals(usuarioLogado.getSenha())){
+            usuarioLogado.setSenha(senha);
+            atualizado = true;
+        }
+        if(!telefone.equals(usuarioLogado.getTelefone())){
+            usuarioLogado.setTelefone(telefone);
+            atualizado = true;
+        }
+        if(!usuarioLogado.getNascimento().equals(LocalDate.parse(nascimento))){
+            usuarioLogado.setNascimento(LocalDate.parse(nascimento));
+            atualizado = true;
+        }
+
+        //===============================================================
+
+        try {
+            usuarioDao.atualizar(emailUsuarioLogado,usuarioLogado);
+
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falah ao atualizar os dados do usuário no banco");
+        }
+
+        if(!atualizado){
+            request.setAttribute("dadosAtualizados","Nenhum dado foi alterado!");
+        }else{
+            request.setAttribute("dadosAtualizados","Dados atualziados com sucesso!");
+        }
+
+
+        request.getSession().setAttribute("usuarioLogado",usuarioLogado);
+        try {
+            request.getRequestDispatcher("/pages/perfilUsuario.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            throw new CommandException(404,"Falha ao carregar a página de perfil");
+        }
+
+
     }
 
     private void listarAlunosService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
@@ -253,10 +336,11 @@ public class UsuariosController implements Command {
             String fileName = id+getFileName(part);
             String uploadImgPath = request.getServletContext().getAttribute("IMG_DIR").toString();
             part.write(uploadImgPath + File.separator + fileName);
-            String emailUsuarioLogado = ((Usuario)request.getSession().getAttribute("usuarioLogado")).getEmail();
-            usuarioDao.salvarFoto(fileName,emailUsuarioLogado);
-            request.getSession().setAttribute("usuarioLogado",usuarioDao.buscar(emailUsuarioLogado));
-            request.getRequestDispatcher("/pages/perfilUsuario");
+            Usuario usuarioLogado = ((Usuario)request.getSession().getAttribute("usuarioLogado"));
+            usuarioDao.salvarFoto(fileName,usuarioLogado.getEmail());
+            usuarioLogado.setFotoPath(fileName);
+            request.getSession().setAttribute("usuarioLogado",usuarioLogado);
+            request.getRequestDispatcher("/pages/perfilUsuario.jsp").forward(request,response);
         } catch (IOException |ServletException e) {
             throw new CommandException(400,"Falha ao salvar a foto no servidor");
         } catch (DataAccessException e) {
@@ -274,6 +358,23 @@ public class UsuariosController implements Command {
             }
         }
         return "";
+    }
+
+    private void desativarContaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String emailUsuario = request.getParameter("emailUsuario");
+        try {
+            usuarioDao.remover(emailUsuario);
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Falha ao excluir o usuário da base de dados");
+        }
+
+        request.getSession().invalidate();
+
+        try {
+            response.sendRedirect("index.jsp");
+        } catch (IOException e) {
+            throw new CommandException(404,"Falha ao carregar a página de login!");
+        }
     }
 
 

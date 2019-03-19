@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
 
     <meta http-equiv=”Content-Type” charset="UTF-8" content=”text/html;″>
 
-    <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - Início</title>
 
@@ -15,34 +15,44 @@
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+    <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <style>
+        .circle {
+            border-radius: 50%;
+        }
+    </style>
+
+
 </head>
 <body>
 
-<%@ include file = "headerLogged.jsp" %>
+<%@ include file="headerLogged.jsp" %>
 <div class="timeline">
     <div class="row">
-        <div class="col s8 m3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/41AZ6IMW5gL.jpg" class="capa-podcast">
-                    <span class="card-title">Bohemian Rhapsody</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light red" href="moduloPodcast.jsp"><i class="material-icons">play_arrow</i></a>
-                </div>
-                <div class="card-content">
-                    <p class="autor">Queen</p><br>
-                    <p class="descricao"> Composta em 1975 por Freddie Mercury. Foi a primeira música a alcançar a
-                        primeira posição duas vezes com a mesma versão.</p>
+        <c:forEach var="podcast" items="${podcasts}">
+            <div class="col s6 m3">
+                <div class="card" id="podcast">
+                    <div class="card-image">
+                        <img src="/img/cover.png" class="capa">
+                        <span class="card-title">${podcast.titulo}</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${podcast.audioPath}"><i
+                                class="material-icons">play_arrow</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="autor"><b> Postado por ${podcast.dono.nome}
+                        </b></p><br>
+                        <p class="descricao "> ${podcast.descricao}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </c:forEach>
     </div>
 
 
 </div>
 
 
-
-<%@ include file = "footer.jsp" %>
+<%@ include file="footer.jsp" %>
 
 <!--  Scripts-->
 <script type="text/javascript"

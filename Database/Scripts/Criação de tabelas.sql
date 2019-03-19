@@ -3,6 +3,7 @@
 -- CRIADO POR MAILSON DENNIS 
 
 
+
 CREATE TABLE usuario(
 	email TEXT PRIMARY KEY,
 	senha TEXT NOT NULL,
@@ -16,19 +17,19 @@ CREATE TABLE usuario(
 
 CREATE TABLE aluno(
 	email TEXT PRIMARY KEY, 
-	FOREIGN KEY (email) REFERENCES usuario(email)
+	FOREIGN KEY (email) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE professor(
 	email TEXT PRIMARY KEY,
-	FOREIGN KEY (email) REFERENCES usuario(email)
+	FOREIGN KEY (email) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE turma_virtual(
 	nome VARCHAR(30) PRIMARY KEY,
 	descricao TEXT,
 	professor_email TEXT NOT NULL,
-	FOREIGN KEY (professor_email) REFERENCES professor(email)
+	FOREIGN KEY (professor_email) REFERENCES professor(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE podcast(
@@ -37,9 +38,11 @@ CREATE TABLE podcast(
 	categoria TEXT NOT NULL,
 	descricao TEXT,
 	criador TEXT NOT NULL,
-	nome_turma VARCHAR(30) NOT NULL,
-	FOREIGN KEY (criador) REFERENCES usuario(email),
-	FOREIGN KEY (nome_turma) REFERENCES turma_virtual(nome)
+	nome_turma VARCHAR(30),
+    data_criacao DATE,
+	hora_criacao TIME,
+	FOREIGN KEY (criador) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (nome_turma) REFERENCES turma_virtual(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE avalia_podcast(
@@ -47,14 +50,15 @@ CREATE TABLE avalia_podcast(
 	podcast VARCHAR(100) NOT NULL,
 	comentario TEXT NOT NULL,
 	PRIMARY KEY (usuario,podcast),
-	FOREIGN KEY (usuario) REFERENCES usuario(email),
-	FOREIGN KEY (podcast) REFERENCES podcast(audio)
+	FOREIGN KEY (usuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (podcast) REFERENCES podcast(audio) ON DELETE CASCADE
 );
 
 CREATE TABLE participa_turma(
 	aluno_email TEXT,
 	turma VARCHAR(30),
 	PRIMARY KEY (aluno_email,turma),
-	FOREIGN KEY (aluno_email) REFERENCES aluno(email),
-	FOREIGN KEY (turma) REFERENCES turma_virtual(nome)
+	FOREIGN KEY (aluno_email) REFERENCES aluno(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (turma) REFERENCES turma_virtual(nome) ON DELETE CASCADE
 )
+

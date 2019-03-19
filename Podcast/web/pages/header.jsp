@@ -5,7 +5,9 @@
   Time: 00:05
   To change this template use File | Settings | File Templates.
 --%>
-<nav class="light-blue" role="navigation">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
+<nav class="transparent" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">IFCast</a>
         <ul class="right hide-on-med-and-down">
             <li><!-- Modal Trigger -->

@@ -1,0 +1,22 @@
+body{
+    background: rgb(27,43,66);
+    background: linear-gradient(180deg, rgba(27,43,66,1) 0%, rgba(27,43,66,1) 57%, rgba(60,77,133,1) 86%);
+}
+#podcast{
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+    border-bottom-style: solid;
+    border-bottom-color: #f96e22;
+}
+#podcast:hover{
+    width: 320px;
+    box-shadow: 5px 5px 20px black;
+}
+#cabecalhoP{
+    background-image: url("https://css-tricks.com/wp-content/uploads/2017/09/linear-gradient.png");
+}
+.icone{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
