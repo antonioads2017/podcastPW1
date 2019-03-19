@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<img src="img/invisibleBf.png" class="fundo">
+<img src="img/invisibleBG.png" class="fundo">
 <%--&lt;%&ndash;<jsp: include page=“/pages/header.jsp”/>&ndash;%&gt;--%>
 <%--<%@ include file = "/pages/header.jsp" %>--%>
 <div class="section no-pad-bot" id="index-banner">
@@ -49,7 +49,7 @@
                                         <label for="password">Senha</label>
                                     </div>
                                     <button class="btn waves-effect waves-light" type="submit" name="action">Log-In
-                                        <i class="material-icons right">cloud</i>
+
                                     </button>
                                 </div>
                             </form>
@@ -123,7 +123,7 @@
                                     </div>
 
                                     <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
-                                        <i class="material-icons right">cloud</i>
+
                                     </button>
                                 </div>
                             </form>
