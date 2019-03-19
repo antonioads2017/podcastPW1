@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <div class="col s8">
     <c:forEach var="turma" items="${turmas}">
 

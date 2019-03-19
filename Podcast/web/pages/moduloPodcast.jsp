@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" charset="ISO-8859-1" content="text/html; charset=ISO-8859-1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast</title>
 
@@ -68,12 +68,12 @@
                     </h5>
                     <p>
                         ${podcast.descricao}
-                        <%--"Bohemian Rhapsody" √© uma can√ß√£o composta em 1975 por Freddie Mercury, integrante da banda brit√¢nica Queen, e inclu√≠da no seu √°lbum A Night at the Opera. Esta can√ß√£o n√£o possui refr√£o.--%>
+                        <%--"Bohemian Rhapsody" È uma canÁ„o composta em 1975 por Freddie Mercury, integrante da banda brit‚nica Queen, e incluÌda no seu ·lbum A Night at the Opera. Esta canÁ„o n„o possui refr„o.--%>
                     </p>
                 </div>
                 <div class="card-action">
 
-                        <div class="col s12 card-title">Coment√°rios:</div> <br>
+                        <div class="col s12 card-title">Coment·rios:</div> <br>
                         <div class="card-content">
                             <ul class="collapsible">
                                 <c:forEach var="comentario" items="${podcast.comentarios}">
@@ -112,7 +112,7 @@
 
                             <div class="input-field col5 s5">
                                 <input id="comentario" type="text" name="comentario">
-                                <label for="comentario">Escreva um coment√°rio...</label>
+                                <label for="comentario">Escreva um coment·rio...</label>
 
                             </div>
 

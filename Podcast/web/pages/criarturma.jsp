@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head><title>IFCast - Criar turma </title>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" charset="ISO-8859-1" content="text/html; charset=ISO-8859-1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast</title>
 
@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input name="descricao" id="descricao" type="text" class="validate" minlength="10" required>
-                            <label for="descricao">DescriÃ§Ã£o</label>
+                            <label for="descricao">Descrição</label>
                         </div>
                     </div>
 

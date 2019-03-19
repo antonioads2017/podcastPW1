@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
     <title>Gerencia</title>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" charset="ISO-8859-1" content="text/html; charset=ISO-8859-1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - Turmas virtuais</title>
 
@@ -23,7 +23,7 @@
     <div class="col s12 m4 l1"></div>
     <div class="col s12 m4 l10">
         <div class="card">
-            <h4 align="center">GÃªrencia de UsuÃ¡rios</h4>
+            <h4 align="center">Gêrencia de Usuários</h4>
             <div class="card-content">
                 <table class="striped card-content">
                     <thead>

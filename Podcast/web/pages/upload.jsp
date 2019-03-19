@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" charset="ISO-8859-1" content="text/html; charset=ISO-8859-1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - Upload</title>
 
@@ -21,8 +21,8 @@
         <form class="center col s4">
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="tÃ­tulo" type="text" class="validate">
-                    <label for="tÃ­tulo">TÃ­tulo</label>
+                    <input id="título" type="text" class="validate">
+                    <label for="título">Título</label>
                 </div>
                 <div class="input-field col s6">
                     <input id="categoria" type="text" class="validate">
@@ -32,12 +32,12 @@
             <div class="row">
                 <div class="input-field col s12">
                     <input id="decricao" type="text" class="validate">
-                    <label for="decricao">DescriÃ§Ã£o</label>
+                    <label for="decricao">Descrição</label>
                 </div>
             </div>
             <div class="file-field input-field">
                 <div class="btn">
-                    <span>Arquivo de Ã¡udio PodCast</span>
+                    <span>Arquivo de áudio PodCast</span>
                     <input type="file">
                 </div>
                 <div class="file-path-wrapper">

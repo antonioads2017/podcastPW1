@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <div class="col s8">
     <c:forEach var="turma" items="${turmas}">
 
@@ -22,7 +24,7 @@
                     <div id="md1${turma.nome}" class="modal">
                         <div class="modal-content">
                             <h4>Porfavor confirme</h4>
-                            <p>Deseja continuar com esta aÃ§Ã£o?</p>
+                            <p>Deseja continuar com esta ação?</p>
                         </div>
                         <div class="modal-footer">
                             <a href="" class="waves-effect waves-red btn-flat"
