@@ -98,6 +98,11 @@ public class PodcastController implements Command {
 
     private void buscarPodcastService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String referencia = request.getParameter("referencia");
+
+        if(referencia.split("_").length>1){
+            referencia = referencia.replace("_"," ");
+        }
+
         Podcast podcast;
         try {
             podcast = podcastDao.buscar(referencia);
@@ -122,6 +127,9 @@ public class PodcastController implements Command {
     private void salvarEmTurmaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         try{
             String nomeTurma = request.getParameter("nomeTurma");
+            if(nomeTurma.split("_").length>1){
+                nomeTurma = nomeTurma.replace("_"," ");
+            }
             Podcast podcast = salvarAudio(request,response);
             podcastDao.salvarEmTurma(podcast,nomeTurma);
 

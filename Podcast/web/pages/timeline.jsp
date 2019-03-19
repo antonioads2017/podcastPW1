@@ -37,7 +37,7 @@
                         <div class="card-image">
                             <img src="/img/cover.png" class="capa">
                             <span class="card-title">${podcast.titulo}</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${podcast.audioPath}"><i
+                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${''.concat(podcast.audioPath).replace(' ','_')}"><i
                                     class="material-icons">play_arrow</i></a>
                         </div>
                         <div class="card-content">
