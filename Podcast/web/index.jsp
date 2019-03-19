@@ -4,18 +4,19 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta http-equiv="Content-Type" charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
     <title>IFCast</title>
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/home.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <style>
+        <jsp:include page="css/materialize.css" />
+        <jsp:include page="css/style.css" />
+        <jsp:include page="css/home.css" />
+    </style>
+
 </head>
 <body>
-<img src="img/invisibleBG.png" class="fundo">
+<img src="img/invisibleBf.png" class="fundo">
 <%--&lt;%&ndash;<jsp: include page=“/pages/header.jsp”/>&ndash;%&gt;--%>
 <%--<%@ include file = "/pages/header.jsp" %>--%>
 <div class="section no-pad-bot" id="index-banner">

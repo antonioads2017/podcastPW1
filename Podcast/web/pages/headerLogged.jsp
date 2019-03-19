@@ -19,8 +19,8 @@
                         <form class="s4" method="post" action="/inicio?comando=PodcastController&acao=salvar" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input id="título" type="text" class="validate" name="titulo" required>
-                                    <label for="título">Título</label>
+                                    <input id="tï¿½tulo" type="text" class="validate" name="titulo" required>
+                                    <label for="tï¿½tulo">Tï¿½tulo</label>
                                 </div>
                                 <div class="input-field col s6">
                                     <input id="categoria" type="text" class="validate" name="categoria" required>
@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="decricao" type="text" class="validate" name="descricao">
-                                    <label for="decricao">Descrição</label>
+                                    <label for="decricao">Descriï¿½ï¿½o</label>
                                 </div>
                             </div>
                             <div>

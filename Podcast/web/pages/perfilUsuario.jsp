@@ -12,17 +12,20 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-    <link href="../css/timeline.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <style>
+        <jsp:include page="../css/materialize.css" />
+        <jsp:include page="../css/style.css" />
+        <jsp:include page="../css/timeline.css" />
+
         .perfil {
             width: 150px;
             height: 150px;
             border-radius: 50%;
         }
+
     </style>
+
 </head>
 <body>
 
@@ -76,7 +79,7 @@
 
             <div id="md1" class="modal">
                 <div class="modal-content">
-                    <h4>Porfavor confirme</h4>
+                    <h4>Por favor, confirme</h4>
                     <p>Todos os seus dados, podcasts ou turmas virtuais cadastrados no sistema também serão excluídos!
                         </p>
                     <p>Deseja continuar com esta ação?</p>

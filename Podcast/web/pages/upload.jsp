@@ -7,10 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>IFCast - Upload</title>
 
+    <style>
+        <jsp:include page="../css/materialize.css" />
+        <jsp:include page="../css/style.css" />
+    </style>
+
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
 </head>
 <body>
 <%@ include file = "headerLogged.jsp" %>
