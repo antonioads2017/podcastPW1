@@ -29,23 +29,38 @@
 <%@ include file="headerLogged.jsp" %>
 <div class="timeline">
     <div class="row">
-        <c:forEach var="podcast" items="${podcasts}">
-            <div class="col s6 m3">
-                <div class="card" id="podcast">
-                    <div class="card-image">
-                        <img src="/img/cover.png" class="capa">
-                        <span class="card-title">${podcast.titulo}</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${podcast.audioPath}"><i
-                                class="material-icons">play_arrow</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="autor"><b> Postado por ${podcast.dono.nome}
-                        </b></p><br>
-                        <p class="descricao "> ${podcast.descricao}</p>
+        <%--<c:choose>--%>
+            <%--<c:when test="${podcasts.size>0}">--%>
+                <c:forEach var="podcast" items="${podcasts}">
+                <div class="col s6 m3">
+                    <div class="card podcast">
+                        <div class="card-image">
+                            <img src="/img/cover.png" class="capa">
+                            <span class="card-title">${podcast.titulo}</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="/inicio?comando=PodcastController&acao=buscar&referencia=${podcast.audioPath}"><i
+                                    class="material-icons">play_arrow</i></a>
+                        </div>
+                        <div class="card-content">
+                            <p class="autor"><b> Postado por ${podcast.dono.nome}
+                            </b></p><br>
+                            <p class="descricao "> ${podcast.descricao}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+            <%--</c:when>--%>
+            <%--<c:otherwise>--%>
+            <%--<div class="col s12"></div>--%>
+            <%--<div class="col s12 m4 l2"></div>--%>
+            <%--<div class="col s12 m4 l8">--%>
+                <%--<div class="card">--%>
+                    <%--<div class="card-title">--%>
+                        <%--<p>Ainda não existem podcasts cadastrados!</p></div>--%>
+                    <%--</div>--%>
+<%--<div class="col s12 m4 l2"></div>--%>
+            <%--</c:otherwise>--%>
+        <%--</c:choose>--%>
+
     </div>
 
 
