@@ -5,7 +5,9 @@
   Time: 20:47
   To change this template use File | Settings | File Templates.
 --%>
-<div id="modalUpload${turma.nome}" class="modal">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<div id="modalUpload${''.concat(turma.nome).replace(' ','_')}" class="modal">
     <div class="modal-content">
         <center>
             <div class="row">
@@ -27,7 +29,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="nomeTurma" value="${turma.nome}"/>
+                    <input type="hidden" name="nomeTurma" value="${''.concat(turma.nome).replace(' ','_')}"/>
 
                     <div>
                         <div class = "file-field input-field">

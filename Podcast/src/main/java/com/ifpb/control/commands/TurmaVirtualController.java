@@ -103,6 +103,11 @@ public class TurmaVirtualController implements Command {
 
     private void deletarTurmaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String nomeTurma = request.getParameter("nomeTurma");
+
+        if(nomeTurma.split("_").length>1){
+            nomeTurma = nomeTurma.replace("_"," ");
+        }
+
         try {
             turmaVirtualDao.remover(nomeTurma);
             response.sendRedirect("/pages/turmasvirtuais.jsp");
@@ -121,6 +126,10 @@ public class TurmaVirtualController implements Command {
 
     private void buscarTurmaService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String nomeTurma = request.getParameter("nomeTurma");
+
+        if(nomeTurma.split("_").length>1){
+            nomeTurma = nomeTurma.replace("_"," ");
+        }
 
         TurmaVirtual turma;
 
@@ -141,6 +150,11 @@ public class TurmaVirtualController implements Command {
     private void adicionarMembroService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String emailAluno = request.getParameter("alunoEmail");
         String nomeTurma = request.getParameter("nomeTurma");
+
+        if(nomeTurma.split("_").length>1){
+            nomeTurma = nomeTurma.replace("_"," ");
+        }
+
         if(emailAluno != null && nomeTurma!=null){
             try {
                 turmaVirtualDao.adicionarAlunoaTurma(nomeTurma,emailAluno);
@@ -160,6 +174,10 @@ public class TurmaVirtualController implements Command {
     private void removerMembroService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String emailAluno = request.getParameter("emailAluno");
         String nomeTurma = request.getParameter("nomeTurma");
+
+        if(nomeTurma.split("_").length>1){
+            nomeTurma = nomeTurma.replace("_"," ");
+        }
 
         try {
             turmaVirtualDao.removerAlunodeTurma(nomeTurma,emailAluno);

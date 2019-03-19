@@ -9,8 +9,9 @@
             <%--<li> <!-- Modal Trigger -->--%>
                 <%--<a class="btn waves-effect waves-light orange btn modal-trigger" href="#modal2">Envie seu PodCast</a></li>--%>
     <%----%>
-
         <!-- Modal Structure -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <center>
@@ -36,12 +37,12 @@
                                 <div class = "file-field input-field">
                                     <div class = "btn">
                                         <span>Browse</span>
-                                        <input type = "file" name="audio"  accept="audio/*" />
+                                        <input type = "file" name="audio"  accept="audio/*" required />
                                     </div>
 
                                     <div class = "file-path-wrapper">
                                         <input class = "file-path validate" type = "text"
-                                               placeholder = "Upload file" />
+                                               placeholder = "Upload file" required />
                                     </div>
                                 </div>
                             </div>
