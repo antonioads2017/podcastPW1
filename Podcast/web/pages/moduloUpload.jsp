@@ -7,7 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<div id="modalUpload${''.concat(turma.nome).replace(' ','_')}" class="modal">
+<div id="modalUpload${cont}" class="modal">
     <div class="modal-content">
         <center>
             <div class="row">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <div class="col s8">
+    <c:set var="cont" value="0"></c:set>
     <c:forEach var="turma" items="${turmas}">
 
         <%@ include file = "moduloUpload.jsp" %>
@@ -22,13 +23,14 @@
                     <div class="card-content grey lighten-4">
 
                         <div id="podcasts">
-                            <a class="btn-large waves-effect waves-light orange modal-trigger" href="#modalUpload${''.concat(turma.nome).replace(' ','_')}">Upload de novo podcast</a>
+                            <a class="btn-large waves-effect waves-light orange modal-trigger" href="#modalUpload${cont}">Upload de novo podcast</a>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
+        <c:set var="cont" value="${cont+1}"></c:set>
     </c:forEach>
 </div>
 
