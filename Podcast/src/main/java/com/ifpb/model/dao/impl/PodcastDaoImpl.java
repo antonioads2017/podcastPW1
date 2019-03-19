@@ -149,6 +149,31 @@ public class PodcastDaoImpl implements PodcastDao {
     }
 
     @Override
+    public List<Podcast> buscarPodcastsPorFiltro(String filtro) throws DataAccessException {
+        String query = "SELECT * " +
+                        " FROM podcast " +
+                        " WHERE titulo ilike ? " +
+                        " OR " +
+                        " descricao ilike ? " +
+                        " OR categoria ilike ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,filtro);
+            statement.setString(2,filtro);
+            statement.setString(3,filtro);
+            ResultSet resultSet = statement.executeQuery();
+            List<Podcast> podcasts = new ArrayList<>();
+            while (resultSet.next()){
+                podcasts.add(construirPodcast(resultSet));
+            }
+            return podcasts;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DataAccessException("Falha ao tentar buscar por substring");
+        }
+    }
+
+    @Override
     public void deletarPodcastsPorTurma(String nomeTurma) throws DataAccessException {
         String query = "DELETE FROM podcast WHERE nome_turma = ?";
         try{

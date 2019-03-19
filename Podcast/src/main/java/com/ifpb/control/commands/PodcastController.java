@@ -6,6 +6,7 @@ import com.ifpb.model.dao.impl.PodcastDaoImpl;
 import com.ifpb.model.dao.interfaces.PodcastDao;
 import com.ifpb.model.domain.Podcast;
 import com.ifpb.model.domain.Usuario;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -37,8 +39,8 @@ public class PodcastController implements Command {
             case "deletar":
                 deletarPodcastService(request,response);
                 break;
-            case "listar":
-                listarPodcastService(request,response);
+            case "buscarPorFiltro":
+                buscarPorFiltroService(request,response);
                 break;
             case "buscar":
                 buscarPodcastService(request,response);
@@ -49,6 +51,26 @@ public class PodcastController implements Command {
             case "salvarEmTurma":
                 salvarEmTurmaService(request,response);
                 break;
+        }
+    }
+
+    private void buscarPorFiltroService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+        String filtro = request.getParameter("pesquisa");
+
+        List<Podcast> podcasts;
+
+        try {
+            podcasts = podcastDao.buscarPodcastsPorFiltro("%"+filtro+"%");
+        } catch (DataAccessException e) {
+            throw new CommandException(400,"Não foi possível filtrar os podcasts!");
+        }
+
+        request.setAttribute("podcasts",podcasts);
+
+        try {
+            request.getRequestDispatcher("/pages/timeline.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            throw new CommandException(404,"Não foi possível recarregar a página!");
         }
     }
 
@@ -73,9 +95,6 @@ public class PodcastController implements Command {
 
     }
 
-    private void listarPodcastService(HttpServletRequest request, HttpServletResponse response) {
-
-    }
 
     private void buscarPodcastService(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         String referencia = request.getParameter("referencia");

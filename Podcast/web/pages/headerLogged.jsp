@@ -79,9 +79,9 @@
 
                                 <div class="input-field col s6 s12 black-text">
 
-                                    <i class="white-text material-icons prefix">search</i>
+                                    <i onclick="buscarPorSubstring()" class="white-text material-icons prefix">search</i>
 
-                                    <input type="text" class="white-text" >
+                                    <input type="text" id="buscar" class="white-text" >
 
                                 </div>
 
@@ -114,6 +114,13 @@
     $(document).ready(function () {
         $('.modal').modal();
     });
+</script>
+<script>
+    function buscarPorSubstring() {
+        var busca = buscar.value;
+        console.log(busca);
+        location.href="/inicio?comando=PodcastController&acao=buscarPorFiltro&pesquisa="+busca;
+    }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
 </script>
